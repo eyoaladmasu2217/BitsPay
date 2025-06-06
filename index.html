@@ -8,16 +8,16 @@
 </head>
 <body>
     <div class="container">
-        <header>
+        <div class="navbar">
             <div class="logo">
-                <span class="bits">Bits</span><span class="pay">Pay</span>
+                <div class="bits">Bits</div><div class="pay">Pay</div>
             </div>
             <nav>
                 <a href="#" class="tuition-info">Tuition Info</a>
-                <a href="#" class="signup active">Sign up</a>
-                <a href="#" class="login">Log in</a>
+                <a href="#" class="signup active" id="signupBtn">Sign up</a>
+                <a href="#" class="login" id="loginBtn">Log in</a>
             </nav>
-        </header>
+        </div>
         <main>
             <h1>Get started with BITS-PAY</h1>
             <form>
@@ -28,5 +28,22 @@
             <p class="terms">By continuing, you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.</p>
         </main>
     </div>
+    <script>
+        // Toggle active class on nav buttons
+        const signupBtn = document.getElementById('signupBtn');
+        const loginBtn = document.getElementById('loginBtn');
+
+        signupBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            signupBtn.classList.add('active');
+            loginBtn.classList.remove('active');
+        });
+
+        loginBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            loginBtn.classList.add('active');
+            signupBtn.classList.remove('active');
+        });
+    </script>
 </body>
 </html>

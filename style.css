@@ -14,11 +14,11 @@ body {
     padding: 0;
 }
 
-header {
+.navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 0 0 32px;
+    padding: 0 40px 0 40px;
     border-bottom: 1px solid #E9ECE7;
     height: 110px;
     width: 1280px;
@@ -34,17 +34,16 @@ header {
     letter-spacing: -2px;
     display: flex;
     align-items: center;
-    margin-top: 0;
-    margin-left: 0;
+    margin: 0;
 }
 
-.bits {
+.logo .bits {
     color: #7BAA3C;
     font-size: 3.5rem;
     font-weight: 700;
 }
 
-.pay {
+.logo .pay {
     color: #222;
     font-size: 3.5rem;
     font-weight: 700;
@@ -54,19 +53,18 @@ nav {
     display: flex;
     gap: 16px;
     align-items: center;
-    margin-top: 0;
-    margin-right: 32px;
+    margin: 0;
 }
 
 nav a {
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: 500;
     text-decoration: none;
     color: #222;
     background: transparent;
     border: none;
     padding: 8px 24px;
-    border-radius: 12px;
+    border-radius: 10px;
     transition: background 0.2s, color 0.2s;
     height: 40px;
     display: flex;
