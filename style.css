@@ -87,6 +87,13 @@ nav .login {
     box-shadow: none;
 }
 
+nav .login.active {
+    background: #7BAA3C;
+    color: #222;
+    font-weight: 700;
+    box-shadow: none;
+}
+
 nav .tuition-info {
     background: transparent;
     color: #222;
