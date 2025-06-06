@@ -8,10 +8,12 @@ body {
 .container {
     max-width: 1280px;
     margin: 40px auto 0 auto;
-    background: #fff;
+    background: transparent;
     border-radius: 8px;
     box-shadow: none;
     padding: 0;
+    position: relative;
+    z-index: 1;
 }
 
 .navbar {
@@ -124,10 +126,11 @@ form input {
     padding: 18px 20px;
     border: none;
     border-radius: 12px;
-    background: #F4F7F3;
+    background: #E6F4D9; /* lighter green */
     font-size: 1.1rem;
     margin-bottom: 0;
     outline: none;
+    color: #222;
 }
 form button {
     margin-top: 12px;
@@ -153,6 +156,23 @@ form button:hover {
 .terms a {
     color: #8A978A;
     text-decoration: underline;
+}
+.bg-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    min-width: 100vw;
+    min-height: 100vh;
+    width: auto;
+    height: auto;
+    z-index: -1;
+    object-fit: cover;
+    opacity: 0.6; /* Increased opacity for a less white, more visible video */
+    pointer-events: none;
+}
+.container > *:not(.bg-video) {
+    position: relative;
+    z-index: 1;
 }
 @media (max-width: 600px) {
     .container {
