@@ -14,52 +14,41 @@ body {
     padding: 0;
 }
 
-header {
+/* Floating navbar styles */
+.floating-navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 0 0 32px;
-    border-bottom: 1px solid #E9ECE7;
-    height: 110px;
-    width: 1280px;
-    max-width: 1280px;
-    margin: 0 auto;
-    box-sizing: border-box;
-    background: #fff;
+    margin: 40px auto 32px auto;
+    padding: 0 40px;
+    width: 90%;
+    max-width: 1100px;
+    height: 90px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 32px;
+    box-shadow: 0 8px 32px 0 rgba(122, 170, 60, 0.15), 0 1.5px 8px 0 rgba(0,0,0,0.07);
+    position: relative;
+    z-index: 10;
 }
 
-.logo {
-    font-size: 3.5rem;
+.floating-navbar .logo {
+    font-size: 2.5rem;
     font-weight: 700;
     letter-spacing: -2px;
     display: flex;
     align-items: center;
-    margin-top: 0;
-    margin-left: 0;
+    margin: 0;
 }
 
-.bits {
-    color: #7BAA3C;
-    font-size: 3.5rem;
-    font-weight: 700;
-}
-
-.pay {
-    color: #222;
-    font-size: 3.5rem;
-    font-weight: 700;
-}
-
-nav {
+.floating-navbar nav {
     display: flex;
     gap: 16px;
     align-items: center;
-    margin-top: 0;
-    margin-right: 32px;
+    margin: 0;
 }
 
-nav a {
-    font-size: 1.1rem;
+.floating-navbar nav a {
+    font-size: 1rem;
     font-weight: 500;
     text-decoration: none;
     color: #222;
@@ -75,25 +64,28 @@ nav a {
     box-shadow: none;
 }
 
-nav .signup.active {
+.floating-navbar nav .signup.active,
+.floating-navbar nav .login.active {
     background: #7BAA3C;
     color: #222;
     font-weight: 700;
-    box-shadow: none;
 }
 
-nav .login {
+.floating-navbar nav .login {
     background: #F4F7F3;
     color: #222;
     font-weight: 700;
-    box-shadow: none;
 }
 
-nav .tuition-info {
+.floating-navbar nav .tuition-info {
     background: transparent;
     color: #222;
     font-weight: 400;
-    box-shadow: none;
+}
+
+/* Remove old header styles if present */
+header {
+    display: none;
 }
 
 main {
