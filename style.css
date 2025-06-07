@@ -42,6 +42,15 @@ body {
     margin: 0;
 }
 
+.floating-navbar .bits {
+    color: #7BAA3C;
+}
+
+.floating-navbar .pay {
+    color: #222;
+    margin-left: 2px;
+}
+
 .floating-navbar nav {
     display: flex;
     gap: 16px;
