@@ -161,18 +161,212 @@ form button:hover {
     position: relative;
     z-index: 1;
 }
-@media (max-width: 600px) {
-    .container {
-        max-width: 100vw;
-        margin: 0;
-        border-radius: 0;
+/* Main navbar for homepage */
+.main-navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 40px auto 32px auto;
+    padding: 0 40px;
+    width: 90%;
+    max-width: 1100px;
+    height: 90px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 32px;
+    box-shadow: 0 8px 32px 0 rgba(122, 170, 60, 0.15), 0 1.5px 8px 0 rgba(0,0,0,0.07);
+    position: relative;
+    z-index: 10;
+}
+.main-navbar .logo {
+    font-size: 2.5rem;
+    font-weight: 700;
+    letter-spacing: -2px;
+    display: flex;
+    align-items: center;
+    margin: 0;
+}
+.main-navbar .bits {
+    color: #7BAA3C;
+}
+.main-navbar .pay {
+    color: #222;
+    margin-left: 2px;
+}
+.main-navbar nav {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+    margin: 0;
+}
+.main-navbar nav a {
+    font-size: 1rem;
+    font-weight: 500;
+    text-decoration: none;
+    color: #222;
+    background: transparent;
+    border: none;
+    padding: 8px 24px;
+    border-radius: 12px;
+    transition: background 0.2s, color 0.2s;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: none;
+}
+.main-navbar nav a.active {
+    background: #E6F4D9;
+    color: #222;
+    font-weight: 700;
+}
+.main-navbar .nav-icons {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    margin-left: 16px;
+}
+.main-navbar .notif-icon {
+    background: #F4F7F3;
+    border-radius: 50%;
+    padding: 8px;
+    font-size: 1.2rem;
+}
+.main-navbar .profile-icon {
+    background: #F4F7F3;
+    border-radius: 50%;
+    padding: 8px;
+    font-size: 1.2rem;
+}
+
+/* Dashboard styles */
+.dashboard {
+    margin: 0 auto;
+    max-width: 900px;
+    padding: 32px 0 0 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.dashboard h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    margin-left: 0.5rem;
+}
+.dashboard .subtitle {
+    color: #8A978A;
+    font-size: 1.1rem;
+    margin-bottom: 32px;
+    margin-left: 0.5rem;
+}
+.balance-card {
+    width: 80%;
+    min-width: 320px;
+    max-width: 700px;
+    height: 200px;
+    margin: 0 auto 48px auto;
+    border-radius: 24px;
+    background: linear-gradient(135deg, #E6F4D9 0%, #B7CBA3 100%);
+    box-shadow: 0 8px 32px 0 rgba(122, 170, 60, 0.10), 0 1.5px 8px 0 rgba(0,0,0,0.04);
+}
+.transactions {
+    width: 100%;
+    margin-top: 0;
+}
+.transactions h2 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 24px;
+    margin-left: 0.5rem;
+}
+.transaction-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 32px 0;
+    width: 100%;
+}
+.transaction-list li {
+    display: flex;
+    align-items: center;
+    background: #F4F7F3;
+    border-radius: 16px;
+    margin-bottom: 18px;
+    padding: 18px 32px;
+    box-shadow: 0 2px 8px 0 rgba(122, 170, 60, 0.04);
+    font-size: 1.1rem;
+    gap: 18px;
+}
+.transaction-list .icon {
+    font-size: 1.6rem;
+    background: #E6F4D9;
+    border-radius: 12px;
+    padding: 10px;
+    margin-right: 10px;
+}
+.transaction-list .title {
+    font-weight: 600;
+    color: #222;
+}
+.transaction-list .desc {
+    color: #8A978A;
+    font-size: 0.95rem;
+}
+.transaction-list .amount {
+    margin-left: auto;
+    font-weight: 600;
+    color: #222;
+    font-size: 1.1rem;
+}
+.view-all-btn {
+    display: block;
+    margin: 0 auto 0 0.5rem;
+    padding: 12px 32px;
+    background: #E6F4D9;
+    color: #222;
+    font-size: 1.1rem;
+    font-weight: 700;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background 0.2s;
+    box-shadow: 0 2px 8px 0 rgba(122, 170, 60, 0.04);
+}
+.view-all-btn:hover {
+    background: #B7CBA3;
+}
+
+@media (max-width: 900px) {
+    .dashboard, .main-navbar {
+        max-width: 98vw;
+        padding: 0 8px;
     }
-    header {
+    .balance-card {
+        width: 98vw;
+        min-width: 0;
+    }
+}
+@media (max-width: 600px) {
+    .main-navbar {
         flex-direction: column;
         align-items: flex-start;
         padding: 24px 16px 0 16px;
+        height: auto;
     }
-    form {
+    .dashboard {
+        padding: 0;
+        margin: 0;
+    }
+    .balance-card {
+        height: 120px;
+    }
+    .transaction-list li {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+        padding: 14px 12px;
+    }
+    .view-all-btn {
         width: 100%;
+        margin: 0;
     }
 }

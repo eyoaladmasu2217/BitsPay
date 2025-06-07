@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BitsPay - Home</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="main-navbar">
+            <div class="logo">
+                <span class="bits">Bits</span><span class="pay">Pay</span>
+            </div>
+            <nav>
+                <a href="#" class="active">Home</a>
+                <a href="#">Activity</a>
+                <a href="#">Send</a>
+                <a href="#">Payments</a>
+                <span class="nav-icons">
+                    <span class="notif-icon">🔔</span>
+                    <span class="profile-icon">👤</span>
+                </span>
+            </nav>
+        </header>
+        <main class="dashboard">
+            <h1>Account Balance</h1>
+            <p class="subtitle">Your current balance across all accounts</p>
+            <div class="balance-card"></div>
+            <section class="transactions">
+                <h2>Recent Transactions</h2>
+                <ul class="transaction-list">
+                    <li>
+                        <span class="icon">🛒</span>
+                        <div>
+                            <div class="title">Books</div>
+                            <div class="desc">Campus Store</div>
+                        </div>
+                        <span class="amount">1200ETB</span>
+                    </li>
+                    <li>
+                        <span class="icon">📦</span>
+                        <div>
+                            <div class="title">Tuition</div>
+                            <div class="desc">Online Retailer</div>
+                        </div>
+                        <span class="amount">28000ETB</span>
+                    </li>
+                    <li>
+                        <span class="icon">☕</span>
+                        <div>
+                            <div class="title">Coffee</div>
+                            <div class="desc">Campus Cafe</div>
+                        </div>
+                        <span class="amount">1200ETB</span>
+                    </li>
+                    <li>
+                        <span class="icon">⬇️</span>
+                        <div>
+                            <div class="title">Dorm</div>
+                            <div class="desc">Roommate Payment</div>
+                        </div>
+                        <span class="amount">1200ETB</span>
+                    </li>
+                    <li>
+                        <span class="icon">🍽️</span>
+                        <div>
+                            <div class="title">Cafeteria</div>
+                            <div class="desc">Local Eatery</div>
+                        </div>
+                        <span class="amount">1200ETB</span>
+                    </li>
+                </ul>
+                <button class="view-all-btn">View All Transactions</button>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
