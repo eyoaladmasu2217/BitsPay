@@ -277,6 +277,48 @@ form button:hover {
     border-radius: 24px;
     background: linear-gradient(135deg, #E6F4D9 0%, #B7CBA3 100%);
     box-shadow: 0 8px 32px 0 rgba(122, 170, 60, 0.10), 0 1.5px 8px 0 rgba(0,0,0,0.04);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    position: relative;
+    padding: 32px 40px;
+}
+.balance-label {
+    font-size: 1.1rem;
+    color: #8A978A;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+.balance-amount {
+    font-size: 2.5rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #222;
+    margin-bottom: 0;
+}
+.stars {
+    letter-spacing: 0.3em;
+}
+.toggle-visibility {
+    position: absolute;
+    top: 32px;
+    right: 40px;
+    background: #F4F7F3;
+    border: none;
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: background 0.2s;
+    box-shadow: 0 2px 8px 0 rgba(122, 170, 60, 0.04);
+}
+.toggle-visibility:hover {
+    background: #E6F4D9;
 }
 .transactions {
     width: 100%;

@@ -30,7 +30,13 @@
         <main class="dashboard">
             <h1>Account Balance</h1>
             <p class="subtitle">Your current balance across all accounts</p>
-            <div class="balance-card"></div>
+            <div class="balance-card">
+                <span class="balance-label">Balance</span>
+                <span class="balance-amount" id="balanceAmount">ETB <span class="stars">****</span></span>
+                <button class="toggle-visibility" id="toggleBalanceBtn" aria-label="Show/Hide Balance">
+                    <span id="eyeIcon">👁️</span>
+                </button>
+            </div>
             <section class="transactions">
                 <h2>Recent Transactions</h2>
                 <ul class="transaction-list">
@@ -79,5 +85,24 @@
             </section>
         </main>
     </div>
+    <script>
+// Toggle balance visibility
+const balanceAmount = document.getElementById('balanceAmount');
+const toggleBtn = document.getElementById('toggleBalanceBtn');
+const eyeIcon = document.getElementById('eyeIcon');
+let visible = false;
+let actualBalance = '12,345.67'; // Replace with dynamic value if needed
+
+toggleBtn.addEventListener('click', function() {
+    visible = !visible;
+    if (visible) {
+        balanceAmount.innerHTML = 'ETB ' + actualBalance;
+        eyeIcon.textContent = '🙈';
+    } else {
+        balanceAmount.innerHTML = 'ETB <span class="stars">****</span>';
+        eyeIcon.textContent = '👁️';
+    }
+});
+</script>
 </body>
 </html>
