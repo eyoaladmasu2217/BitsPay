@@ -31,7 +31,36 @@
             </form>
             <p class="terms">By continuing, you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.</p>
         </main>
+        <div id="tuitionPopup" class="popup-overlay" style="display:none;">
+            <div class="popup-modal">
+                <button class="close-btn" id="closePopup" aria-label="Close">&times;</button>
+                <h2>Tuition Info (4 Years)</h2>
+                <ul class="tuition-list">
+                    <li><strong>Year 1:</strong> 45,000 ETB</li>
+                    <li><strong>Year 2:</strong> 45,000 ETB</li>
+                    <li><strong>Year 3:</strong> 45,000 ETB</li>
+                    <li><strong>Year 4:</strong> 45,000 ETB</li>
+                </ul>
+                <p class="tuition-note">* Tuition fees may vary by major and academic year.</p>
+            </div>
+        </div>
     </div>
     <script src="navbar.js"></script>
+    <script>
+// Tuition Info Popup
+const tuitionBtn = document.querySelector('.tuition-info');
+const popup = document.getElementById('tuitionPopup');
+const closePopup = document.getElementById('closePopup');
+tuitionBtn.addEventListener('click', function(e) {
+    e.preventDefault();
+    popup.style.display = 'flex';
+});
+closePopup.addEventListener('click', function() {
+    popup.style.display = 'none';
+});
+window.addEventListener('click', function(e) {
+    if (e.target === popup) popup.style.display = 'none';
+});
+</script>
 </body>
 </html>

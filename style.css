@@ -386,8 +386,88 @@ form button:hover {
     background: #B7CBA3;
 }
 
+/* Activity Section Styles */
+.activity-section {
+    max-width: 900px;
+    margin: 64px auto 0 auto;
+    padding: 32px 0 0 0;
+}
+.activity-section h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+.activity-section .subtitle {
+    color: #8A978A;
+    font-size: 1.1rem;
+    margin-bottom: 32px;
+}
+.activity-tabs {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 24px;
+    border-bottom: 1.5px solid #E6F4D9;
+}
+.activity-tabs .tab {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #8A978A;
+    padding: 8px 0;
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    transition: color 0.2s, border-bottom 0.2s;
+}
+.activity-tabs .tab.active {
+    color: #7BAA3C;
+    border-bottom: 3px solid #7BAA3C;
+}
+.activity-list {
+    margin-top: 24px;
+}
+.activity-group {
+    margin-bottom: 32px;
+}
+.activity-date {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #222;
+    margin-bottom: 16px;
+}
+.activity-item {
+    display: flex;
+    align-items: center;
+    background: #F4F7F3;
+    border-radius: 16px;
+    margin-bottom: 18px;
+    padding: 18px 32px;
+    box-shadow: 0 2px 8px 0 rgba(122, 170, 60, 0.04);
+    font-size: 1.1rem;
+    gap: 18px;
+}
+.activity-item .avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 18px;
+}
+.activity-item .amount {
+    font-weight: 600;
+    color: #222;
+    font-size: 1.1rem;
+}
+.activity-item .desc {
+    color: #8A978A;
+    font-size: 0.95rem;
+}
+.activity-item .time {
+    margin-left: auto;
+    color: #8A978A;
+    font-size: 1rem;
+    font-weight: 500;
+}
 @media (max-width: 900px) {
-    .dashboard, .main-navbar {
+    .dashboard, .main-navbar, .activity-section {
         max-width: 98vw;
         padding: 0 8px;
     }
@@ -419,5 +499,8 @@ form button:hover {
     .view-all-btn {
         width: 100%;
         margin: 0;
+    }
+    .activity-item {
+        padding: 14px 12px;
     }
 }
