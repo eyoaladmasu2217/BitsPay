@@ -466,6 +466,176 @@ form button:hover {
     font-size: 1rem;
     font-weight: 500;
 }
+
+/* Send Money Section Styles */
+.send-section {
+    max-width: 900px;
+    margin: 64px auto 0 auto;
+    padding: 32px 0 64px 0;
+    background: #fff;
+    border-radius: 24px;
+    box-shadow: 0 8px 32px 0 rgba(122, 170, 60, 0.07), 0 1.5px 8px 0 rgba(0,0,0,0.04);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.send-section h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 32px;
+    margin-left: 0.5rem;
+}
+.send-form {
+    width: 100%;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.form-group label {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #222;
+}
+.form-group select, .form-group input[type="number"] {
+    padding: 14px 16px;
+    border: 1.5px solid #E6F4D9;
+    border-radius: 12px;
+    background: #F4F7F3;
+    font-size: 1.1rem;
+    color: #222;
+    outline: none;
+    margin-top: 4px;
+}
+.form-group .currency {
+    margin-left: 8px;
+    font-size: 1.1rem;
+    color: #8A978A;
+    align-self: flex-end;
+    margin-top: -32px;
+    margin-bottom: 16px;
+}
+.continue-btn {
+    margin-top: 16px;
+    padding: 14px 0;
+    background: #7BAA3C;
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: 700;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background 0.2s;
+    width: 100%;
+    box-shadow: 0 2px 8px 0 rgba(122, 170, 60, 0.04);
+}
+.continue-btn:hover {
+    background: #97C45A;
+}
+
+/* Payments Section Styles */
+.payments-section {
+    max-width: 900px;
+    margin: 64px auto 64px auto;
+    padding: 32px 0 64px 0;
+    background: #fff;
+    border-radius: 24px;
+    box-shadow: 0 8px 32px 0 rgba(122, 170, 60, 0.07), 0 1.5px 8px 0 rgba(0,0,0,0.04);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.payments-section h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 32px;
+    margin-left: 0.5rem;
+}
+.payments-tabs {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 24px;
+    border-bottom: 1.5px solid #E6F4D9;
+    width: 100%;
+}
+.payments-tabs .tab {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #8A978A;
+    padding: 8px 0;
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    transition: color 0.2s, border-bottom 0.2s;
+}
+.payments-tabs .tab.active {
+    color: #7BAA3C;
+    border-bottom: 3px solid #7BAA3C;
+}
+.payments-list {
+    width: 100%;
+    margin-top: 24px;
+}
+.payments-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #222;
+    margin-bottom: 16px;
+    margin-left: 0.5rem;
+}
+.payment-item {
+    display: flex;
+    align-items: center;
+    background: #F4F7F3;
+    border-radius: 16px;
+    margin-bottom: 18px;
+    padding: 18px 32px;
+    box-shadow: 0 2px 8px 0 rgba(122, 170, 60, 0.04);
+    font-size: 1.1rem;
+    gap: 18px;
+}
+.payment-item .icon {
+    font-size: 1.6rem;
+    background: #E6F4D9;
+    border-radius: 12px;
+    padding: 10px;
+    margin-right: 10px;
+}
+.payment-info {
+    flex: 1;
+}
+.payment-name {
+    font-weight: 600;
+    color: #222;
+}
+.payment-date {
+    color: #8A978A;
+    font-size: 0.95rem;
+}
+.payment-amount {
+    font-weight: 600;
+    color: #222;
+    font-size: 1.1rem;
+    margin-left: auto;
+}
+.pay-bill {
+    cursor: pointer;
+    background: #E6F4D9;
+    transition: background 0.2s;
+}
+.pay-bill:hover {
+    background: #B7CBA3;
+}
+.payment-arrow {
+    font-size: 1.5rem;
+    color: #8A978A;
+    margin-left: auto;
+}
+
 @media (max-width: 900px) {
     .dashboard, .main-navbar, .activity-section {
         max-width: 98vw;
@@ -474,6 +644,13 @@ form button:hover {
     .balance-card {
         width: 98vw;
         min-width: 0;
+    }
+    .send-section, .payments-section {
+        max-width: 98vw;
+        padding: 0 8px 64px 8px;
+    }
+    .send-form {
+        max-width: 100%;
     }
 }
 @media (max-width: 600px) {
@@ -502,5 +679,12 @@ form button:hover {
     }
     .activity-item {
         padding: 14px 12px;
+    }
+    .send-section, .payments-section {
+        padding: 0 0 32px 0;
+        margin: 0;
+    }
+    .send-form {
+        padding: 0 8px;
     }
 }
