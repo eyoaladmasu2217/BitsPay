@@ -3,6 +3,7 @@ body {
     margin: 0;
     font-family: 'Inter', Arial, sans-serif;
     color: #222;
+    padding-top: 110px; /* Prevent content from hiding under navbar */
 }
 
 .container {
@@ -29,8 +30,11 @@ body {
     background: rgba(255, 255, 255, 0.95);
     border-radius: 32px;
     box-shadow: 0 8px 32px 0 rgba(122, 170, 60, 0.15), 0 1.5px 8px 0 rgba(0,0,0,0.07);
-    position: relative;
-    z-index: 10;
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
 }
 
 .floating-navbar .logo {
@@ -183,8 +187,11 @@ form button:hover {
     background: rgba(255, 255, 255, 0.95);
     border-radius: 32px;
     box-shadow: 0 8px 32px 0 rgba(122, 170, 60, 0.15), 0 1.5px 8px 0 rgba(0,0,0,0.07);
-    position: relative;
-    z-index: 10;
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
 }
 .main-navbar .logo {
     font-size: 2.5rem;
@@ -471,10 +478,10 @@ form button:hover {
 .send-section {
     max-width: 900px;
     margin: 64px auto 0 auto;
-    padding: 32px 0 64px 0;
-    background: #fff;
-    border-radius: 24px;
-    box-shadow: 0 8px 32px 0 rgba(122, 170, 60, 0.07), 0 1.5px 8px 0 rgba(0,0,0,0.04);
+    padding: 32px 0 0 0;
+    background: transparent;
+    border-radius: 0;
+    box-shadow: none;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -482,17 +489,27 @@ form button:hover {
 .send-section h1 {
     font-size: 2.2rem;
     font-weight: 700;
-    margin-bottom: 32px;
+    margin-bottom: 0.5rem;
     margin-left: 0.5rem;
 }
 .send-form {
     width: 100%;
-    max-width: 500px;
+    max-width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 0;
+    background: none;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 0;
+    margin-bottom: 0;
 }
 .form-group {
+    background: #F4F7F3;
+    border-radius: 16px;
+    box-shadow: 0 2px 8px 0 rgba(122, 170, 60, 0.04);
+    padding: 18px 32px;
+    margin-bottom: 18px;
     display: flex;
     flex-direction: column;
     gap: 8px;
@@ -506,7 +523,7 @@ form button:hover {
     padding: 14px 16px;
     border: 1.5px solid #E6F4D9;
     border-radius: 12px;
-    background: #F4F7F3;
+    background: #fff;
     font-size: 1.1rem;
     color: #222;
     outline: none;
@@ -542,10 +559,10 @@ form button:hover {
 .payments-section {
     max-width: 900px;
     margin: 64px auto 64px auto;
-    padding: 32px 0 64px 0;
-    background: #fff;
-    border-radius: 24px;
-    box-shadow: 0 8px 32px 0 rgba(122, 170, 60, 0.07), 0 1.5px 8px 0 rgba(0,0,0,0.04);
+    padding: 32px 0 0 0;
+    background: transparent;
+    border-radius: 0;
+    box-shadow: none;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -553,28 +570,8 @@ form button:hover {
 .payments-section h1 {
     font-size: 2.2rem;
     font-weight: 700;
-    margin-bottom: 32px;
+    margin-bottom: 0.5rem;
     margin-left: 0.5rem;
-}
-.payments-tabs {
-    display: flex;
-    gap: 24px;
-    margin-bottom: 24px;
-    border-bottom: 1.5px solid #E6F4D9;
-    width: 100%;
-}
-.payments-tabs .tab {
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: #8A978A;
-    padding: 8px 0;
-    cursor: pointer;
-    border-bottom: 3px solid transparent;
-    transition: color 0.2s, border-bottom 0.2s;
-}
-.payments-tabs .tab.active {
-    color: #7BAA3C;
-    border-bottom: 3px solid #7BAA3C;
 }
 .payments-list {
     width: 100%;
@@ -652,39 +649,29 @@ form button:hover {
     .send-form {
         max-width: 100%;
     }
-}
-@media (max-width: 600px) {
-    .main-navbar {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 24px 16px 0 16px;
+    .main-navbar, .floating-navbar {
+        width: 98vw;
+        left: 50%;
+        transform: translateX(-50%);
+        max-width: 98vw;
+        border-radius: 0 0 18px 18px;
+        padding: 16px 8px 0 8px;
         height: auto;
     }
-    .dashboard {
-        padding: 0;
-        margin: 0;
+    body {
+        padding-top: 120px;
     }
-    .balance-card {
-        height: 120px;
+}
+@media (max-width: 600px) {
+    .main-navbar, .floating-navbar {
+        width: 100vw;
+        left: 0;
+        transform: none;
+        border-radius: 0 0 18px 18px;
+        padding: 16px 8px 0 8px;
+        height: auto;
     }
-    .transaction-list li {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 8px;
-        padding: 14px 12px;
-    }
-    .view-all-btn {
-        width: 100%;
-        margin: 0;
-    }
-    .activity-item {
-        padding: 14px 12px;
-    }
-    .send-section, .payments-section {
-        padding: 0 0 32px 0;
-        margin: 0;
-    }
-    .send-form {
-        padding: 0 8px;
+    body {
+        padding-top: 120px;
     }
 }
