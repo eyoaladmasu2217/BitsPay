@@ -170,6 +170,90 @@
             </div>
         </div>
     </section>
+    <section class="send-section" id="send">
+        <h1>Send Money</h1>
+        <form class="send-form">
+            <div class="form-group">
+                <label for="sendFrom">Send From</label>
+                <select id="sendFrom" name="sendFrom">
+                    <option value="">options.....</option>
+                    <option value="main">Main Account</option>
+                    <option value="savings">Savings</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="recipient">Recipient</label>
+                <select id="recipient" name="recipient">
+                    <option value="">options.....</option>
+                    <option value="bisrat">Bisrat</option>
+                    <option value="meseret">Meseret</option>
+                    <option value="beza">Beza</option>
+                    <option value="nahom">Nahom</option>
+                    <option value="selam">Selam</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="reason">Reason</label>
+                <select id="reason" name="reason">
+                    <option value="">options.....</option>
+                    <option value="food">Food</option>
+                    <option value="books">Books</option>
+                    <option value="rent">Rent</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="amount">Amount</label>
+                <input type="number" id="amount" name="amount" min="0" step="0.01" placeholder="0.00">
+                <span class="currency">ETB</span>
+            </div>
+            <button type="submit" class="continue-btn">Continue</button>
+        </form>
+    </section>
+    <section class="payments-section" id="payments">
+        <h1>Payments</h1>
+        <div class="payments-tabs">
+            <span class="tab active">Scheduled</span>
+        </div>
+        <div class="payments-list">
+            <div class="payments-upcoming">
+                <div class="payments-title">Upcoming</div>
+                <div class="payment-item">
+                    <span class="icon">🏠</span>
+                    <div class="payment-info">
+                        <div class="payment-name">Dorm</div>
+                        <div class="payment-date">Due on August 15</div>
+                    </div>
+                    <div class="payment-amount">1500ETB</div>
+                </div>
+                <div class="payment-item">
+                    <span class="icon">⚡</span>
+                    <div class="payment-info">
+                        <div class="payment-name">Electricity</div>
+                        <div class="payment-date">Due on August 20</div>
+                    </div>
+                    <div class="payment-amount">120ETB</div>
+                </div>
+                <div class="payment-item">
+                    <span class="icon">📶</span>
+                    <div class="payment-info">
+                        <div class="payment-name">Internet</div>
+                        <div class="payment-date">Due on August 25</div>
+                    </div>
+                    <div class="payment-amount">76ETB</div>
+                </div>
+            </div>
+            <div class="payments-title" style="margin-top:32px;">Pay a bill</div>
+            <div class="payment-item pay-bill">
+                <span class="icon">➕</span>
+                <div class="payment-info">
+                    <div class="payment-name">Pay a...</div>
+                </div>
+                <span class="payment-arrow">&gt;</span>
+            </div>
+        </div>
+    </section>
     <script src="balance.js"></script>
+    <script src="spa-nav.js"></script>
 </body>
 </html>

@@ -3,7 +3,7 @@ body {
     margin: 0;
     font-family: 'Inter', Arial, sans-serif;
     color: #222;
-    padding-top: 110px; /* Prevent content from hiding under navbar */
+    padding-top: 0; /* Remove extra space above navbar */
 }
 
 .container {
@@ -659,7 +659,7 @@ form button:hover {
         height: auto;
     }
     body {
-        padding-top: 120px;
+        padding-top: 0;
     }
 }
 @media (max-width: 600px) {
@@ -672,6 +672,6 @@ form button:hover {
         height: auto;
     }
     body {
-        padding-top: 120px;
+        padding-top: 0;
     }
 }
