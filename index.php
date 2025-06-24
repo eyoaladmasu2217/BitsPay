@@ -24,10 +24,15 @@
         </div>
         <main>
             <h1>Get started with BITS-PAY</h1>
-            <form>
-                <input type="email" placeholder="Email" required>
-                <input type="password" placeholder="Password" required>
+            <form action="BitsPay/backend/reg.php" method="post" class="signup-form" id="signupForm" >
+                <input type="email" name="username" placeholder="Email" required>
+                <input type="password" name="password" placeholder="Password" required>
                 <button type="submit">Sign up</button>
+            </form>
+            <form action="BitsPay/backend/login.php" method="post" class="login-form" id="loginForm" style="display:none;">
+                <input type="email" name="login_username" placeholder="login Email" required>
+                <input type="password" name="login_password" placeholder="login Password" required>
+                <button type="submit">Log in</button>
             </form>
             <p class="terms">By continuing, you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.</p>
         </main>
@@ -60,6 +65,26 @@ closePopup.addEventListener('click', function() {
 });
 window.addEventListener('click', function(e) {
     if (e.target === popup) popup.style.display = 'none';
+});
+
+
+const signupForm = document.getElementById('signupForm');
+const loginForm = document.getElementById('loginForm');
+const signupBtn = document.getElementById('signupBtn');
+const loginBtn = document.getElementById('loginBtn');
+signupBtn.addEventListener('click', function(e) {
+    e.preventDefault();
+    signupBtn.classList.add('active');
+    loginBtn.classList.remove('active');
+    signupForm.style.display = '';
+    loginForm.style.display = 'none';
+});
+loginBtn.addEventListener('click', function(e) {
+    e.preventDefault();
+    loginBtn.classList.add('active');
+    signupBtn.classList.remove('active');
+    signupForm.style.display = 'none';
+    loginForm.style.display = '';
 });
 </script>
 </body>
