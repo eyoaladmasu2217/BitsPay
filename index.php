@@ -24,14 +24,21 @@
         </div>
         <main>
             <h1>Get started with BITS-PAY</h1>
+            <div id="signupErrorPopup" class="popup-overlay" style="display:none;">
+                <div class="popup-modal">
+                    <button class="close-btn" id="closeSignupError" aria-label="Close">&times;</button>
+                    <h2>Error</h2>
+                    <p>User already exists.</p>
+                </div>
+            </div>
             <form action="backend/reg.php" method="post" class="signup-form" id="signupForm" >
-                <input type="email" name="username" placeholder="Email" required>
+                <input type="email" name="email" placeholder="Email" required>
                 <input type="password" name="password" placeholder="Password" required>
                 <button type="submit">Sign up</button>
             </form>
             <form action="backend/login.php" method="post" class="login-form" id="loginForm" style="display:none;">
-                <input type="email" name="login_username" placeholder="login Email" required>
-                <input type="password" name="login_password" placeholder="login Password" required>
+                <input type="email" name="email" placeholder="login Email" required>
+                <input type="password" name="password" placeholder="login Password" required>
                 <button type="submit">Log in</button>
             </form>
             <p class="terms">By continuing, you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.</p>
@@ -52,6 +59,23 @@
     </div>
     <script src="navbar.js"></script>
     <script>
+// Show signup error popup if error=exists in URL
+window.addEventListener('DOMContentLoaded', function() {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('error') === 'exists') {
+        document.getElementById('signupErrorPopup').style.display = 'flex';
+    }
+    const closeSignupError = document.getElementById('closeSignupError');
+    if (closeSignupError) {
+        closeSignupError.addEventListener('click', function() {
+            document.getElementById('signupErrorPopup').style.display = 'none';
+            // Remove error from URL
+            const url = new URL(window.location);
+            url.searchParams.delete('error');
+            window.history.replaceState({}, document.title, url.pathname);
+        });
+    }
+});
 // Tuition Info Popup
 const tuitionBtn = document.querySelector('.tuition-info');
 const popup = document.getElementById('tuitionPopup');

@@ -2,13 +2,13 @@
 session_start();
 require 'csql.php';
 
-$username = $_POST['login_username'];
-$password = $_POST['login_password'];
 
-// Only select the columns you need
-$sql = "SELECT id, password FROM users WHERE username = ?";
-$stmt = $connect->prepare($sql);   
-$stmt->bind_param("s", $username);
+$email = $_POST['email'];
+$password = $_POST['password'];
+
+$sql = "SELECT id, password FROM users WHERE email = ?";
+$stmt = $connect->prepare($sql);
+$stmt->bind_param("s", $email);
 $stmt->execute();
 $stmt->store_result();
 if ($stmt->num_rows === 1) {

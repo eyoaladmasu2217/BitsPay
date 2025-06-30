@@ -1,7 +1,7 @@
 <?php
 require "csql.php";
 
-$sql = "CREATE DATABASE bits_pay";
+$sql = "CREATE DATABASE IF NOT EXISTS bits_pay";
 if (mysqli_query($connect, $sql)) {
     echo "Database created successfully.<br>";
 } else {
