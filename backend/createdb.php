@@ -7,5 +7,6 @@ if (mysqli_query($connect, $sql)) {
 } else {
     echo "Error creating database: " . mysqli_error($connect) . "<br>";
 }
+//this is a comment for testing
  
 ?>
