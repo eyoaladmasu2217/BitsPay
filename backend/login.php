@@ -1,13 +1,13 @@
 <?php
 session_start();
-require 'csql.php';
+require_once __DIR__ . '/database/csql.php';
 
 
 $email = $_POST['email'];
 $password = $_POST['password'];
 
 $sql = "SELECT id, password FROM users WHERE email = ?";
-$stmt = $connect->prepare($sql);
+$stmt = $conn->prepare($sql);
 $stmt->bind_param("s", $email);
 $stmt->execute();
 $stmt->store_result();

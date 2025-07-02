@@ -1,22 +1,22 @@
 <?php
-require 'csql.php';
+require_once __DIR__ .'/database/csql.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Make sure the form fields have names 'email' and 'password'
+   
     if (isset($_POST['email']) && isset($_POST['password'])) {
         $email = $_POST['email'];
         $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
         try {
             $sql = "INSERT INTO users (email, password) VALUES (?, ?)";
-            $stmt = $connect->prepare($sql);
+            $stmt = $conn->prepare($sql);
             if ($stmt) {
                 $stmt->bind_param("ss", $email, $password);
                 $stmt->execute();
-                // echo "Registration successful.";
+              
                 header("Location: ../home.php");
                 exit();
             } else {
-                echo "Error preparing statement: " . $connect->error;
+                echo "Error preparing statement: " . $conn->error;
             }
             if (isset($stmt)) {
                 $stmt->close();

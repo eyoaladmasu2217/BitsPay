@@ -1,3 +1,13 @@
+<?php
+session_start();
+    require_once "backend/model/TransactionModel.php";
+    if (!isset($_SESSION['user_id'])){
+        die("Unauthorized access");
+        
+    }
+    $user_id = $_SESSION['user_id'];
+    $transactions = getUserTransaction($user_id);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -84,17 +94,40 @@
                 <button type="submit" class="continue-btn">Submit</button>
             </form>
         </section>
-
+    
         <section id="transactions" class="dashboard-section">
             <h1>Transaction History</h1>
+            <?php if ($transactions && $transactions->num_rows > 0): ?>
             <ul class="transaction-list">
-                <li><span class="icon">🛒</span><div class="title">Books</div><span class="amount">1200ETB</span></li>
+                <?php while ($txn = $transactions->fetch_assoc()): ?>
+                    <li>
+                        <span class="icon">💳</span>
+                        <div class="title"><?=htmlspecialchars($txn['fee_type'])?></div>
+                        <span class="amount"><?= number_format($txn['amount'],2)?>ETB</span>
+                        <div class="meta">
+                            <Small>Year: <?=htmlspecialchars($txn['acedmic_year'])?></Small>
+                            <Small>Ref:<?=htmlspecialchars($txn['reference'])?></Small><br>
+                            <small>Status:
+                                <Span class="status <?= strtolower($txn['status'])?>">
+                                    <?=htmlspecialchars($txn['status'])?>
+                                </Span>
+                            </small>
+                        </div>
+                    </li>
+                    <?php endwhile; ?>
+            </ul>
+            <?php else: ?>
+              <p>No transactions found.</p>
+            <?php endif; ?>
+
+                <!-- <li><span class="icon">🛒</span><div class="title">Books</div><span class="amount">1200ETB</span></li>
                 <li><span class="icon">📦</span><div class="title">Tuition</div><span class="amount">28000ETB</span></li>
                 <li><span class="icon">☕</span><div class="title">Coffee</div><span class="amount">1200ETB</span></li>
                 <li><span class="icon">⬇️</span><div class="title">Dorm</div><span class="amount">1200ETB</span></li>
                 <li><span class="icon">🍽️</span><div class="title">Cafeteria</div><span class="amount">1200ETB</span></li>
-            </ul>
+            </ul> -->
         </section>
+
 
         <section id="notifications" class="dashboard-section">
             <h1>Notifications</h1>
