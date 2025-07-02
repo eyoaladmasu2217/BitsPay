@@ -17,17 +17,15 @@
                 <span class="bits">Bits</span><span class="pay">Pay</span>
             </div>
             <nav>
-                <a href="#" class="active">Home</a>
-                <a href="#">Activity</a>
-                <a href="#">Send</a>
-                <a href="#">Payments</a>
-                <span class="nav-icons">
-                    <span class="notif-icon">🔔</span>
-                    <span class="profile-icon">👤</span>
-                </span>
+                <a href="#home" class="active">Home</a>
+                <a href="#courses">Courses</a>
+                <a href="#payments">Payments</a>
+                <a href="#transactions">Transaction History</a>
+                <a href="#notifications">Notifications</a>
             </nav>
         </header>
         <main class="dashboard">
+        <section id="home" class="dashboard-section">
             <h1>Account Balance</h1>
             <p class="subtitle">Your current balance across all accounts</p>
             <div class="balance-card">
@@ -37,8 +35,8 @@
                     <span id="eyeIcon">👁️</span>
                 </button>
             </div>
-            <section class="transactions">
-                <h2>Recent Transactions</h2>
+            <div class="transactions">
+                <h2>Recent Activity</h2>
                 <ul class="transaction-list">
                     <li>
                         <span class="icon">🛒</span>
@@ -56,204 +54,84 @@
                         </div>
                         <span class="amount">28000ETB</span>
                     </li>
-                    <li>
-                        <span class="icon">☕</span>
-                        <div>
-                            <div class="title">Coffee</div>
-                            <div class="desc">Campus Cafe</div>
-                        </div>
-                        <span class="amount">1200ETB</span>
-                    </li>
-                    <li>
-                        <span class="icon">⬇️</span>
-                        <div>
-                            <div class="title">Dorm</div>
-                            <div class="desc">Roommate Payment</div>
-                        </div>
-                        <span class="amount">1200ETB</span>
-                    </li>
-                    <li>
-                        <span class="icon">🍽️</span>
-                        <div>
-                            <div class="title">Cafeteria</div>
-                            <div class="desc">Local Eatery</div>
-                        </div>
-                        <span class="amount">1200ETB</span>
-                    </li>
                 </ul>
-                <button class="view-all-btn">View All Transactions</button>
-            </section>
+            </div>
+        </section>
+
+        <section id="courses" class="dashboard-section">
+            <h1>Courses & Costs</h1>
+            <ul class="transaction-list">
+                <li><div class="title">Computer Science</div><span class="amount">20,000 ETB</span></li>
+                <li><div class="title">Information Systems</div><span class="amount">18,000 ETB</span></li>
+                <li><div class="title">Electrical Engineering</div><span class="amount">22,000 ETB</span></li>
+                <li><div class="title">Mechanical Engineering</div><span class="amount">21,000 ETB</span></li>
+                <li><div class="title">Business Administration</div><span class="amount">17,000 ETB</span></li>
+                <li><div class="title">Architecture</div><span class="amount">23,000 ETB</span></li>
+            </ul>
+        </section>
+
+        <section id="payments" class="dashboard-section">
+            <h1>Payments</h1>
+            <form class="send-form">
+                <div class="form-group">
+                    <label for="deposit">Deposit Money</label>
+                    <input type="number" id="deposit" name="deposit" min="0" step="0.01" placeholder="Amount to deposit">
+                </div>
+                <div class="form-group">
+                    <label for="makePayment">Make Payment</label>
+                    <input type="number" id="makePayment" name="makePayment" min="0" step="0.01" placeholder="Amount to pay">
+                </div>
+                <button type="submit" class="continue-btn">Submit</button>
+            </form>
+        </section>
+
+        <section id="transactions" class="dashboard-section">
+            <h1>Transaction History</h1>
+            <ul class="transaction-list">
+                <li><span class="icon">🛒</span><div class="title">Books</div><span class="amount">1200ETB</span></li>
+                <li><span class="icon">📦</span><div class="title">Tuition</div><span class="amount">28000ETB</span></li>
+                <li><span class="icon">☕</span><div class="title">Coffee</div><span class="amount">1200ETB</span></li>
+                <li><span class="icon">⬇️</span><div class="title">Dorm</div><span class="amount">1200ETB</span></li>
+                <li><span class="icon">🍽️</span><div class="title">Cafeteria</div><span class="amount">1200ETB</span></li>
+            </ul>
+        </section>
+
+        <section id="notifications" class="dashboard-section">
+            <h1>Notifications</h1>
+            <ul class="transaction-list">
+                <li><div class="title">Upcoming Payment: Tuition</div><div class="desc">Due: August 10</div></li>
+                <li><div class="title">Upcoming Payment: Dorm</div><div class="desc">Due: August 15</div></li>
+                <li><div class="title">Penalty Fee: Late Library Book</div><div class="desc">Fee: 200 ETB</div></li>
+            </ul>
+        </section>
         </main>
     </div>
-    <!-- Activity Section: scrolls into view after homepage -->
-    <section class="activity-section" id="activity">
-        <h1>Activity</h1>
-        <p class="subtitle">All transactions</p>
-        <div class="activity-tabs">
-            <span class="tab active">All</span>
-            <span class="tab">Sent</span>
-            <span class="tab">Received</span>
-        </div>
-        <div class="activity-list">
-            <div class="activity-group">
-                <div class="activity-date">Today</div>
-                <div class="activity-item">
-                    <img src="avatar1.jpg" alt="Bisrat" class="avatar">
-                    <div>
-                        <div class="amount">25ETB</div>
-                        <div class="desc">Payment from Bisrat</div>
-                    </div>
-                    <div class="time">10:30 AM</div>
-                </div>
-                <div class="activity-item">
-                    <img src="avatar2.jpg" alt="Meseret" class="avatar">
-                    <div>
-                        <div class="amount">15ETB</div>
-                        <div class="desc">Payment to Meseret</div>
-                    </div>
-                    <div class="time">9:15 AM</div>
-                </div>
-            </div>
-            <div class="activity-group">
-                <div class="activity-date">Yesterday</div>
-                <div class="activity-item">
-                    <img src="avatar1.jpg" alt="Mickyas" class="avatar">
-                    <div>
-                        <div class="amount">30ETB</div>
-                        <div class="desc">Payment from Mickyas</div>
-                    </div>
-                    <div class="time">6:45 PM</div>
-                </div>
-                <div class="activity-item">
-                    <img src="avatar2.jpg" alt="Beza" class="avatar">
-                    <div>
-                        <div class="amount">20ETB</div>
-                        <div class="desc">Payment to Beza</div>
-                    </div>
-                    <div class="time">3:20 PM</div>
-                </div>
-                <div class="activity-item">
-                    <img src="avatar1.jpg" alt="Nahom" class="avatar">
-                    <div>
-                        <div class="amount">10ETB</div>
-                        <div class="desc">Payment from Nahom</div>
-                    </div>
-                    <div class="time">11:00 AM</div>
-                </div>
-            </div>
-            <div class="activity-group">
-                <div class="activity-date">June 12</div>
-                <div class="activity-item">
-                    <img src="avatar2.jpg" alt="Selam" class="avatar">
-                    <div>
-                        <div class="amount">45ETB</div>
-                        <div class="desc">Payment to Selam</div>
-                    </div>
-                    <div class="time">8:00 PM</div>
-                </div>
-                <div class="activity-item">
-                    <img src="avatar1.jpg" alt="Leul" class="avatar">
-                    <div>
-                        <div class="amount">50ETB</div>
-                        <div class="desc">Payment from Leul</div>
-                    </div>
-                    <div class="time">5:45 PM</div>
-                </div>
-                <div class="activity-item">
-                    <img src="avatar2.jpg" alt="Feven" class="avatar">
-                    <div>
-                        <div class="amount">35ETB</div>
-                        <div class="desc">Payment to Feven</div>
-                    </div>
-                    <div class="time">2:30 PM</div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section class="send-section" id="send">
-        <h1>Send Money</h1>
-        <form class="send-form">
-            <div class="form-group">
-                <label for="sendFrom">Send From</label>
-                <select id="sendFrom" name="sendFrom">
-                    <option value="">options.....</option>
-                    <option value="main">Main Account</option>
-                    <option value="savings">Savings</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="recipient">Recipient</label>
-                <select id="recipient" name="recipient">
-                    <option value="">options.....</option>
-                    <option value="bisrat">Bisrat</option>
-                    <option value="meseret">Meseret</option>
-                    <option value="beza">Beza</option>
-                    <option value="nahom">Nahom</option>
-                    <option value="selam">Selam</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="reason">Reason</label>
-                <select id="reason" name="reason">
-                    <option value="">options.....</option>
-                    <option value="food">Food</option>
-                    <option value="books">Books</option>
-                    <option value="rent">Rent</option>
-                    <option value="other">Other</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="amount">Amount</label>
-                <input type="number" id="amount" name="amount" min="0" step="0.01" placeholder="0.00">
-                <span class="currency">ETB</span>
-            </div>
-            <button type="submit" class="continue-btn">Continue</button>
-        </form>
-    </section>
-    <section class="payments-section" id="payments">
-        <h1>Payments</h1>
-        <div class="payments-tabs">
-            <span class="tab active">Scheduled</span>
-        </div>
-        <div class="payments-list">
-            <div class="payments-upcoming">
-                <div class="payments-title">Upcoming</div>
-                <div class="payment-item">
-                    <span class="icon">🏠</span>
-                    <div class="payment-info">
-                        <div class="payment-name">Dorm</div>
-                        <div class="payment-date">Due on August 15</div>
-                    </div>
-                    <div class="payment-amount">1500ETB</div>
-                </div>
-                <div class="payment-item">
-                    <span class="icon">⚡</span>
-                    <div class="payment-info">
-                        <div class="payment-name">Electricity</div>
-                        <div class="payment-date">Due on August 20</div>
-                    </div>
-                    <div class="payment-amount">120ETB</div>
-                </div>
-                <div class="payment-item">
-                    <span class="icon">📶</span>
-                    <div class="payment-info">
-                        <div class="payment-name">Internet</div>
-                        <div class="payment-date">Due on August 25</div>
-                    </div>
-                    <div class="payment-amount">76ETB</div>
-                </div>
-            </div>
-            <div class="payments-title" style="margin-top:32px;">Pay a bill</div>
-            <div class="payment-item pay-bill">
-                <span class="icon">➕</span>
-                <div class="payment-info">
-                    <div class="payment-name">Pay a...</div>
-                </div>
-                <span class="payment-arrow">&gt;</span>
-            </div>
-        </div>
-    </section>
     <script src="balance.js"></script>
     <script src="spa-nav.js"></script>
+    <script>
+    // SPA-style navigation for dashboard sections
+    document.addEventListener('DOMContentLoaded', function() {
+        const navLinks = document.querySelectorAll('.main-navbar nav a');
+        const sections = document.querySelectorAll('.dashboard-section');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                // Remove active from all links
+                navLinks.forEach(l => l.classList.remove('active'));
+                // Hide all sections
+                sections.forEach(sec => sec.style.display = 'none');
+                // Add active to clicked link
+                this.classList.add('active');
+                // Show the corresponding section
+                const target = this.getAttribute('href').replace('#','');
+                const section = document.getElementById(target);
+                if(section) section.style.display = 'block';
+            });
+        });
+        // Show only home by default
+        sections.forEach(sec => sec.style.display = 'none');
+        document.getElementById('home').style.display = 'block';
+    });
+    </script>
 </body>
 </html>

@@ -43,14 +43,15 @@ body {
 }
 
 .container {
-    max-width: 1280px;
-    margin: 40px auto 0 auto;
-    background: transparent;
-    border-radius: 8px;
-    box-shadow: none;
-    padding: 0;
+    max-width: 1100px;
+    margin: 60px auto 0 auto;
+    background: rgba(255,255,255,0.97);
+    border-radius: 24px;
+    box-shadow: 0 8px 32px 0 rgba(0,0,0,0.10), 0 1.5px 8px 0 rgba(122,170,60,0.07);
+    padding: 32px 0 48px 0;
     position: relative;
     z-index: 1;
+    min-height: 80vh;
 }
 
 /* Floating navbar styles */
@@ -215,10 +216,10 @@ form button:hover {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 40px auto 32px auto;
-    padding: 0 40px;
-    width: 90%;
-    max-width: 1100px;
+    margin: 0 auto 32px auto;
+    padding: 0 24px;
+    width: 95%;
+    max-width: 1200px;
     height: 90px;
     background: rgba(255, 255, 255, 0.95);
     border-radius: 32px;
@@ -294,10 +295,11 @@ form button:hover {
 .dashboard {
     margin: 0 auto;
     max-width: 900px;
-    padding: 32px 0 0 0;
+    padding: 48px 0 0 0;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
+    width: 100%;
 }
 .dashboard h1 {
     font-size: 2.2rem;
@@ -312,11 +314,11 @@ form button:hover {
     margin-left: 0.5rem;
 }
 .balance-card {
-    width: 80%;
-    min-width: 320px;
-    max-width: 700px;
-    height: 200px;
-    margin: 0 auto 48px auto;
+    width: 100%;
+    min-width: 280px;
+    max-width: 500px;
+    height: 180px;
+    margin: 0 auto 32px auto;
     border-radius: 24px;
     background: linear-gradient(135deg, #E6F4D9 0%, #B7CBA3 100%);
     box-shadow: 0 8px 32px 0 rgba(122, 170, 60, 0.10), 0 1.5px 8px 0 rgba(0,0,0,0.04);
@@ -366,12 +368,17 @@ form button:hover {
 .transactions {
     width: 100%;
     margin-top: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 .transactions h2 {
     font-size: 1.3rem;
     font-weight: 700;
     margin-bottom: 24px;
-    margin-left: 0.5rem;
+    margin-left: 0;
+    text-align: center;
+    width: 100%;
 }
 .transaction-list {
     list-style: none;
@@ -669,14 +676,99 @@ form button:hover {
     margin-left: auto;
 }
 
+.dashboard-section {
+    width: 90%;
+    max-width: 900px;
+    min-width: 320px;
+    background: #fff;
+    border-radius: 22px;
+    box-shadow: 0 4px 32px 0 rgba(122,170,60,0.10), 0 1.5px 8px 0 rgba(0,0,0,0.04);
+    margin: 0 auto 48px auto;
+    padding: 48px 5vw 48px 5vw;
+    display: none;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.dashboard-section h1 {
+    font-size: 2.4rem;
+    font-weight: 700;
+    margin-bottom: 1.2rem;
+    margin-left: 0;
+    text-align: center;
+    width: 100%;
+}
+.dashboard-section .subtitle {
+    color: #8A978A;
+    font-size: 1.2rem;
+    margin-bottom: 36px;
+    margin-left: 0;
+    text-align: center;
+    width: 100%;
+}
+.balance-card {
+    width: 100%;
+    min-width: 280px;
+    max-width: 520px;
+    height: 180px;
+    margin: 0 auto 36px auto;
+    border-radius: 24px;
+    background: linear-gradient(135deg, #E6F4D9 0%, #B7CBA3 100%);
+    box-shadow: 0 8px 32px 0 rgba(122, 170, 60, 0.10), 0 1.5px 8px 0 rgba(0,0,0,0.04);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    position: relative;
+    padding: 32px 40px;
+}
+.transactions {
+    width: 100%;
+    margin-top: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.transactions h2 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 28px;
+    margin-left: 0;
+    text-align: center;
+    width: 100%;
+}
+.transaction-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 36px 0;
+    width: 100%;
+}
+.transaction-list li {
+    display: flex;
+    align-items: center;
+    background: #F4F7F3;
+    border-radius: 16px;
+    margin-bottom: 20px;
+    padding: 20px 36px;
+    box-shadow: 0 2px 8px 0 rgba(122, 170, 60, 0.04);
+    font-size: 1.15rem;
+    gap: 18px;
+}
 @media (max-width: 900px) {
     .dashboard, .main-navbar, .activity-section {
         max-width: 98vw;
         padding: 0 8px;
     }
+    .dashboard-section {
+        max-width: 98vw;
+        padding: 24px 2vw 24px 2vw;
+    }
     .balance-card {
         width: 98vw;
         min-width: 0;
+        padding: 24px 8px;
     }
     .send-section, .payments-section {
         max-width: 98vw;
@@ -694,9 +786,6 @@ form button:hover {
         padding: 16px 8px 0 8px;
         height: auto;
     }
-    body {
-        padding-top: 0;
-    }
 }
 @media (max-width: 600px) {
     .main-navbar, .floating-navbar {
@@ -706,6 +795,12 @@ form button:hover {
         border-radius: 0 0 18px 18px;
         padding: 16px 8px 0 8px;
         height: auto;
+    }
+    .dashboard-section {
+        padding: 12px 2px 12px 2px;
+    }
+    .balance-card {
+        padding: 12px 4px;
     }
     body {
         padding-top: 0;
