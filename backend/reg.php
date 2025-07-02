@@ -1,5 +1,5 @@
 <?php
-require 'csql.php';
+require_once __DIR__ .'/database/csql.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
    
