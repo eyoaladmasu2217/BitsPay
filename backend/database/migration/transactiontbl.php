@@ -12,6 +12,7 @@ $sql = "CREATE TABLE IF NOT EXISTS transactions (
   acedemic_year VARCHAR(20),
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   FOREIGN KEY (user_id) REFERENCES users(id) on delete CASCADE
+  
   );"
 ;
 if(mysqli_query($conn, $sql)) {
