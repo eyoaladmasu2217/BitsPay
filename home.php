@@ -82,17 +82,42 @@ session_start();
 
         <section id="payments" class="dashboard-section">
             <h1>Payments</h1>
-            <form class="send-form">
-                <div class="form-group">
-                    <label for="deposit">Deposit Money</label>
-                    <input type="number" id="deposit" name="deposit" min="0" step="0.01" placeholder="Amount to deposit">
+            <div class="payments-flex">
+                <div class="payment-card">
+                    <h2>Deposit</h2>
+                    <form method="POST" action="https://api.chapa.co/v1/hosted/pay" class="payment-form">
+                        <input type="hidden" name="public_key" value="CHAPUBK_TEST-NeIrAl3Gw1751zvQf0FQ0yMnQAinVo7g" />
+                        <input type="hidden" name="tx_ref" value="<?php echo 'bits-' . uniqid(); ?>" />
+                        <input type="hidden" name="currency" value="ETB" />
+                        <input type="hidden" name="email" value="eyoalforwork@gmail.com" />
+                        <input type="hidden" name="first_name" value="John" />
+                        <input type="hidden" name="last_name" value="Doe" />
+                        <input type="hidden" name="title" value="BitsPay Deposit" />
+                        <input type="hidden" name="description" value="Deposit to BitsPay wallet" />
+                        <input type="hidden" name="logo" value="https://chapa.link/asset/images/chapa_swirl.svg" />
+                        <input type="hidden" name="callback_url" value="https://yourdomain.com/chapa_callback.php" />
+                        <input type="hidden" name="return_url" value="https://yourdomain.com/chapa_return.php" />
+                        <input type="hidden" name="meta[title]" value="Deposit" />
+                        <input type="number" name="amount" min="0" step="0.01" placeholder="Amount to deposit" class="payment-input" required />
+                        <button type="submit" class="payment-btn">Deposit</button>
+                    </form>
                 </div>
-                <div class="form-group">
-                    <label for="makePayment">Make Payment</label>
-                    <input type="number" id="makePayment" name="makePayment" min="0" step="0.01" placeholder="Amount to pay">
+                <div class="payment-card">
+                    <h2>Make Payment</h2>
+                    <form class="payment-form">
+                        <select name="paymentType" class="payment-select">
+                            <option value="TuitionFull">Tuition (Full)</option>
+                            <option value="Tuition60">Tuition (60%)</option>
+                            <option value="Tuition40">Tuition (40%)</option>
+                            <option value="Cafeteria">Cafeteria</option>
+                            <option value="Supermarket">Supermarket</option>
+                            <option value="JuiceService">Juice Service</option>
+                        </select>
+                        <input type="number" name="makePayment" min="0" step="0.01" placeholder="Amount to pay" class="payment-input">
+                        <button type="submit" class="payment-btn">Pay</button>
+                    </form>
                 </div>
-                <button type="submit" class="continue-btn">Submit</button>
-            </form>
+            </div>
         </section>
     
         <section id="transactions" class="dashboard-section">
@@ -142,6 +167,21 @@ session_start();
     <script src="balance.js"></script>
     <script src="spa-nav.js"></script>
     <script>
+    // Deposit button toggle
+    document.addEventListener('DOMContentLoaded', function() {
+        const depositBtn = document.getElementById('depositBtn');
+        const depositInput = document.getElementById('depositInput');
+        if (depositBtn && depositInput) {
+            depositBtn.addEventListener('click', function() {
+                if (depositInput.style.display === 'none' || depositInput.style.display === '') {
+                    depositInput.style.display = 'block';
+                    depositInput.focus();
+                } else {
+                    depositInput.style.display = 'none';
+                }
+            });
+        }
+    });
     // SPA-style navigation for dashboard sections
     document.addEventListener('DOMContentLoaded', function() {
         const navLinks = document.querySelectorAll('.main-navbar nav a');

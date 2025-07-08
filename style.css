@@ -1,38 +1,48 @@
-/* Popup overlay for error/info */
+/* Popup overlay for deposit */
 .popup-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0,0,0,0.4);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 2000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
 }
 .popup-modal {
-  position: relative;
-  background: #fff;
-  padding: 32px 40px;
-  border-radius: 18px;
-  box-shadow: 0 8px 32px 0 rgba(0,0,0,0.18);
-  text-align: center;
-  min-width: 300px;
+    position: relative;
+    background: #fff;
+    padding: 36px 44px 32px 44px;
+    border-radius: 20px;
+    box-shadow: 0 8px 32px 0 rgba(0,0,0,0.18);
+    text-align: center;
+    min-width: 320px;
+    max-width: 90vw;
+    width: 100%;
+    max-width: 400px;
 }
 .popup-modal h2 {
-  margin-top: 0;
-  color: #d32f2f;
+    margin-top: 0;
+    color: #222;
+    font-size: 1.5rem;
+    font-weight: 700;
 }
 .close-btn {
-  position: absolute;
-  top: 12px;
-  right: 18px;
-  background: none;
-  border: none;
-  font-size: 2rem;
-  color: #888;
-  cursor: pointer;
+    position: absolute;
+    top: 16px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 2.1rem;
+    color: #888;
+    cursor: pointer;
+    transition: color 0.2s;
+    z-index: 10;
+}
+.close-btn:hover {
+    color: #d32f2f;
 }
 body {
     background: #fff;
@@ -169,6 +179,25 @@ form input {
     outline: none;
     color: #222;
 }
+.deposit-btn {
+    padding: 16px 36px;
+    background: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 14px;
+    cursor: pointer;
+    font-size: 1.15rem;
+    font-weight: 700;
+    transition: background 0.2s, color 0.2s;
+    margin-bottom: 18px;
+    font-family: 'Inter', Arial, sans-serif;
+    box-shadow: 0 4px 12px 0 rgba(76,175,80,0.13);
+    letter-spacing: 0.02em;
+}
+.deposit-btn:hover {
+    background: #388E3C;
+    color: #fff;
+}
 form button {
     margin-top: 12px;
     padding: 12px 0;
@@ -290,6 +319,81 @@ form button:hover {
     border-radius: 50%;
     padding: 8px;
     font-size: 1.2rem;
+}
+
+/* Payments section side-by-side cards */
+.payments-flex {
+    display: flex;
+    gap: 32px;
+    justify-content: center;
+    margin-top: 24px;
+    flex-wrap: wrap;
+}
+.payment-card {
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 4px 16px 0 rgba(122,170,60,0.10);
+    padding: 32px 28px 28px 28px;
+    min-width: 260px;
+    max-width: 340px;
+    flex: 1 1 260px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.payment-card h2 {
+    margin-bottom: 24px;
+    color: #222;
+    font-size: 1.3rem;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+}
+.payment-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    align-items: center;
+}
+.payment-input, .payment-select {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    margin-bottom: 8px;
+    font-family: 'Inter', Arial, sans-serif;
+    transition: border-color 0.2s;
+    background: #fff;
+}
+.payment-input:focus, .payment-select:focus {
+    border-color: #7BAA3C;
+    outline: none;
+}
+.payment-btn {
+    background: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 12px 32px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+    box-shadow: 0 2px 8px 0 rgba(76,175,80,0.13);
+}
+.payment-btn:hover {
+    background: #388E3C;
+}
+@media (max-width: 800px) {
+    .payments-flex {
+        flex-direction: column;
+        gap: 18px;
+        align-items: stretch;
+    }
+    .payment-card {
+        max-width: 100%;
+    }
 }
 
 /* Dashboard styles */
