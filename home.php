@@ -1,12 +1,19 @@
 <?php
 session_start();
     require_once "backend/model/TransactionModel.php";
+    require_once "backend/model/walletmodel.php";
     if (!isset($_SESSION['user_id'])){
         die("Unauthorized access");
         
     }
     $user_id = $_SESSION['user_id'];
     $transactions = getUserTransaction($user_id);
+    $wallet = getUserWallet($user_id);
+    $walletTransactions = getWalletTransactions($user_id);
+    if(!$wallet){
+        createWallet($user_id, 0.00);
+        $wallet = getUserWallet($user_id);
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -40,7 +47,7 @@ session_start();
             <p class="subtitle">Your current balance across all accounts</p>
             <div class="balance-card">
                 <span class="balance-label">Balance</span>
-                <span class="balance-amount" id="balanceAmount">ETB <span class="stars">****</span></span>
+                <span class="balance-amount" id="balanceAmount">ETB <span class="stars" id ="balanceValue"><?= number_format($wallet['balance'],2)?></span></span>
                 <button class="toggle-visibility" id="toggleBalanceBtn" aria-label="Show/Hide Balance">
                     <span id="eyeIcon">👁️</span>
                 </button>
@@ -48,22 +55,38 @@ session_start();
             <div class="transactions">
                 <h2>Recent Activity</h2>
                 <ul class="transaction-list">
-                    <li>
-                        <span class="icon">🛒</span>
-                        <div>
-                            <div class="title">Books</div>
-                            <div class="desc">Campus Store</div>
-                        </div>
-                        <span class="amount">1200ETB</span>
-                    </li>
-                    <li>
+                    <?php if(count($walletTransactions)>0):?> 
+                        <?php foreach($walletTransactions as$tx):?>
+                            <li>
+                                <span class="icon">
+                                   <?= $tx['type']==='credit' ? '💰':'🛒'?>
+                                </span>
+                                <div>
+                                    <div class="title"><?= ucfirst($tx['type'])?></div>
+                                    <div class="desc"><?=htmlspecialchars($tx['description'])?></div>
+                                </div>
+                                <span class="amount<?=$tx['type']==='credit'?'credit' :'debit'?>"><?= number_format($tx['amount'],2)?></span>
+                            </li>
+                        <?php endforeach;?>
+                    <?php else:?>
+                        <li>
+                            <span class="icon">ℹ️</span>
+                            <div>
+                                <div class="title">No Activity</div>
+                                <div class="desc">Your wallet is waiting for action</div>
+                            </div>
+                            <span class="amount">0.00 ETB</span>
+                        </li>
+                        <?php endif;?>
+        
+                    <!-- <li>
                         <span class="icon">📦</span>
                         <div>
                             <div class="title">Tuition</div>
                             <div class="desc">Online Retailer</div>
                         </div>
                         <span class="amount">28000ETB</span>
-                    </li>
+                    </li> -->
                 </ul>
             </div>
         </section>
@@ -99,6 +122,9 @@ session_start();
                         <input type="hidden" name="return_url" value="https://yourdomain.com/chapa_return.php" />
                         <input type="hidden" name="meta[title]" value="Deposit" />
                         <input type="number" name="amount" min="0" step="0.01" placeholder="Amount to deposit" class="payment-input" required />
+                        <input type="hidden" name="callback_url" value="http://localhost/BitsPay/backend/chapa_callback.php"/>
+                        <input type="hidden" name="return_url" value="http://localhost/BitsPay/home.php?wallet=success"/>
+                        <input type="hidden" name="tx_ref" value="<?php echo 'bits-' .$user_id .'_' . uniqid();?>"/>
                         <button type="submit" class="payment-btn">Deposit</button>
                     </form>
                 </div>

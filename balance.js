@@ -6,7 +6,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const toggleBtn = document.getElementById('toggleBalanceBtn');
     const eyeIcon = document.getElementById('eyeIcon');
     let visible = false;
-    let actualBalance = '12,345.67'; // Replace with dynamic value if needed
+    const balanceValueSpan =balanceAmount.querySelector('.stars');
+    const actualBalance = balanceValueSpan.textContent; // Replace with dynamic value if needed
 
     toggleBtn.addEventListener('click', function() {
         visible = !visible;
@@ -14,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
             balanceAmount.innerHTML = 'ETB ' + actualBalance;
             eyeIcon.textContent = '🙈';
         } else {
-            balanceAmount.innerHTML = 'ETB <span class="stars">****</span>';
+            balanceAmount.innerHTML = 'ETB ****';
             eyeIcon.textContent = '👁️';
         }
     });
