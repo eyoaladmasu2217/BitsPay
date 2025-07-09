@@ -89,4 +89,33 @@ function debitWallet($user_id, $amount, $description ='Payment'){
     }
     return logWalletTransaction($wallet['id'], 'debit', $amount, $description);
 }
+
+function payTuitionFromWallet($user_id, $amount ,$acedemic_year){
+    $wallet = getUserWallet($user_id);
+    if (!$wallet || $wallet['balance']<$amount){
+        return ['success'=>false, 'message'=>'Insufficient wallet balance'];
+
+    }
+    $new_balance = $wallet['balance']-$amount;
+    updateWalletBalance($user_id, $new_balance);
+
+    logWalletTransaction($wallet['id'], 'debit', $amount, 'Tuition Payment');
+
+    $reference = 'TUIT-'. strtoupper(uniqid());
+    createTuitionTransaction($user_id, $amount,'wallet',$reference,'paid','tuition',$acedemic_year);
+
+    return ['success'=>true, 'message'=>'Tuition paid successfully', 'reference'=>$reference];
+
+}
+function chapaTransactionExists($tx_ref){
+    global $conn;
+    $stmt = $conn->prepare("SELECT * FROM chapa_transactions WHERE tx_ref=?");
+    $stmt->execute([$tx_ref]);
+    return $stmt->fetch()!==false;
+}
+function recordChapaTransaction($tx_ref, $user_id, $amount){
+    global $conn;
+    $stmt = $conn->prepare("INSERT INTO chapa_transactions(tx_ref, user_id, amount) VALUES(?,?,?)");
+    $stmt->execute([$tx_ref, $user_id, $amount]);
+}
 ?>

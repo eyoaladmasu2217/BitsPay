@@ -44,9 +44,7 @@ if ($data['status']==='success'&& $data['data']['status']=='success'){
         $raw_user_id = $matches[1];
         $user_id= intval($raw_user_id);
     }
-    file_put_contents('chapa_log.txt',"Extracted user_id: $raw_user_id" . PHP_EOL,FILE_APPEND);
-
-    };
+    file_put_contents('chapa_log.txt',"Extracted user_id: $raw_user_id" . PHP_EOL,FILE_APPEND); };
 
     file_put_contents('chapa_log.txt', "Raw user ID part: '" . $raw_user_id . "'" . PHP_EOL, FILE_APPEND);
 
@@ -54,7 +52,11 @@ if ($data['status']==='success'&& $data['data']['status']=='success'){
 
 
     if($user_id){
-        file_put_contents('chapa_log.txt', "Looking for wallet for user $user_id". PHP_EOL, FILE_APPEND);
+
+        recordChapaTransaction($tx_ref, $user_id, $amount);
+        
+
+        // file_put_contents('chapa_log.txt', "Looking for wallet for user $user_id". PHP_EOL, FILE_APPEND);
 
         $walletRow = getUserWallet($user_id);
         file_put_contents('chapa_log.txt', "Initial wallet lookup:" .print_r($walletRow, true). PHP_EOL, FILE_APPEND);
@@ -75,6 +77,18 @@ if ($data['status']==='success'&& $data['data']['status']=='success'){
     } else {
         file_put_contents('chapa_log.txt', "Failed to fetch wallet for user $user_id" . PHP_EOL, FILE_APPEND);
        }
+       
+        if(!chapaTransactionExists($tx_ref)){
+            $new_balance = $walletRow['balance'] + $amount;
+            updateWalletBalance($user_id, $new_balance);
+            
+            recordChapaTransaction($tx_ref, $user_id,$amount);
+
+            file_put_contents('chapa_log.txt', "wallet credited and tx_ref recorded: $tx_ref" . PHP_EOL, FILE_APPEND);
+            
+        }else{
+            file_put_contents('chapa_log.txt', "Transaction $tx_ref already exists. Skipping wallet update." . PHP_EOL, FILE_APPEND);
+        }
 
     }
 

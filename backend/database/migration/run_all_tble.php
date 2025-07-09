@@ -8,6 +8,7 @@ include "tution_feetbl.php";
 include "transactiontbl.php";
 include "wallet.php";
 include "wallettransactiontbl.php";
+include "chapa_transactionstbll.php";
 echo "All migration scripts executed successfully.<br>";
 
 

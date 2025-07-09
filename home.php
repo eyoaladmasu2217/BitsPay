@@ -9,6 +9,7 @@ session_start();
     $user_id = $_SESSION['user_id'];
     $transactions = getUserTransaction($user_id);
     $wallet = getUserWallet($user_id);
+    $tuitionPayments = getTuitionPayments($user_id);
     $walletTransactions = getWalletTransactions($user_id);
     if(!$wallet){
         createWallet($user_id, 0.00);
@@ -130,8 +131,8 @@ session_start();
                 </div>
                 <div class="payment-card">
                     <h2>Make Payment</h2>
-                    <form class="payment-form">
-                        <select name="paymentType" class="payment-select">
+                    <form class="payment-form" method="POST" action="backend/controller/handle_payment.php">
+                        <select name="paymentType" class="payment-select" required>
                             <option value="TuitionFull">Tuition (Full)</option>
                             <option value="Tuition60">Tuition (60%)</option>
                             <option value="Tuition40">Tuition (40%)</option>
@@ -139,7 +140,7 @@ session_start();
                             <option value="Supermarket">Supermarket</option>
                             <option value="JuiceService">Juice Service</option>
                         </select>
-                        <input type="number" name="makePayment" min="0" step="0.01" placeholder="Amount to pay" class="payment-input">
+                        <input type="number" name="makePayment" min="0" step="0.01" placeholder="Amount to pay" class="payment-input" required>
                         <button type="submit" class="payment-btn">Pay</button>
                     </form>
                 </div>
@@ -151,20 +152,24 @@ session_start();
             <?php if ($transactions && $transactions->num_rows > 0): ?>
             <ul class="transaction-list">
                 <?php while ($txn = $transactions->fetch_assoc()): ?>
-                    <li>
-                        <span class="icon">💳</span>
-                        <div class="title"><?=htmlspecialchars($txn['fee_type'])?></div>
-                        <span class="amount"><?= number_format($txn['amount'],2)?>ETB</span>
-                        <div class="meta">
-                            <Small>Year: <?=htmlspecialchars($txn['acedmic_year'])?></Small>
-                            <Small>Ref:<?=htmlspecialchars($txn['reference'])?></Small><br>
-                            <small>Status:
-                                <Span class="status <?= strtolower($txn['status'])?>">
-                                    <?=htmlspecialchars($txn['status'])?>
-                                </Span>
-                            </small>
-                        </div>
-                    </li>
+                    <?php if(isset($txn['acedemic_year'])):?>
+                        <li>
+                            <span class="icon">💳</span>
+                            <div class="title"><?=htmlspecialchars($txn['fee_type'])?></div>
+                            <span class="amount"><?= number_format($txn['amount'],2)?>ETB</span>
+                            <div class="meta">
+                                
+                                <small>Year: <?= isset($txn['acedemic_year']) ? htmlspecialchars($txn['acedemic_year']) : 'N/A' ?></small>
+
+                                <Small>Ref:<?=htmlspecialchars($txn['reference'])?></Small><br>
+                                <small>Status:
+                                    <Span class="status <?= strtolower($txn['status'])?>">
+                                        <?=htmlspecialchars($txn['status'])?>
+                                    </Span>
+                                </small>
+                            </div>
+                        </li>
+                        <?php endif;?>
                     <?php endwhile; ?>
             </ul>
             <?php else: ?>
