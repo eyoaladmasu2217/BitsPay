@@ -26,6 +26,6 @@ if ($stmt->num_rows === 1) {
 } else {
     echo "No user found with that username.";
 }
-
+}
 
 ?>

@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $stmt->bind_param("ss", $email, $password);
                 $stmt->execute();
               
-                header("Location: ../home.php");
+                header("Location: ../index.php?showLogin=1");
                 exit();
             } else {
                 http_response_code(500);
