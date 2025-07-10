@@ -65,13 +65,12 @@ window.addEventListener('DOMContentLoaded', function() {
         document.getElementById('signupErrorPopup').style.display = 'flex';
     }
 
-    // Elements
+    
     const signupBtn = document.getElementById('signupBtn');
     const loginBtn = document.getElementById('loginBtn');
     const signupForm = document.getElementById('signupForm');
     const loginForm = document.getElementById('loginForm');
 
-    // Helper to switch forms and button styles
     function showForm(form) {
         if (form === 'signup') {
             signupForm.style.display = 'block';
@@ -86,14 +85,13 @@ window.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Initial state: show login if showLogin=1, else signup
+    
     if (params.get('showLogin') === '1') {
         showForm('login');
     } else {
         showForm('signup');
     }
 
-    // Navbar button click handlers
     signupBtn.addEventListener('click', function(e) {
         e.preventDefault();
         showForm('signup');
@@ -103,19 +101,18 @@ window.addEventListener('DOMContentLoaded', function() {
         showForm('login');
     });
 
-    // Signup error popup close
     const closeSignupError = document.getElementById('closeSignupError');
     if (closeSignupError) {
         closeSignupError.addEventListener('click', function() {
             document.getElementById('signupErrorPopup').style.display = 'none';
-            // Remove error from URL
+            /
             const url = new URL(window.location);
             url.searchParams.delete('error');
             window.history.replaceState({}, document.title, url.pathname);
         });
     }
 
-    // Tuition Info Popup
+  
     const tuitionBtn = document.querySelector('.tuition-info');
     const popup = document.getElementById('tuitionPopup');
     const closePopup = document.getElementById('closePopup');
@@ -132,5 +129,3 @@ window.addEventListener('DOMContentLoaded', function() {
 });
     </script>
 
-</body>
-</html>

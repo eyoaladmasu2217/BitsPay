@@ -1,5 +1,15 @@
 <?php
 session_start();
+
+$timeout =1800;
+
+if (isset($_SESSION['last_activity'])&&(time()-$_SESSION['last_activity'])> $timeout){
+    session_unset(); 
+    session_destroy(); 
+    header("Location: /BitsPay/index.php?session_expired=1");
+    exit();
+}
+$_SESSION['last_activity'] = time(); 
     require_once "backend/model/TransactionModel.php";
     require_once "backend/model/walletmodel.php";
    
@@ -27,6 +37,7 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BitsPay - Home</title>
     <link rel="stylesheet" href="style.css">
+    <script src="sessionkiller.js"></script>
 </head>
 <body>
     <video autoplay loop muted playsinline class="bg-video">
@@ -44,7 +55,9 @@ session_start();
                 <a href="#payments">Payments</a>
                 <a href="#transactions">Transaction History</a>
                 <a href="#notifications">Notifications</a>
-                <a href="/BitsPay/backend/logout.php" class="logout">Logout</a>
+                <form method ="POST" action="backend/logout.php" >
+                    <button type="submit" class="payment-btn">Logout</button>
+                </form>
             </nav>
         </header>
         <main class="dashboard">
@@ -85,14 +98,7 @@ session_start();
                         </li>
                         <?php endif;?>
         
-                    <!-- <li>
-                        <span class="icon">📦</span>
-                        <div>
-                            <div class="title">Tuition</div>
-                            <div class="desc">Online Retailer</div>
-                        </div>
-                        <span class="amount">28000ETB</span>
-                    </li> -->
+                  
                 </ul>
             </div>
         </section>
@@ -181,12 +187,7 @@ session_start();
               <p>No transactions found.</p>
             <?php endif; ?>
 
-                <!-- <li><span class="icon">🛒</span><div class="title">Books</div><span class="amount">1200ETB</span></li>
-                <li><span class="icon">📦</span><div class="title">Tuition</div><span class="amount">28000ETB</span></li>
-                <li><span class="icon">☕</span><div class="title">Coffee</div><span class="amount">1200ETB</span></li>
-                <li><span class="icon">⬇️</span><div class="title">Dorm</div><span class="amount">1200ETB</span></li>
-                <li><span class="icon">🍽️</span><div class="title">Cafeteria</div><span class="amount">1200ETB</span></li>
-            </ul> -->
+               
         </section>
 
 
@@ -203,7 +204,7 @@ session_start();
     <script src="balance.js"></script>
     <script src="spa-nav.js"></script>
     <script>
-    // Deposit button toggle
+    
     document.addEventListener('DOMContentLoaded', function() {
         const depositBtn = document.getElementById('depositBtn');
         const depositInput = document.getElementById('depositInput');
@@ -218,28 +219,50 @@ session_start();
             });
         }
     });
-    // SPA-style navigation for dashboard sections
+    
     document.addEventListener('DOMContentLoaded', function() {
         const navLinks = document.querySelectorAll('.main-navbar nav a');
         const sections = document.querySelectorAll('.dashboard-section');
         navLinks.forEach(link => {
             link.addEventListener('click', function(e) {
                 e.preventDefault();
-                // Remove active from all links
+                
                 navLinks.forEach(l => l.classList.remove('active'));
-                // Hide all sections
+              
                 sections.forEach(sec => sec.style.display = 'none');
-                // Add active to clicked link
+             
                 this.classList.add('active');
-                // Show the corresponding section
+                
                 const target = this.getAttribute('href').replace('#','');
                 const section = document.getElementById(target);
                 if(section) section.style.display = 'block';
             });
         });
-        // Show only home by default
+        
         sections.forEach(sec => sec.style.display = 'none');
         document.getElementById('home').style.display = 'block';
+    });
+   
+    document.addEventListener('DOMContentLoaded', function() {
+        const paymentTypeSelect = document.querySelector('.payment-form select[name="paymentType"]');
+        const amountInput = document.querySelector('.payment-form input[name="makePayment"]');
+        if (paymentTypeSelect && amountInput) {
+            paymentTypeSelect.addEventListener('change', function() {
+                switch (this.value) {
+                    case 'TuitionFull':
+                        amountInput.value = 30000;
+                        break;
+                    case 'Tuition60':
+                        amountInput.value = 17500;
+                        break;
+                    case 'Tuition40':
+                        amountInput.value = 12500;
+                        break;
+                    default:
+                        amountInput.value = '';
+                }
+            });
+        }
     });
     </script>
 </body>

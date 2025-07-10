@@ -7,7 +7,7 @@ echo "Callback received<br>";
 
 require_once dirname(__DIR__) . '/backend/model/walletmodel.php';
 $config = require_once dirname(__DIR__). '/backend/config/chapa.php';
-$chapaSecret =$config['secret_key'];//don't forget to change with the actual code
+$chapaSecret =$config['secret_key'];
 $tx_ref = $_REQUEST['tx_ref'] ??  $_REQUEST['trx_ref'] ??'';
 
 if(!$tx_ref){
@@ -56,7 +56,7 @@ if ($data['status']==='success'&& $data['data']['status']=='success'){
         recordChapaTransaction($tx_ref, $user_id, $amount);
         
 
-        // file_put_contents('chapa_log.txt', "Looking for wallet for user $user_id". PHP_EOL, FILE_APPEND);
+    
 
         $walletRow = getUserWallet($user_id);
         file_put_contents('chapa_log.txt', "Initial wallet lookup:" .print_r($walletRow, true). PHP_EOL, FILE_APPEND);
