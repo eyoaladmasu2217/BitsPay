@@ -17,7 +17,6 @@
                 <div class="bits">Bits</div><div class="pay">Pay</div>
             </div>
             <nav>
-                <a href="#" class="tuition-info">Tuition Info</a>
                 <a href="#" class="signup active" id="signupBtn">Sign up</a>
                 <a href="#" class="login" id="loginBtn">Log in</a>
             </nav>
@@ -43,19 +42,6 @@
             </form>
             <p class="terms">By continuing, you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.</p>
         </main>
-        <div id="tuitionPopup" class="popup-overlay" style="display:none;">
-            <div class="popup-modal">
-                <button class="close-btn" id="closePopup" aria-label="Close">&times;</button>
-                <h2>Tuition Info (4 Years)</h2>
-                <ul class="tuition-list">
-                    <li><strong>Year 1:</strong> 45,000 ETB</li>
-                    <li><strong>Year 2:</strong> 45,000 ETB</li>
-                    <li><strong>Year 3:</strong> 45,000 ETB</li>
-                    <li><strong>Year 4:</strong> 45,000 ETB</li>
-                </ul>
-                <p class="tuition-note">* Tuition fees may vary by major and academic year.</p>
-            </div>
-        </div>
     </div>
     <script src="navbar.js"></script>
     <script>
