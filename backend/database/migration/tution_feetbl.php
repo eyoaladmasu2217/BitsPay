@@ -12,8 +12,10 @@ $sql= "CREATE TABLE IF NOT EXISTS tuition_fee (
   FOREIGN KEY (program_id) REFERENCES programs(id) ON DELETE SET NULL
 );"
 ;if(mysqli_query($conn, $sql)) {
+    http_response_code(200);
     echo "Table 'fee' created successfully.<br>";
 } else{
+    http_response_code(500);
     echo "Error creating table: " . mysqli_error($conn) . "<br>";
 }
 ?>

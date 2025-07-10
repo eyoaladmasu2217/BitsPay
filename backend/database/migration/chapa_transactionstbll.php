@@ -10,8 +10,10 @@ $sql = "CREATE TABLE IF NOT EXISTS chapa_transactions(
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE);";
 if (mysqli_query($conn, $sql)){
+    http_response_code(200);
     echo "Table 'chapa_transactions' created successfully.<br>";
 } else {
+    http_response_code(500);
     echo "Error creating table: " . mysqli_error($conn) . "<br>";
 }
   

@@ -2,9 +2,9 @@
 session_start();
     require_once "backend/model/TransactionModel.php";
     require_once "backend/model/walletmodel.php";
+   
     if (!isset($_SESSION['user_id'])){
         die("Unauthorized access");
-        
     }
     $user_id = $_SESSION['user_id'];
     $transactions = getUserTransaction($user_id);
@@ -15,6 +15,10 @@ session_start();
         createWallet($user_id, 0.00);
         $wallet = getUserWallet($user_id);
     }
+    if (!isset($_SESSION['user_id'])) {
+    header("Location: /BitsPay/index.php");
+    exit();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -40,6 +44,7 @@ session_start();
                 <a href="#payments">Payments</a>
                 <a href="#transactions">Transaction History</a>
                 <a href="#notifications">Notifications</a>
+                <a href="/BitsPay/backend/logout.php" class="logout">Logout</a>
             </nav>
         </header>
         <main class="dashboard">

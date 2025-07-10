@@ -12,10 +12,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if ($stmt) {
                 $stmt->bind_param("ss", $email, $password);
                 $stmt->execute();
-              
+                http_response_code(200);
                 header("Location: ../home.php");
                 exit();
             } else {
+                http_response_code(500);
                 echo "Error preparing statement: " . $conn->error;
             }
             if (isset($stmt)) {

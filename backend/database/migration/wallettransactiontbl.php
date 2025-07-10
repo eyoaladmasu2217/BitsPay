@@ -11,8 +11,10 @@ $sql = "CREATE TABLE IF NOT EXISTS  wallet_transaction(
     FOREIGN KEY (wallet_id) REFERENCES wallet(id) ON DELETE CASCADE
 );";
  if ($conn->query($sql)=== TRUE){
+    http_response_code(200);
     echo "Table 'wallet_transaction' created successfully.<br>";
  } else {
+   http_response_code(500);
     echo "Error creating table: " . $conn->error . "<br>";
  }
 ?>
