@@ -111,5 +111,15 @@ loginBtn.addEventListener('click', function(e) {
     loginForm.style.display = '';
 });
 </script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('showLogin') === '1') {
+        // Simulate clicking the login button to show the login form
+        const loginBtn = document.getElementById('loginBtn');
+        if (loginBtn) loginBtn.click();
+    }
+});
+</script>
 </body>
 </html>
