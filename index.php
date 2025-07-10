@@ -30,27 +30,80 @@
                     <p>User already exists.</p>
                 </div>
             </div>
-            <form action="backend/reg.php" method="post" class="signup-form" id="signupForm" >
-                <input type="email" name="email" placeholder="Email" required>
-                <input type="password" name="password" placeholder="Password" required>
-                <button type="submit">Sign up</button>
+            <form action="backend/reg.php" method="post" class="signup-form" id="signupForm">
+                <div class="form-group">
+                    <input type="email" name="email" placeholder="Email" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" name="password" placeholder="Password" required>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="auth-btn">Sign up</button>
+                </div>
             </form>
             <form action="backend/login.php" method="post" class="login-form" id="loginForm" style="display:none;">
-                <input type="email" name="email" placeholder="login Email" required>
-                <input type="password" name="password" placeholder="login Password" required>
-                <button type="submit">Log in</button>
+                <div class="form-group">
+                    <input type="email" name="email" placeholder="login Email" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" name="password" placeholder="login Password" required>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="auth-btn">Log in</button>
+                </div>
             </form>
             <p class="terms">By continuing, you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.</p>
         </main>
     </div>
     <script src="navbar.js"></script>
     <script>
-// Show signup error popup if error=exists in URL
 window.addEventListener('DOMContentLoaded', function() {
     const params = new URLSearchParams(window.location.search);
+
+    // Show error popup if needed
     if (params.get('error') === 'exists') {
         document.getElementById('signupErrorPopup').style.display = 'flex';
     }
+
+    // Elements
+    const signupBtn = document.getElementById('signupBtn');
+    const loginBtn = document.getElementById('loginBtn');
+    const signupForm = document.getElementById('signupForm');
+    const loginForm = document.getElementById('loginForm');
+
+    // Helper to switch forms and button styles
+    function showForm(form) {
+        if (form === 'signup') {
+            signupForm.style.display = 'block';
+            loginForm.style.display = 'none';
+            signupBtn.classList.add('active');
+            loginBtn.classList.remove('active');
+        } else {
+            signupForm.style.display = 'none';
+            loginForm.style.display = 'block';
+            signupBtn.classList.remove('active');
+            loginBtn.classList.add('active');
+        }
+    }
+
+    // Initial state: show login if showLogin=1, else signup
+    if (params.get('showLogin') === '1') {
+        showForm('login');
+    } else {
+        showForm('signup');
+    }
+
+    // Navbar button click handlers
+    signupBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        showForm('signup');
+    });
+    loginBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        showForm('login');
+    });
+
+    // Signup error popup close
     const closeSignupError = document.getElementById('closeSignupError');
     if (closeSignupError) {
         closeSignupError.addEventListener('click', function() {
@@ -61,51 +114,23 @@ window.addEventListener('DOMContentLoaded', function() {
             window.history.replaceState({}, document.title, url.pathname);
         });
     }
-});
-// Tuition Info Popup
-const tuitionBtn = document.querySelector('.tuition-info');
-const popup = document.getElementById('tuitionPopup');
-const closePopup = document.getElementById('closePopup');
-tuitionBtn.addEventListener('click', function(e) {
-    e.preventDefault();
-    popup.style.display = 'flex';
-});
-closePopup.addEventListener('click', function() {
-    popup.style.display = 'none';
-});
-window.addEventListener('click', function(e) {
-    if (e.target === popup) popup.style.display = 'none';
-});
 
+    // Tuition Info Popup
+    const tuitionBtn = document.querySelector('.tuition-info');
+    const popup = document.getElementById('tuitionPopup');
+    const closePopup = document.getElementById('closePopup');
+    tuitionBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        popup.style.display = 'flex';
+    });
+    closePopup.addEventListener('click', function() {
+        popup.style.display = 'none';
+    });
+    window.addEventListener('click', function(e) {
+        if (e.target === popup) popup.style.display = 'none';
+    });
+});
+    </script>
 
-const signupForm = document.getElementById('signupForm');
-const loginForm = document.getElementById('loginForm');
-const signupBtn = document.getElementById('signupBtn');
-const loginBtn = document.getElementById('loginBtn');
-signupBtn.addEventListener('click', function(e) {
-    e.preventDefault();
-    signupBtn.classList.add('active');
-    loginBtn.classList.remove('active');
-    signupForm.style.display = '';
-    loginForm.style.display = 'none';
-});
-loginBtn.addEventListener('click', function(e) {
-    e.preventDefault();
-    loginBtn.classList.add('active');
-    signupBtn.classList.remove('active');
-    signupForm.style.display = 'none';
-    loginForm.style.display = '';
-});
-</script>
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-    const params = new URLSearchParams(window.location.search);
-    if (params.get('showLogin') === '1') {
-        // Simulate clicking the login button to show the login form
-        const loginBtn = document.getElementById('loginBtn');
-        if (loginBtn) loginBtn.click();
-    }
-});
-</script>
 </body>
 </html>

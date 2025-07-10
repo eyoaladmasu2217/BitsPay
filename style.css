@@ -1,3 +1,37 @@
+/* Ensure form-group stacks children vertically and removes unwanted spacing */
+.form-group {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    display: block;
+}
+/* Force all form children to stack vertically and be full width */
+.signup-form input,
+.signup-form button,
+.login-form input,
+.login-form button {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0;
+}
+
+/* Match the yellow background for inputs */
+.signup-form input,
+.login-form input {
+    background: #FFF9C4;
+}
+
+/* Add vertical gap between all children */
+.signup-form,
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    width: 400px;
+    max-width: 90vw;
+    margin-top: 120px !important;
+}
 /* Popup overlay for deposit */
 .popup-overlay {
     position: fixed;
@@ -65,6 +99,10 @@ body {
 }
 
 /* Floating navbar styles */
+
+
+/* Remove duplicate margin-top and ensure only one flex column definition */
+
 .floating-navbar {
     display: flex;
     justify-content: space-between;
@@ -131,6 +169,7 @@ body {
     background: #7BAA3C;
     color: #222;
     font-weight: 700;
+    
 }
 
 .floating-navbar nav .login {
@@ -165,7 +204,7 @@ main h1 {
 form {
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 18px; /* Add vertical space between all children */
     width: 400px;
     max-width: 90vw;
 }
@@ -173,11 +212,12 @@ form input {
     padding: 18px 20px;
     border: none;
     border-radius: 12px;
-    background: #E6F4D9; /* lighter green */
+    background: #FFF9C4; /* match your screenshot yellow */
     font-size: 1.1rem;
-    margin-bottom: 0;
     outline: none;
     color: #222;
+    width: 100%;
+    box-sizing: border-box;
 }
 .deposit-btn {
     padding: 16px 36px;
@@ -198,9 +238,11 @@ form input {
     background: #388E3C;
     color: #fff;
 }
-form button {
-    margin-top: 12px;
-    padding: 12px 0;
+form button, .auth-btn {
+    display: block;
+    width: 100%;
+    margin-top: 18px;
+    padding: 14px 0;
     background: #97C45A;
     color: #222;
     font-size: 1.1rem;
@@ -209,8 +251,9 @@ form button {
     border-radius: 12px;
     cursor: pointer;
     transition: background 0.2s;
+    box-sizing: border-box;
 }
-form button:hover {
+form button:hover, .auth-btn:hover {
     background: #7BAA3C;
 }
 .terms {
