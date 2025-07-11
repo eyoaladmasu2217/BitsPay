@@ -2,9 +2,9 @@
 session_start();
 require_once __DIR__ . '/database/csql.php';
 
-
-$email = $_POST['email'];
-$password = $_POST['password'];
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['email']) && isset($_POST['password'])) {
+    $email = $_POST['email'];
+    $password = $_POST['password'];
 
 $sql = "SELECT id, password FROM users WHERE email = ?";
 $stmt = $conn->prepare($sql);
@@ -26,6 +26,6 @@ if ($stmt->num_rows === 1) {
 } else {
     echo "No user found with that username.";
 }
-
+}
 
 ?>

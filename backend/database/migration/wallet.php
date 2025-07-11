@@ -11,9 +11,11 @@ $sql = "CREATE TABLE IF NOT EXISTS  wallet (
   );"
 ;
 if(mysqli_query($conn,$sql)){
+    http_response_code(200);
     echo"Table 'wallet'created successfully<br>";
 
 }else {
+    http_response_code(500);
     echo "Error creating table ". mysqli_error($conn)."<br>";
 }
 
