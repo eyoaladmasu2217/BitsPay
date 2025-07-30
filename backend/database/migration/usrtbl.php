@@ -10,8 +10,10 @@ $sql="CREATE TABLE IF NOT EXISTS users (
 );"
 ;
 if(mysqli_query($conn, $sql)) {
+    http_response_code(200);
     echo "Table 'users' created successfully.<br>";
 } else{
+    http_response_code(500);
     echo "Error creating table: " . mysqli_error($conn) . "<br>";
 }
 

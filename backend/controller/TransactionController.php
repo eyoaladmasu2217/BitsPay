@@ -13,7 +13,7 @@ $fee_type =trim($_POST['fee_type']);
 $acedemic_year =trim($_POST['acedemic_year']);
 
 if ($amount <=0 || !$method || !$fee_type || !$acedemic_year){
-    die("invalis input submitted");
+    die("invalid input submitted");
 }
 if (createTransaction($user_id,$amount,$method,$reference,$fee_type,$acedemic_year)){
     $_SESSION['txn_ref']=$reference;

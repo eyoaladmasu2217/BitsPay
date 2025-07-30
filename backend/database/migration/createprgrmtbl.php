@@ -8,8 +8,10 @@ $sql ="CREATE TABLE IF NOT EXISTS programs (
   duration INT NOT NULL,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP);";
   if ($conn->query($sql) === TRUE) {
+    http_response_code(200);
     echo "Table 'programs' created successfully.<br>";
     } else {
+        http_response_code(500);
         echo "Error creating table: " . $conn->error . "<br>";
     }
 ?>

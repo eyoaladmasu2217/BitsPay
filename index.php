@@ -17,7 +17,6 @@
                 <div class="bits">Bits</div><div class="pay">Pay</div>
             </div>
             <nav>
-                <a href="#" class="tuition-info">Tuition Info</a>
                 <a href="#" class="signup active" id="signupBtn">Sign up</a>
                 <a href="#" class="login" id="loginBtn">Log in</a>
             </nav>
@@ -31,85 +30,102 @@
                     <p>User already exists.</p>
                 </div>
             </div>
-            <form action="backend/reg.php" method="post" class="signup-form" id="signupForm" >
-                <input type="email" name="email" placeholder="Email" required>
-                <input type="password" name="password" placeholder="Password" required>
-                <button type="submit">Sign up</button>
+            <form action="backend/reg.php" method="post" class="signup-form" id="signupForm">
+                <div class="form-group">
+                    <input type="email" name="email" placeholder="Email" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" name="password" placeholder="Password" required>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="auth-btn">Sign up</button>
+                </div>
             </form>
             <form action="backend/login.php" method="post" class="login-form" id="loginForm" style="display:none;">
-                <input type="email" name="email" placeholder="login Email" required>
-                <input type="password" name="password" placeholder="login Password" required>
-                <button type="submit">Log in</button>
+                <div class="form-group">
+                    <input type="email" name="email" placeholder="login Email" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" name="password" placeholder="login Password" required>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="auth-btn">Log in</button>
+                </div>
             </form>
             <p class="terms">By continuing, you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.</p>
         </main>
-        <div id="tuitionPopup" class="popup-overlay" style="display:none;">
-            <div class="popup-modal">
-                <button class="close-btn" id="closePopup" aria-label="Close">&times;</button>
-                <h2>Tuition Info (4 Years)</h2>
-                <ul class="tuition-list">
-                    <li><strong>Year 1:</strong> 45,000 ETB</li>
-                    <li><strong>Year 2:</strong> 45,000 ETB</li>
-                    <li><strong>Year 3:</strong> 45,000 ETB</li>
-                    <li><strong>Year 4:</strong> 45,000 ETB</li>
-                </ul>
-                <p class="tuition-note">* Tuition fees may vary by major and academic year.</p>
-            </div>
-        </div>
     </div>
     <script src="navbar.js"></script>
     <script>
-// Show signup error popup if error=exists in URL
 window.addEventListener('DOMContentLoaded', function() {
     const params = new URLSearchParams(window.location.search);
+
+    // Show error popup if needed
     if (params.get('error') === 'exists') {
         document.getElementById('signupErrorPopup').style.display = 'flex';
     }
+
+    
+    const signupBtn = document.getElementById('signupBtn');
+    const loginBtn = document.getElementById('loginBtn');
+    const signupForm = document.getElementById('signupForm');
+    const loginForm = document.getElementById('loginForm');
+
+    function showForm(form) {
+        if (form === 'signup') {
+            signupForm.style.display = 'block';
+            loginForm.style.display = 'none';
+            signupBtn.classList.add('active');
+            loginBtn.classList.remove('active');
+        } else {
+            signupForm.style.display = 'none';
+            loginForm.style.display = 'block';
+            signupBtn.classList.remove('active');
+            loginBtn.classList.add('active');
+        }
+    }
+
+    
+    if (params.get('showLogin') === '1') {
+        showForm('login');
+    } else {
+        showForm('signup');
+    }
+
+    signupBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        showForm('signup');
+    });
+    loginBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        showForm('login');
+    });
+
     const closeSignupError = document.getElementById('closeSignupError');
     if (closeSignupError) {
         closeSignupError.addEventListener('click', function() {
             document.getElementById('signupErrorPopup').style.display = 'none';
-            // Remove error from URL
+            /
             const url = new URL(window.location);
             url.searchParams.delete('error');
             window.history.replaceState({}, document.title, url.pathname);
         });
     }
-});
-// Tuition Info Popup
-const tuitionBtn = document.querySelector('.tuition-info');
-const popup = document.getElementById('tuitionPopup');
-const closePopup = document.getElementById('closePopup');
-tuitionBtn.addEventListener('click', function(e) {
-    e.preventDefault();
-    popup.style.display = 'flex';
-});
-closePopup.addEventListener('click', function() {
-    popup.style.display = 'none';
-});
-window.addEventListener('click', function(e) {
-    if (e.target === popup) popup.style.display = 'none';
-});
 
+  
+    const tuitionBtn = document.querySelector('.tuition-info');
+    const popup = document.getElementById('tuitionPopup');
+    const closePopup = document.getElementById('closePopup');
+    tuitionBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        popup.style.display = 'flex';
+    });
+    closePopup.addEventListener('click', function() {
+        popup.style.display = 'none';
+    });
+    window.addEventListener('click', function(e) {
+        if (e.target === popup) popup.style.display = 'none';
+    });
+});
+    </script>
 
-const signupForm = document.getElementById('signupForm');
-const loginForm = document.getElementById('loginForm');
-const signupBtn = document.getElementById('signupBtn');
-const loginBtn = document.getElementById('loginBtn');
-signupBtn.addEventListener('click', function(e) {
-    e.preventDefault();
-    signupBtn.classList.add('active');
-    loginBtn.classList.remove('active');
-    signupForm.style.display = '';
-    loginForm.style.display = 'none';
-});
-loginBtn.addEventListener('click', function(e) {
-    e.preventDefault();
-    loginBtn.classList.add('active');
-    signupBtn.classList.remove('active');
-    signupForm.style.display = 'none';
-    loginForm.style.display = '';
-});
-</script>
-</body>
-</html>
