@@ -3,7 +3,7 @@ session_start();
 require_once __DIR__ . '/database/csql.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['email']) && isset($_POST['password'])) {
-    $email = $_POST['email'];
+    $email = filter_var(trim($_POST['email']), FILTER_SANITIZE_EMAIL);
     $password = $_POST['password'];
 
 $sql = "SELECT id, password FROM users WHERE email = ?";
