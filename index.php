@@ -71,6 +71,8 @@ window.addEventListener('DOMContentLoaded', function() {
             errorMsg.textContent = 'Invalid email or password.';
         } else if (error === 'notfound') {
             errorMsg.textContent = 'No account found with this email.';
+        } else if (error === 'password_weak') {
+            errorMsg.textContent = 'Password must be at least 8 characters long and contain at least one number.';
         }
         errorPopup.style.display = 'flex';
     }

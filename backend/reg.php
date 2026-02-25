@@ -5,7 +5,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
    
     if (isset($_POST['email']) && isset($_POST['password'])) {
         $email = $_POST['email'];
-        $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+        $plain_password = $_POST['password'];
+
+        // Password complexity check
+        if (strlen($plain_password) < 8 || !preg_match("/[0-9]/", $plain_password)) {
+            header("Location: ../index.php?error=password_weak");
+            exit();
+        }
+
+        $password = password_hash($plain_password, PASSWORD_DEFAULT);
         try {
             $sql = "INSERT INTO users (email, password) VALUES (?, ?)";
             $stmt = $conn->prepare($sql);
@@ -13,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $stmt->bind_param("ss", $email, $password);
                 $stmt->execute();
               
-                header("Location: /BitsPay%20v2/index.php?showLogin=1");
+                header("Location: ../index.php?showLogin=1");
                 exit();
             } else {
                 http_response_code(500);
