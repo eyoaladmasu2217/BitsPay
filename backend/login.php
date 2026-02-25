@@ -16,6 +16,7 @@ if ($stmt->num_rows === 1) {
     $stmt->fetch();
     
     if (password_verify($password, $hashed_password)) {
+        session_regenerate_id(true);
         $_SESSION['user_id'] = $id;
         header("Location: ../home.php");
         exit();
