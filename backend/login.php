@@ -17,14 +17,15 @@ if ($stmt->num_rows === 1) {
     
     if (password_verify($password, $hashed_password)) {
         $_SESSION['user_id'] = $id;
-        // echo "Login successful. Welcome, " . htmlspecialchars($db_username) . "!";
         header("Location: ../home.php");
         exit();
     } else {
-        echo "Invalid username or password";
+        header("Location: ../index.php?showLogin=1&error=invalid");
+        exit();
     }
 } else {
-    echo "No user found with that username.";
+    header("Location: ../index.php?showLogin=1&error=notfound");
+    exit();
 }
 }
 

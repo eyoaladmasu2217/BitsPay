@@ -23,11 +23,11 @@
         </div>
         <main>
             <h1>Get started with BITS-PAY</h1>
-            <div id="signupErrorPopup" class="popup-overlay" style="display:none;">
+            <div id="errorPopup" class="popup-overlay" style="display:none;">
                 <div class="popup-modal">
-                    <button class="close-btn" id="closeSignupError" aria-label="Close">&times;</button>
+                    <button class="close-btn" id="closeError" aria-label="Close">&times;</button>
                     <h2>Error</h2>
-                    <p>User already exists.</p>
+                    <p id="errorMessage">An error occurred.</p>
                 </div>
             </div>
             <form action="backend/reg.php" method="post" class="signup-form" id="signupForm">
@@ -61,8 +61,18 @@ window.addEventListener('DOMContentLoaded', function() {
     const params = new URLSearchParams(window.location.search);
 
     // Show error popup if needed
-    if (params.get('error') === 'exists') {
-        document.getElementById('signupErrorPopup').style.display = 'flex';
+    const error = params.get('error');
+    if (error) {
+        const errorPopup = document.getElementById('errorPopup');
+        const errorMsg = document.getElementById('errorMessage');
+        if (error === 'exists') {
+            errorMsg.textContent = 'Account already exists. Please log in.';
+        } else if (error === 'invalid') {
+            errorMsg.textContent = 'Invalid email or password.';
+        } else if (error === 'notfound') {
+            errorMsg.textContent = 'No account found with this email.';
+        }
+        errorPopup.style.display = 'flex';
     }
 
     // Elements
@@ -103,11 +113,11 @@ window.addEventListener('DOMContentLoaded', function() {
         showForm('login');
     });
 
-    // Signup error popup close
-    const closeSignupError = document.getElementById('closeSignupError');
-    if (closeSignupError) {
-        closeSignupError.addEventListener('click', function() {
-            document.getElementById('signupErrorPopup').style.display = 'none';
+    // Error popup close
+    const closeError = document.getElementById('closeError');
+    if (closeError) {
+        closeError.addEventListener('click', function() {
+            document.getElementById('errorPopup').style.display = 'none';
             // Remove error from URL
             const url = new URL(window.location);
             url.searchParams.delete('error');
