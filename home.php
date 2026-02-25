@@ -3,6 +3,7 @@ session_start();
 require_once 'backend/config/security_headers.php';
     require_once "backend/model/TransactionModel.php";
     require_once "backend/model/WalletModel.php";
+    require_once "backend/model/CourseModel.php";
    
     if (!isset($_SESSION['user_id'])){
         die("Unauthorized access");
@@ -101,12 +102,12 @@ require_once 'backend/config/security_headers.php';
         <section id="courses" class="dashboard-section">
             <h1>Courses & Costs</h1>
             <ul class="transaction-list">
-                <li><div class="title">Computer Science</div><span class="amount">20,000 ETB</span></li>
-                <li><div class="title">Information Systems</div><span class="amount">18,000 ETB</span></li>
-                <li><div class="title">Electrical Engineering</div><span class="amount">22,000 ETB</span></li>
-                <li><div class="title">Mechanical Engineering</div><span class="amount">21,000 ETB</span></li>
-                <li><div class="title">Business Administration</div><span class="amount">17,000 ETB</span></li>
-                <li><div class="title">Architecture</div><span class="amount">23,000 ETB</span></li>
+                <?php foreach (getCourses() as $course): ?>
+                    <li>
+                        <div class="title"><?= htmlspecialchars($course['title']) ?></div>
+                        <span class="amount"><?= number_format($course['cost'], 0) ?> ETB</span>
+                    </li>
+                <?php endforeach; ?>
             </ul>
         </section>
 
