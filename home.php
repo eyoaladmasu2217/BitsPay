@@ -1,7 +1,7 @@
 <?php
 session_start();
     require_once "backend/model/TransactionModel.php";
-    require_once "backend/model/walletmodel.php";
+    require_once "backend/model/WalletModel.php";
    
     if (!isset($_SESSION['user_id'])){
         die("Unauthorized access");

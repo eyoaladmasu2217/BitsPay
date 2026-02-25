@@ -5,7 +5,7 @@ file_put_contents('chapa_log.txt', "REQUEST: " . json_encode($_REQUEST) . PHP_EO
 
 echo "Callback received<br>";
 
-require_once dirname(__DIR__) . '/backend/model/walletmodel.php';
+require_once dirname(__DIR__) . '/backend/model/WalletModel.php';
 $config = require_once dirname(__DIR__). '/backend/config/chapa.php';
 $chapaSecret =$config['secret_key'];//don't forget to change with the actual code
 $tx_ref = $_REQUEST['tx_ref'] ??  $_REQUEST['trx_ref'] ??'';
