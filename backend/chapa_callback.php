@@ -51,45 +51,25 @@ if ($data['status']==='success'&& $data['data']['status']=='success'){
     file_put_contents('chapa_log.txt', "User ID: $user_id, Amount: $amount" . PHP_EOL, FILE_APPEND);
 
 
-    if($user_id){
+    if ($user_id) {
+        // Check if transaction already processed
+        if (!chapaTransactionExists($tx_ref)) {
+            // Ensure wallet exists
+            if (!getUserWallet($user_id)) {
+                createWallet($user_id, 0.00);
+            }
 
-        recordChapaTransaction($tx_ref, $user_id, $amount);
-        
-
-        // file_put_contents('chapa_log.txt', "Looking for wallet for user $user_id". PHP_EOL, FILE_APPEND);
-
-        $walletRow = getUserWallet($user_id);
-        file_put_contents('chapa_log.txt', "Initial wallet lookup:" .print_r($walletRow, true). PHP_EOL, FILE_APPEND);
-
-        if (!$walletRow) {
-            file_put_contents('chapa_log.txt', "No wallet found . Creating wallet for user $user_id" .PHP_EOL, FILE_APPEND);
-            createWallet($user_id, 0.00);
-            $walletRowt = getUserWallet($user_id);
-           file_put_contents('chapa_log.txt', "Wallet after creation: " . print_r($walletRow, true). PHP_EOL, FILE_APPEND);
+            // Credit the wallet using the model function
+            if (creditWallet($user_id, $amount, 'Chapa Deposit')) {
+                // Record the transaction to prevent double-crediting
+                recordChapaTransaction($tx_ref, $user_id, $amount);
+                file_put_contents('chapa_log.txt', "Successfully processed Chapa Deposit: $tx_ref for User: $user_id" . PHP_EOL, FILE_APPEND);
+            } else {
+                file_put_contents('chapa_log.txt', "Failed to credit wallet for User: $user_id" . PHP_EOL, FILE_APPEND);
+            }
+        } else {
+            file_put_contents('chapa_log.txt', "Transaction $tx_ref already exists. Skipping." . PHP_EOL, FILE_APPEND);
         }
-
-       if ($walletRow) {
-        $new_balance = $walletRow['balance'] + $amount;
-        file_put_contents('chapa_log.txt', "updating balance to $new_balance".PHP_EOL, FILE_APPEND);
-        updateWalletBalance($user_id, $new_balance);
-        logWalletTransaction($walletRow['id'], 'credit', $amount, 'Chapa Deposit');
-        file_put_contents('chapa_log.txt', "Wallet updated successfully for user $user_id" . PHP_EOL, FILE_APPEND);
-    } else {
-        file_put_contents('chapa_log.txt', "Failed to fetch wallet for user $user_id" . PHP_EOL, FILE_APPEND);
-       }
-       
-        if(!chapaTransactionExists($tx_ref)){
-            $new_balance = $walletRow['balance'] + $amount;
-            updateWalletBalance($user_id, $new_balance);
-            
-            recordChapaTransaction($tx_ref, $user_id,$amount);
-
-            file_put_contents('chapa_log.txt', "wallet credited and tx_ref recorded: $tx_ref" . PHP_EOL, FILE_APPEND);
-            
-        }else{
-            file_put_contents('chapa_log.txt', "Transaction $tx_ref already exists. Skipping wallet update." . PHP_EOL, FILE_APPEND);
-        }
-
     }
 
 ?>
