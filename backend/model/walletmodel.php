@@ -110,12 +110,21 @@ function payTuitionFromWallet($user_id, $amount ,$acedemic_year){
 function chapaTransactionExists($tx_ref){
     global $conn;
     $stmt = $conn->prepare("SELECT * FROM chapa_transactions WHERE tx_ref=?");
-    $stmt->execute([$tx_ref]);
-    return $stmt->fetch()!==false;
+    if (!$stmt) return false;
+    $stmt->bind_param("s", $tx_ref);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $exists = $result->num_rows > 0;
+    $stmt->close();
+    return $exists;
 }
 function recordChapaTransaction($tx_ref, $user_id, $amount){
     global $conn;
     $stmt = $conn->prepare("INSERT INTO chapa_transactions(tx_ref, user_id, amount) VALUES(?,?,?)");
-    $stmt->execute([$tx_ref, $user_id, $amount]);
+    if (!$stmt) return false;
+    $stmt->bind_param("sid", $tx_ref, $user_id, $amount);
+    $result = $stmt->execute();
+    $stmt->close();
+    return $result;
 }
 ?>
