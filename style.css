@@ -1,3 +1,18 @@
+:root {
+    --primary-color: #7BAA3C;
+    --primary-light: #E6F4D9;
+    --primary-hover: #97C45A;
+    --secondary-bg: #F4F7F3;
+    --text-dark: #222222;
+    --text-muted: #8A978A;
+    --input-yellow: #FFF9C4;
+    --error-red: #d32f2f;
+    --white: #ffffff;
+    --glass-bg: rgba(255, 255, 255, 0.95);
+    --shadow-sm: 0 2px 8px 0 rgba(122, 170, 60, 0.04);
+    --shadow-md: 0 8px 32px 0 rgba(122, 170, 60, 0.15);
+}
+
 /* Ensure form-group stacks children vertically and removes unwanted spacing */
 .form-group {
     width: 100%;
@@ -19,7 +34,7 @@
 /* Match the yellow background for inputs */
 .signup-form input,
 .login-form input {
-    background: #FFF9C4;
+    background: var(--input-yellow);
 }
 
 /* Add vertical gap between all children */
@@ -47,7 +62,7 @@
 }
 .popup-modal {
     position: relative;
-    background: #fff;
+    background: var(--white);
     padding: 36px 44px 32px 44px;
     border-radius: 20px;
     box-shadow: 0 8px 32px 0 rgba(0,0,0,0.18);
@@ -59,7 +74,7 @@
 }
 .popup-modal h2 {
     margin-top: 0;
-    color: #222;
+    color: var(--text-dark);
     font-size: 1.5rem;
     font-weight: 700;
 }
@@ -76,7 +91,7 @@
     z-index: 10;
 }
 .close-btn:hover {
-    color: #d32f2f;
+    color: var(--error-red);
 }
 body {
     background: #fff;
