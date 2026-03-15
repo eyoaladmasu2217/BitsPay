@@ -969,3 +969,8 @@ form button:hover, .auth-btn:hover {
         padding-top: 0;
     }
 }
+
+
+/* Enhancement 1 */
+html { scroll-behavior: smooth; }
+
