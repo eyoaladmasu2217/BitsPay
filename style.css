@@ -1027,3 +1027,8 @@ html { scroll-behavior: smooth; }
 /* Enhancement 10 */
 .popup-overlay { backdrop-filter: blur(4px); background: rgba(0,0,0,0.3); transition: all 0.3s ease; }
 
+
+
+/* Enhancement 11 */
+input:focus, select:focus { box-shadow: 0 0 0 3px rgba(122, 170, 60, 0.15); transition: box-shadow 0.2s ease; }
+
