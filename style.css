@@ -982,3 +982,8 @@ html { scroll-behavior: smooth; }
 ::-webkit-scrollbar-thumb { background: var(--primary-light); border-radius: 4px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--primary-color); }
 
+
+
+/* Enhancement 3 */
+.floating-navbar, .main-navbar { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); background: rgba(255, 255, 255, 0.85); }
+
