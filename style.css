@@ -998,3 +998,9 @@ html { scroll-behavior: smooth; }
 /* Enhancement 5 */
 *:focus-visible { outline: 2px solid var(--primary-color); outline-offset: 2px; }
 
+
+
+/* Enhancement 6 */
+::selection { background: var(--primary-color); color: var(--white); }
+::-moz-selection { background: var(--primary-color); color: var(--white); }
+
