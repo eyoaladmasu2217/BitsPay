@@ -987,3 +987,9 @@ html { scroll-behavior: smooth; }
 /* Enhancement 3 */
 .floating-navbar, .main-navbar { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); background: rgba(255, 255, 255, 0.85); }
 
+
+
+/* Enhancement 4 */
+.deposit-btn, form button, .auth-btn, .payment-btn, .continue-btn { transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); }
+.deposit-btn:hover, form button:hover, .auth-btn:hover, .payment-btn:hover, .continue-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(122, 170, 60, 0.2); }
+
