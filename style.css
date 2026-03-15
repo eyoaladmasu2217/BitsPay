@@ -1010,3 +1010,9 @@ html { scroll-behavior: smooth; }
 .payment-card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
 .payment-card:hover { transform: translateY(-4px); box-shadow: 0 12px 24px 0 rgba(122,170,60,0.15); }
 
+
+
+/* Enhancement 8 */
+.transaction-list li, .activity-item { transition: transform 0.2s ease, background 0.2s ease; cursor: pointer; }
+.transaction-list li:hover, .activity-item:hover { transform: translateY(-1px) scale(1.01); background: #fdfdfd; }
+
