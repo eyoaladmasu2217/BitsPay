@@ -1037,3 +1037,9 @@ input:focus, select:focus { box-shadow: 0 0 0 3px rgba(122, 170, 60, 0.15); tran
 /* Enhancement 12 */
 .main-navbar nav a:hover:not(.active), .floating-navbar nav a:hover:not(.active) { background: rgba(122, 170, 60, 0.08); color: var(--primary-color); transition: background 0.2s, color 0.2s; }
 
+
+
+/* Enhancement 13 */
+@keyframes subtlePulse { 0% { box-shadow: 0 8px 32px 0 rgba(122, 170, 60, 0.10); } 50% { box-shadow: 0 8px 32px 0 rgba(122, 170, 60, 0.20); } 100% { box-shadow: 0 8px 32px 0 rgba(122, 170, 60, 0.10); } }
+.balance-card:hover { animation: subtlePulse 2s infinite ease-in-out; }
+
