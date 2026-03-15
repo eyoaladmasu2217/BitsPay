@@ -974,3 +974,11 @@ form button:hover, .auth-btn:hover {
 /* Enhancement 1 */
 html { scroll-behavior: smooth; }
 
+
+
+/* Enhancement 2 */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--secondary-bg); }
+::-webkit-scrollbar-thumb { background: var(--primary-light); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--primary-color); }
+
