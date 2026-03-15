@@ -993,3 +993,8 @@ html { scroll-behavior: smooth; }
 .deposit-btn, form button, .auth-btn, .payment-btn, .continue-btn { transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); }
 .deposit-btn:hover, form button:hover, .auth-btn:hover, .payment-btn:hover, .continue-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(122, 170, 60, 0.2); }
 
+
+
+/* Enhancement 5 */
+*:focus-visible { outline: 2px solid var(--primary-color); outline-offset: 2px; }
+
