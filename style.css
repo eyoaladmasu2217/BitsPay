@@ -1032,3 +1032,8 @@ html { scroll-behavior: smooth; }
 /* Enhancement 11 */
 input:focus, select:focus { box-shadow: 0 0 0 3px rgba(122, 170, 60, 0.15); transition: box-shadow 0.2s ease; }
 
+
+
+/* Enhancement 12 */
+.main-navbar nav a:hover:not(.active), .floating-navbar nav a:hover:not(.active) { background: rgba(122, 170, 60, 0.08); color: var(--primary-color); transition: background 0.2s, color 0.2s; }
+
