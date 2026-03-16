@@ -15,7 +15,7 @@ $amount  =floatval($_POST['amount']);
 $method = htmlspecialchars(trim($_POST['method']));
 $reference=strtoupper('TXN'.bin2hex(random_bytes(8)));
 $fee_type = htmlspecialchars(trim($_POST['fee_type']));
-$acedemic_year =trim($_POST['acedemic_year']);
+$acedemic_year = htmlspecialchars(trim($_POST['acedemic_year']));
 
 if ($amount <=0 || !$method || !$fee_type || !$acedemic_year){
     die("invalis input submitted");
