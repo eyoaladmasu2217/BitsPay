@@ -1,4 +1,9 @@
 <?php
+session_set_cookie_params([
+    'secure' => true,
+    'httponly' => true,
+    'samesite' => 'Strict'
+]);
 session_start();
 require_once 'backend/config/security_headers.php';
     require_once "backend/model/TransactionModel.php";
