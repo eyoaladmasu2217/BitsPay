@@ -5,6 +5,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
    
     if (isset($_POST['email']) && isset($_POST['password'])) {
         $email = filter_var(trim($_POST['email']), FILTER_SANITIZE_EMAIL);
+        if (strlen($email) > 255) {
+            header("Location: ../index.php?error=invalid_email");
+            exit();
+        }
         
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             header("Location: ../index.php?error=invalid_email");
