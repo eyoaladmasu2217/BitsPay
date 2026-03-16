@@ -14,6 +14,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['email']) && isset($_P
         exit();
     }
     $password = $_POST['password'];
+    if (strlen($password) > 72) {
+        header("Location: ../index.php?showLogin=1&error=invalid");
+        exit();
+    }
 
 $sql = "SELECT id, password FROM users WHERE email = ?";
 $stmt = $conn->prepare($sql);
