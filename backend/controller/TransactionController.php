@@ -12,7 +12,7 @@ if (!isset($_SESSION['user_id'])){
 }
 $user_id =$_SESSION['user_id'];
 $amount  =floatval($_POST['amount']);
-$method =trim($_POST['method']);
+$method = htmlspecialchars(trim($_POST['method']));
 $reference=strtoupper('TXN'.bin2hex(random_bytes(8)));
 $fee_type =trim($_POST['fee_type']);
 $acedemic_year =trim($_POST['acedemic_year']);
