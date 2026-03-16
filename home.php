@@ -75,7 +75,7 @@ require_once 'backend/config/security_headers.php';
                                    <?= $tx['type']==='credit' ? '💰':'🛒'?>
                                 </span>
                                 <div>
-                                    <div class="title"><?= ucfirst($tx['type'])?></div>
+                                    <div class="title"><?= htmlspecialchars(ucfirst($tx['type']))?></div>
                                     <div class="desc"><?=htmlspecialchars($tx['description'])?></div>
                                 </div>
                                 <span class="amount<?=$tx['type']==='credit'?'credit' :'debit'?>"><?= number_format($tx['amount'],2)?></span>
