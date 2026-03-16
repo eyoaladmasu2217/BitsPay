@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 exit();
             } else {
                 http_response_code(500);
-                echo "Error preparing statement: " . $conn->error;
+                echo "Error preparing statement. Please try again later.";
             }
             if (isset($stmt)) {
                 $stmt->close();
@@ -41,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 header("Location: ../index.php?error=exists");
                 exit();
             } else {
-                echo "Error: " . $e->getMessage();
+                echo "An unexpected error occurred.";
             }
         }
     } else {
