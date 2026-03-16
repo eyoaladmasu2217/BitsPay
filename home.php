@@ -118,7 +118,7 @@ require_once 'backend/config/security_headers.php';
                     <h2>Deposit</h2>
                     <form method="POST" action="https://api.chapa.co/v1/hosted/pay" class="payment-form">
                         <input type="hidden" name="public_key" value="CHAPUBK_TEST-NeIrAl3Gw1751zvQf0FQ0yMnQAinVo7g" />
-                        <input type="hidden" name="tx_ref" value="<?php echo 'bits-' . uniqid(); ?>" />
+                        <input type="hidden" name="tx_ref" value="<?php echo 'bits-' . bin2hex(random_bytes(5)); ?>" />
                         <input type="hidden" name="currency" value="ETB" />
                         <input type="hidden" name="email" value="eyoalforwork@gmail.com" />
                         <input type="hidden" name="first_name" value="John" />
@@ -132,7 +132,7 @@ require_once 'backend/config/security_headers.php';
                         <input type="number" name="amount" min="0" step="0.01" placeholder="Amount to deposit" class="payment-input" required />
                         <input type="hidden" name="callback_url" value="http://localhost/BitsPay/backend/chapa_callback.php"/>
                         <input type="hidden" name="return_url" value="http://localhost/BitsPay/home.php?wallet=success"/>
-                        <input type="hidden" name="tx_ref" value="<?php echo 'bits-' .$user_id .'_' . uniqid();?>"/>
+                        <input type="hidden" name="tx_ref" value="<?php echo 'bits-' .$user_id .'_' . bin2hex(random_bytes(5));?>"/>
                         <button type="submit" class="payment-btn">Deposit</button>
                     </form>
                 </div>
