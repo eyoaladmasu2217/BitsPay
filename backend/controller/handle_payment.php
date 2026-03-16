@@ -15,6 +15,9 @@ if(!isset($_SESSION['user_id'])){
 $user_id = $_SESSION['user_id'];
 $paymentType = $_POST['paymentType'];
 $amount = floatval($_POST['makePayment']);
+if ($amount <= 0) {
+    die("Invalid payment amount");
+}
 $acedemic_year = date('Y');
 
 if($paymentType ==='TuitionFull'||$paymentType ==='Tuition60'||$paymentType==='Tuition40'){
