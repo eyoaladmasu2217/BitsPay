@@ -13,39 +13,57 @@
     --shadow-md: 0 8px 32px 0 rgba(122, 170, 60, 0.15);
 }
 
-/* Ensure form-group stacks children vertically and removes unwanted spacing */
+/* Auth form layout */
+.signup-form,
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    width: 100%;
+    margin: 0;
+}
+
 .form-group {
     width: 100%;
     margin: 0;
     padding: 0;
     display: block;
 }
-/* Force all form children to stack vertically and be full width */
+
+/* Auth inputs */
 .signup-form input,
-.signup-form button,
-.login-form input,
-.login-form button {
+.login-form input {
     display: block;
     width: 100%;
     box-sizing: border-box;
-    margin: 0;
+    padding: 16px 20px;
+    border: 1.5px solid #E0E7D6;
+    border-radius: 14px;
+    background: #F9FBF6;
+    font-size: 1rem;
+    font-family: 'Inter', Arial, sans-serif;
+    color: #222;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+.signup-form input:focus,
+.login-form input:focus {
+    border-color: #7BAA3C;
+    box-shadow: 0 0 0 3px rgba(123, 170, 60, 0.15);
+    background: #fff;
+}
+.signup-form input::placeholder,
+.login-form input::placeholder {
+    color: #A8B4A0;
+    font-size: 0.97rem;
 }
 
-/* Match the yellow background for inputs */
-.signup-form input,
-.login-form input {
-    background: var(--input-yellow);
-}
-
-/* Add vertical gap between all children */
-.signup-form,
-.login-form {
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
-    width: 400px;
-    max-width: 90vw;
-    margin-top: 120px !important;
+/* Auth button */
+.signup-form .auth-btn,
+.login-form .auth-btn {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
 }
 /* Popup overlay for deposit */
 .popup-overlay {
@@ -98,52 +116,101 @@ body {
     margin: 0;
     font-family: 'Inter', Arial, sans-serif;
     color: #222;
-    padding-top: 0; /* Remove extra space above navbar */
+    padding-top: 0;
 }
 
+/* Background & Overlay */
+.video-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(255, 255, 255, 0.4); /* Frosted overlay */
+    z-index: -1;
+}
+
+.bg-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    min-width: 100vw;
+    min-height: 100vh;
+    width: auto;
+    height: auto;
+    z-index: -2; /* Under overlay */
+    object-fit: cover;
+    opacity: 0.8;
+    pointer-events: none;
+}
+
+/* General Layout */
 .container {
-    max-width: 1100px;
-    margin: 60px auto 0 auto;
-    background: rgba(255,255,255,0.97);
-    border-radius: 24px;
-    box-shadow: 0 8px 32px 0 rgba(0,0,0,0.10), 0 1.5px 8px 0 rgba(122,170,60,0.07);
     padding: 32px 0 48px 0;
     position: relative;
     z-index: 1;
-    min-height: 80vh;
 }
 
-/* Floating navbar styles */
+.auth-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
+    padding-top: 100px; /* Space for navbar */
+    box-sizing: border-box;
+    width: 100%;
+}
 
+.auth-main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    flex: 1;
+    margin-top: 20px;
+}
 
-/* Remove duplicate margin-top and ensure only one flex column definition */
+.auth-card {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 24px;
+    padding: 48px;
+    max-width: 480px;
+    width: 90%;
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(255,255,255,0.5) inset;
+    text-align: center;
+}
 
+/* === FLOATING NAVBAR (Auth page) === */
 .floating-navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 40px auto 32px auto;
-    padding: 0 40px;
-    width: 90%;
-    max-width: 1100px;
-    height: 90px;
-    background: rgba(255, 255, 255, 0.95);
-    border-radius: 32px;
-    box-shadow: 0 8px 32px 0 rgba(122, 170, 60, 0.15), 0 1.5px 8px 0 rgba(0,0,0,0.07);
+    padding: 0 36px;
+    width: calc(100% - 80px);
+    max-width: 900px;
+    height: 72px;
+    background: rgba(255, 255, 255, 0.97);
+    backdrop-filter: blur(12px);
+    border-radius: 20px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08), 0 1px 4px rgba(122,170,60,0.08);
     position: fixed;
-    top: 0;
+    top: 20px;
     left: 50%;
     transform: translateX(-50%);
     z-index: 1000;
+    border: 1px solid rgba(255,255,255,0.8);
 }
 
 .floating-navbar .logo {
-    font-size: 2.5rem;
-    font-weight: 700;
-    letter-spacing: -2px;
+    font-size: 1.8rem;
+    font-weight: 800;
+    letter-spacing: -1.5px;
     display: flex;
     align-items: center;
     margin: 0;
+    text-decoration: none;
 }
 
 .floating-navbar .bits {
@@ -151,52 +218,52 @@ body {
 }
 
 .floating-navbar .pay {
-    color: #222;
-    margin-left: 2px;
+    color: #1a1a1a;
+    margin-left: 1px;
 }
 
 .floating-navbar nav {
     display: flex;
-    gap: 16px;
+    gap: 8px;
     align-items: center;
-    margin: 0;
+    background: #F4F7F1;
+    padding: 5px;
+    border-radius: 14px;
 }
 
 .floating-navbar nav a {
-    font-size: 1rem;
-    font-weight: 500;
+    font-size: 0.95rem;
+    font-weight: 600;
     text-decoration: none;
-    color: #222;
+    color: #6b7a6b;
     background: transparent;
     border: none;
-    padding: 8px 24px;
-    border-radius: 12px;
-    transition: background 0.2s, color 0.2s;
-    height: 40px;
+    padding: 9px 26px;
+    border-radius: 10px;
+    transition: background 0.22s, color 0.22s, box-shadow 0.22s;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: none;
+    letter-spacing: 0.01em;
+}
+
+.floating-navbar nav a:hover {
+    color: #333;
+    background: rgba(255,255,255,0.7);
 }
 
 .floating-navbar nav .signup.active,
 .floating-navbar nav .login.active {
-    background: #7BAA3C;
-    color: #222;
+    background: #ffffff;
+    color: #1a1a1a;
     font-weight: 700;
-    
-}
-
-.floating-navbar nav .login {
-    background: #F4F7F3;
-    color: #222;
-    font-weight: 700;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.10);
 }
 
 .floating-navbar nav .tuition-info {
     background: transparent;
-    color: #222;
-    font-weight: 400;
+    color: #6b7a6b;
+    font-weight: 500;
 }
 
 /* Remove old header styles if present */
@@ -210,6 +277,31 @@ main {
     align-items: center;
     margin-top: 48px;
 }
+
+/* Auth card heading */
+.auth-card h1 {
+    font-size: 1.7rem;
+    font-weight: 800;
+    margin: 0 0 8px 0;
+    color: #1a1a1a;
+    letter-spacing: -0.5px;
+}
+
+.auth-card .auth-subtitle {
+    color: #8A978A;
+    font-size: 0.95rem;
+    margin: 0 0 28px 0;
+}
+
+/* Auth card divider line between logo and form */
+.auth-card .auth-divider {
+    width: 48px;
+    height: 4px;
+    background: linear-gradient(90deg, #7BAA3C, #97C45A);
+    border-radius: 4px;
+    margin: 0 auto 28px auto;
+}
+
 main h1 {
     font-size: 2rem;
     font-weight: 700;
@@ -253,7 +345,34 @@ form input {
     background: #388E3C;
     color: #fff;
 }
-form button, .auth-btn {
+.auth-btn {
+    display: block;
+    width: 100%;
+    margin-top: 6px;
+    padding: 15px 0;
+    background: linear-gradient(135deg, #7BAA3C 0%, #97C45A 100%);
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 700;
+    border: none;
+    border-radius: 14px;
+    cursor: pointer;
+    transition: opacity 0.2s, transform 0.15s, box-shadow 0.2s;
+    box-sizing: border-box;
+    letter-spacing: 0.02em;
+    box-shadow: 0 4px 16px rgba(123, 170, 60, 0.35);
+    font-family: 'Inter', Arial, sans-serif;
+}
+.auth-btn:hover {
+    opacity: 0.92;
+    box-shadow: 0 6px 20px rgba(123, 170, 60, 0.45);
+    transform: translateY(-1px);
+}
+.auth-btn:active {
+    transform: translateY(0);
+    opacity: 1;
+}
+form button {
     display: block;
     width: 100%;
     margin-top: 18px;
@@ -268,36 +387,23 @@ form button, .auth-btn {
     transition: background 0.2s;
     box-sizing: border-box;
 }
-form button:hover, .auth-btn:hover {
+form button:hover {
     background: #7BAA3C;
 }
 .terms {
-    margin-top: 32px;
-    color: #8A978A;
-    font-size: 1rem;
+    margin-top: 24px;
+    color: #A8B4A0;
+    font-size: 0.85rem;
     text-align: center;
+    line-height: 1.5;
 }
 .terms a {
-    color: #8A978A;
+    color: #7BAA3C;
+    text-decoration: none;
+    font-weight: 500;
+}
+.terms a:hover {
     text-decoration: underline;
-}
-.bg-video {
-    position: fixed;
-    top: 0;
-    left: 0;
-    min-width: 100vw;
-    min-height: 100vh;
-    width: auto;
-    height: auto;
-    z-index: -1;
-    object-fit: cover;
-    opacity: 0.6; /* Increased opacity for a less white, more visible video */
-    pointer-events: none;
-    /* Ensure the video covers the entire background */
-}
-.container > *:not(.bg-video) {
-    position: relative;
-    z-index: 1;
 }
 /* Main navbar for homepage */
 .main-navbar {

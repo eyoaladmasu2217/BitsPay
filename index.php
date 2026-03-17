@@ -5,14 +5,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BitsPay - Sign Up</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div class="video-overlay"></div>
     <video autoplay loop muted playsinline class="bg-video">
         <source src="background vid.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
-    <div class="container">
+    <div class="container auth-container">
         <div class="floating-navbar">
             <div class="logo">
                 <div class="bits">Bits</div><div class="pay">Pay</div>
@@ -22,38 +26,42 @@
                 <a href="#" class="login" id="loginBtn">Log in</a>
             </nav>
         </div>
-        <main>
-            <h1>Get started with BITS-PAY</h1>
-            <div id="errorPopup" class="popup-overlay" style="display:none;">
-                <div class="popup-modal">
-                    <button class="close-btn" id="closeError" aria-label="Close">&times;</button>
-                    <h2>Error</h2>
-                    <p id="errorMessage">An error occurred.</p>
+        <main class="auth-main">
+            <div class="auth-card">
+                <h1 id="authTitle">Create your account</h1>
+                <p class="auth-subtitle" id="authSubtitle">Join BitsPay and manage your campus payments effortlessly.</p>
+                <div class="auth-divider"></div>
+                <div id="errorPopup" class="popup-overlay" style="display:none;">
+                    <div class="popup-modal">
+                        <button class="close-btn" id="closeError" aria-label="Close">&times;</button>
+                        <h2>Error</h2>
+                        <p id="errorMessage">An error occurred.</p>
+                    </div>
                 </div>
+                <form action="backend/reg.php" method="post" class="signup-form" id="signupForm">
+                    <div class="form-group">
+                        <input type="email" name="email" placeholder="Email Address" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" name="password" placeholder="Create Password" required>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="auth-btn">Sign up</button>
+                    </div>
+                </form>
+                <form action="backend/login.php" method="post" class="login-form" id="loginForm" style="display:none;">
+                    <div class="form-group">
+                        <input type="email" name="email" placeholder="Email Address" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" name="password" placeholder="Password" required>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="auth-btn">Log in</button>
+                    </div>
+                </form>
+                <p class="terms">By continuing, you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.</p>
             </div>
-            <form action="backend/reg.php" method="post" class="signup-form" id="signupForm">
-                <div class="form-group">
-                    <input type="email" name="email" placeholder="Email" required>
-                </div>
-                <div class="form-group">
-                    <input type="password" name="password" placeholder="Password" required>
-                </div>
-                <div class="form-group">
-                    <button type="submit" class="auth-btn">Sign up</button>
-                </div>
-            </form>
-            <form action="backend/login.php" method="post" class="login-form" id="loginForm" style="display:none;">
-                <div class="form-group">
-                    <input type="email" name="email" placeholder="login Email" required>
-                </div>
-                <div class="form-group">
-                    <input type="password" name="password" placeholder="login Password" required>
-                </div>
-                <div class="form-group">
-                    <button type="submit" class="auth-btn">Log in</button>
-                </div>
-            </form>
-            <p class="terms">By continuing, you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.</p>
         </main>
     </div>
     <script src="navbar.js"></script>
@@ -88,16 +96,22 @@ window.addEventListener('DOMContentLoaded', function() {
 
     // Helper to switch forms and button styles
     function showForm(form) {
+        const authTitle = document.getElementById('authTitle');
+        const authSubtitle = document.getElementById('authSubtitle');
         if (form === 'signup') {
-            signupForm.style.display = 'block';
+            signupForm.style.display = 'flex';
             loginForm.style.display = 'none';
             signupBtn.classList.add('active');
             loginBtn.classList.remove('active');
+            if (authTitle) authTitle.textContent = 'Create your account';
+            if (authSubtitle) authSubtitle.textContent = 'Join BitsPay and manage your campus payments effortlessly.';
         } else {
             signupForm.style.display = 'none';
-            loginForm.style.display = 'block';
+            loginForm.style.display = 'flex';
             signupBtn.classList.remove('active');
             loginBtn.classList.add('active');
+            if (authTitle) authTitle.textContent = 'Welcome back';
+            if (authSubtitle) authSubtitle.textContent = 'Sign in to your BitsPay account.';
         }
     }
 
@@ -129,21 +143,6 @@ window.addEventListener('DOMContentLoaded', function() {
             window.history.replaceState({}, document.title, url.pathname);
         });
     }
-
-    // Tuition Info Popup
-    const tuitionBtn = document.querySelector('.tuition-info');
-    const popup = document.getElementById('tuitionPopup');
-    const closePopup = document.getElementById('closePopup');
-    tuitionBtn.addEventListener('click', function(e) {
-        e.preventDefault();
-        popup.style.display = 'flex';
-    });
-    closePopup.addEventListener('click', function() {
-        popup.style.display = 'none';
-    });
-    window.addEventListener('click', function(e) {
-        if (e.target === popup) popup.style.display = 'none';
-    });
 });
     </script>
 
