@@ -1575,3 +1575,6 @@ input:focus, select:focus { box-shadow: 0 0 0 3px rgba(122, 170, 60, 0.15); tran
 
 /* UI: Refine transaction icon spacing for visual balance */
 .transaction-list .icon { margin-right: 14px; }
+
+/* UI: Add max-width constraint to toast notifications for better layout */
+.toast { max-width: 400px; }
