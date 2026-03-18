@@ -1569,3 +1569,6 @@ input:focus, select:focus { box-shadow: 0 0 0 3px rgba(122, 170, 60, 0.15); tran
 
 /* UI: Adjust line height on auth subtitle for readability */
 .auth-subtitle { line-height: 1.6; }
+
+/* UI: Set focus outline offset for accessibility improvements */
+:focus-visible { outline-offset: 3px; }
