@@ -1560,3 +1560,7 @@ input:focus, select:focus { box-shadow: 0 0 0 3px rgba(122, 170, 60, 0.15); tran
     to { opacity: 0; transform: translateX(60px); }
 }
 .toast.hiding { animation: toastSlideOut 0.3s ease forwards; }
+
+/* UI: Soften box shadows on payment cards */
+.payment-card { box-shadow: 0 4px 14px rgba(122,170,60,0.08); }
+
