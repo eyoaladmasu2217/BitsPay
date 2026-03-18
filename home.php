@@ -33,6 +33,9 @@ require_once 'backend/config/security_headers.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BitsPay - Home</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -50,9 +53,22 @@ require_once 'backend/config/security_headers.php';
                 <a href="#courses">Courses</a>
                 <a href="#payments">Payments</a>
                 <a href="#transactions">Transaction History</a>
-                <a href="#notifications">Notifications</a>
-                <a href="/BitsPay/backend/logout.php" class="logout">Logout</a>
+                <a href="#notifications" class="notif-badge-wrapper">
+                    Notifications
+                    <span class="notif-count" id="notifCount">3</span>
+                </a>
             </nav>
+            <div class="profile-dropdown-wrap" id="profileWrap">
+                <button class="profile-avatar-btn" id="profileAvatarBtn" aria-label="Profile menu">
+                    <?php echo strtoupper(substr($_SESSION['user_id'], 0, 1)); ?>
+                </button>
+                <div class="profile-dropdown" id="profileDropdown">
+                    <a href="#home">&#128100; My Account</a>
+                    <a href="#home">&#9881;&#65039; Settings</a>
+                    <div class="divider"></div>
+                    <a href="/BitsPay/backend/logout.php" class="logout-item">&#128275; Logout</a>
+                </div>
+            </div>
         </header>
         <main class="dashboard">
         <section id="home" class="dashboard-section">
@@ -207,8 +223,60 @@ require_once 'backend/config/security_headers.php';
         </section>
         </main>
     </div>
+    <footer class="site-footer">
+        <div class="footer-logo"><span class="bits">Bits</span><span class="pay">Pay</span></div>
+        <span>&copy; <?= date('Y') ?> BitsPay &mdash; Campus Payment Platform</span>
+        <div class="footer-links">
+            <a href="#">Privacy</a>
+            <a href="#">Terms</a>
+            <a href="#">Support</a>
+        </div>
+    </footer>
+    <div id="toast-container"></div>
     <script src="balance.js"></script>
     <script src="spa-nav.js"></script>
+    <script>
+    // Profile dropdown toggle
+    document.addEventListener('DOMContentLoaded', function() {
+        const avatarBtn = document.getElementById('profileAvatarBtn');
+        const dropdown = document.getElementById('profileDropdown');
+        if (avatarBtn && dropdown) {
+            avatarBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                dropdown.classList.toggle('open');
+            });
+            document.addEventListener('click', function() {
+                dropdown.classList.remove('open');
+            });
+        }
+    });
+
+    // Toast notification system
+    function showToast(message, type = 'success', duration = 3500) {
+        const container = document.getElementById('toast-container');
+        if (!container) return;
+        const icons = { success: '&#10003;', error: '&#10060;', info: 'ℹ️' };
+        const toast = document.createElement('div');
+        toast.className = 'toast ' + type;
+        toast.innerHTML = '<span class="toast-icon">' + (icons[type] || 'ℹ️') + '</span>' +
+            '<span class="toast-msg">' + message + '</span>' +
+            '<button class="toast-close" onclick="dismissToast(this.parentElement)">&times;</button>';
+        container.appendChild(toast);
+        setTimeout(function() { dismissToast(toast); }, duration);
+    }
+    function dismissToast(el) {
+        el.classList.add('hiding');
+        setTimeout(function() { if (el.parentElement) el.parentElement.removeChild(el); }, 320);
+    }
+
+    // Show success toast when wallet deposit succeeds
+    window.addEventListener('DOMContentLoaded', function() {
+        const params = new URLSearchParams(window.location.search);
+        if (params.get('wallet') === 'success') {
+            showToast('Deposit successful! Your wallet has been updated.', 'success');
+        }
+    });
+    </script>
     <script>
     // Deposit button toggle
     document.addEventListener('DOMContentLoaded', function() {
