@@ -1564,3 +1564,5 @@ input:focus, select:focus { box-shadow: 0 0 0 3px rgba(122, 170, 60, 0.15); tran
 /* UI: Soften box shadows on payment cards */
 .payment-card { box-shadow: 0 4px 14px rgba(122,170,60,0.08); }
 
+/* UI: Add scale animation to payment buttons */
+.payment-btn:active { transform: scale(0.97); }
