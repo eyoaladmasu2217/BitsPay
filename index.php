@@ -28,33 +28,43 @@
         </div>
         <main class="auth-main">
             <div class="auth-card">
+                <span class="auth-hero-badge"><span class="badge-dot"></span>Secure Campus Payments</span>
                 <h1 id="authTitle">Create your account</h1>
                 <p class="auth-subtitle" id="authSubtitle">Join BitsPay and manage your campus payments effortlessly.</p>
                 <div class="auth-divider"></div>
                 <div id="errorPopup" class="popup-overlay" style="display:none;">
                     <div class="popup-modal">
                         <button class="close-btn" id="closeError" aria-label="Close">&times;</button>
-                        <h2>Error</h2>
+                        <span class="popup-icon">⚠️</span>
+                        <h2>Oops!</h2>
                         <p id="errorMessage">An error occurred.</p>
                     </div>
                 </div>
                 <form action="backend/reg.php" method="post" class="signup-form" id="signupForm">
-                    <div class="form-group">
-                        <input type="email" name="email" placeholder="Email Address" required>
+                    <div class="form-group floating-label-group">
+                        <input type="email" name="email" id="signupEmail" placeholder=" " required>
+                        <label class="fl-label" for="signupEmail">Email Address</label>
                     </div>
                     <div class="form-group">
-                        <input type="password" name="password" placeholder="Create Password" required>
+                        <div class="pw-toggle-wrap">
+                            <input type="password" name="password" id="signupPw" placeholder=" " required>
+                            <button type="button" class="pw-toggle-btn" aria-label="Show password" onclick="togglePw('signupPw', this)">👁️</button>
+                        </div>
                     </div>
                     <div class="form-group">
                         <button type="submit" class="auth-btn">Sign up</button>
                     </div>
                 </form>
                 <form action="backend/login.php" method="post" class="login-form" id="loginForm" style="display:none;">
-                    <div class="form-group">
-                        <input type="email" name="email" placeholder="Email Address" required>
+                    <div class="form-group floating-label-group">
+                        <input type="email" name="email" id="loginEmail" placeholder=" " required>
+                        <label class="fl-label" for="loginEmail">Email Address</label>
                     </div>
                     <div class="form-group">
-                        <input type="password" name="password" placeholder="Password" required>
+                        <div class="pw-toggle-wrap">
+                            <input type="password" name="password" id="loginPw" placeholder=" " required>
+                            <button type="button" class="pw-toggle-btn" aria-label="Show password" onclick="togglePw('loginPw', this)">👁️</button>
+                        </div>
                     </div>
                     <div class="form-group">
                         <button type="submit" class="auth-btn">Log in</button>
@@ -64,7 +74,20 @@
             </div>
         </main>
     </div>
+    <div id="toast-container"></div>
     <script src="navbar.js"></script>
+    <script>
+    function togglePw(inputId, btn) {
+        const inp = document.getElementById(inputId);
+        if (inp.type === 'password') {
+            inp.type = 'text';
+            btn.textContent = '🙈';
+        } else {
+            inp.type = 'password';
+            btn.textContent = '👁️';
+        }
+    }
+    </script>
     <script>
 window.addEventListener('DOMContentLoaded', function() {
     const params = new URLSearchParams(window.location.search);
