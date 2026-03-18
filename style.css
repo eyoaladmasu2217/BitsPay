@@ -1566,3 +1566,6 @@ input:focus, select:focus { box-shadow: 0 0 0 3px rgba(122, 170, 60, 0.15); tran
 
 /* UI: Add scale animation to payment buttons */
 .payment-btn:active { transform: scale(0.97); }
+
+/* UI: Adjust line height on auth subtitle for readability */
+.auth-subtitle { line-height: 1.6; }
