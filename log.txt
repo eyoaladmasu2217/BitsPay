@@ -1,0 +1,10 @@
+﻿ed8eff1 UI: Add notification badge with count on navbar notifications
+f2c6862 UI: Add floating label inputs to signup and login forms
+93a5a19 UI: Add auth hero badge with animated pulse dot indicator
+989242d style(auth): update form inputs to display flex and improve spacing consistency
+e020f92 style(auth): add letter-spacing and font-weight 800 to auth-card heading
+c799df8 style(auth): remove duplicate bg-video CSS block that caused z-index conflict
+a374efa refactor(auth): remove broken tuition popup JS reference from index.php
+1dfbd45 style(auth): terms link color updated to brand green with hover underline
+fef319c style(auth): refine placeholder color to muted #A8B4A0 for cleaner look
+5d5e953 style(auth): auth-container uses flexbox column centering with 100px top padding

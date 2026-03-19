@@ -1578,3 +1578,7 @@ input:focus, select:focus { box-shadow: 0 0 0 3px rgba(122, 170, 60, 0.15); tran
 
 /* UI: Add max-width constraint to toast notifications for better layout */
 .toast { max-width: 400px; }
+
+/* Dark Mode Themes */
+:root[data-theme='dark'] { --primary-color: #97C45A; --primary-light: #2A3B1D; --secondary-bg: #1A1A1A; --text-dark: #F4F7F3; --white: #222222; }
+

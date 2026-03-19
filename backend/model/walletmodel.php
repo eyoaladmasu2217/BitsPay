@@ -101,7 +101,7 @@ function payTuitionFromWallet($user_id, $amount ,$acedemic_year){
 
     logWalletTransaction($wallet['id'], 'debit', $amount, 'Tuition Payment');
 
-    $reference = 'TUIT-'. strtoupper(uniqid());
+    $reference = 'TUIT-'. strtoupper(bin2hex(random_bytes(5)));
     createTuitionTransaction($user_id, $amount,'wallet',$reference,'paid','tuition',$acedemic_year);
 
     return ['success'=>true, 'message'=>'Tuition paid successfully', 'reference'=>$reference];
