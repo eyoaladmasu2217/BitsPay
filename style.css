@@ -1591,3 +1591,6 @@ input:focus, select:focus { box-shadow: 0 0 0 3px rgba(122, 170, 60, 0.15); tran
 /* Empty states UI */
 .empty-state { text-align: center; color: var(--text-muted); padding: 40px; font-weight: 500; }
 
+
+/* Polish and UI Enhancement 16 */
+
