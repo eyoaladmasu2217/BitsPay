@@ -46,6 +46,54 @@ if($paymentType ==='TuitionFull'||$paymentType ==='Tuition60'||$paymentType==='T
     header("Location: ../../home.php");
     exit();
    } else{
+    <?php
+session_set_cookie_params([
+    'secure' => true,
+    'httponly' => true,
+    'samesite' => 'Strict'
+]);
+session_start();
+require_once "../model/TransactionModel.php";
+require_once "../model/WalletModel.php";
+
+if(!isset($_SESSION['user_id'])){
+    die("Unauthorized access");
+}
+
+$user_id = $_SESSION['user_id'];
+$paymentType = $_POST['paymentType'];
+$amount = floatval($_POST['makePayment']);
+if ($amount <= 0) {
+    <?php
+session_set_cookie_params([
+    'secure' => true,
+    'httponly' => true,
+    'samesite' => 'Strict'
+]);
+session_start();
+require_once "../model/TransactionModel.php";
+require_once "../model/WalletModel.php";
+
+if(!isset($_SESSION['user_id'])){
+    die("Unauthorized access");
+}
+
+$user_id = $_SESSION['user_id'];
+$paymentType = $_POST['paymentType'];
+$amount = floatval($_POST['makePayment']);
+if ($amount <= 0) {
+    die("Invalid payment amount");
+}
+$acedemic_year = date('Y');
+
+if($paymentType ==='TuitionFull'||$paymentType ==='Tuition60'||$paymentType==='Tuition40'){
+    $result = payTuitionFromWallet($user_id, $amount, $acedemic_year);
+
+  if($result['success']){
+    echo "Tuition payment successfull ! Reference:".$result['reference'];
+    header("Location: ../../home.php");
+    exit();
+   } else{
     echo "Tuition payment failed: ".$result['message'];
   }
 } else {
@@ -211,4 +259,1241 @@ if($paymentType ==='TuitionFull'||$paymentType ==='Tuition60'||$paymentType==='T
 SESSION['error'] = 'This service is not available yet'; header('Location: ../../home.php'); exit();
 }
 ?>
+
+SESSION['error'] = 'Tuition payment failed: ' . $result['message']; header('Location: ../../home.php'); exit();
+  }
+} else {
+    <?php
+session_set_cookie_params([
+    'secure' => true,
+    'httponly' => true,
+    'samesite' => 'Strict'
+]);
+session_start();
+require_once "../model/TransactionModel.php";
+require_once "../model/WalletModel.php";
+
+if(!isset($_SESSION['user_id'])){
+    die("Unauthorized access");
+}
+
+$user_id = $_SESSION['user_id'];
+$paymentType = $_POST['paymentType'];
+$amount = floatval($_POST['makePayment']);
+if ($amount <= 0) {
+    <?php
+session_set_cookie_params([
+    'secure' => true,
+    'httponly' => true,
+    'samesite' => 'Strict'
+]);
+session_start();
+require_once "../model/TransactionModel.php";
+require_once "../model/WalletModel.php";
+
+if(!isset($_SESSION['user_id'])){
+    die("Unauthorized access");
+}
+
+$user_id = $_SESSION['user_id'];
+$paymentType = $_POST['paymentType'];
+$amount = floatval($_POST['makePayment']);
+if ($amount <= 0) {
+    die("Invalid payment amount");
+}
+$acedemic_year = date('Y');
+
+if($paymentType ==='TuitionFull'||$paymentType ==='Tuition60'||$paymentType==='Tuition40'){
+    $result = payTuitionFromWallet($user_id, $amount, $acedemic_year);
+
+  if($result['success']){
+    echo "Tuition payment successfull ! Reference:".$result['reference'];
+    header("Location: ../../home.php");
+    exit();
+   } else{
+    <?php
+session_set_cookie_params([
+    'secure' => true,
+    'httponly' => true,
+    'samesite' => 'Strict'
+]);
+session_start();
+require_once "../model/TransactionModel.php";
+require_once "../model/WalletModel.php";
+
+if(!isset($_SESSION['user_id'])){
+    die("Unauthorized access");
+}
+
+$user_id = $_SESSION['user_id'];
+$paymentType = $_POST['paymentType'];
+$amount = floatval($_POST['makePayment']);
+if ($amount <= 0) {
+    <?php
+session_set_cookie_params([
+    'secure' => true,
+    'httponly' => true,
+    'samesite' => 'Strict'
+]);
+session_start();
+require_once "../model/TransactionModel.php";
+require_once "../model/WalletModel.php";
+
+if(!isset($_SESSION['user_id'])){
+    die("Unauthorized access");
+}
+
+$user_id = $_SESSION['user_id'];
+$paymentType = $_POST['paymentType'];
+$amount = floatval($_POST['makePayment']);
+if ($amount <= 0) {
+    die("Invalid payment amount");
+}
+$acedemic_year = date('Y');
+
+if($paymentType ==='TuitionFull'||$paymentType ==='Tuition60'||$paymentType==='Tuition40'){
+    $result = payTuitionFromWallet($user_id, $amount, $acedemic_year);
+
+  if($result['success']){
+    echo "Tuition payment successfull ! Reference:".$result['reference'];
+    header("Location: ../../home.php");
+    exit();
+   } else{
+    echo "Tuition payment failed: ".$result['message'];
+  }
+} else {
+    <?php
+session_set_cookie_params([
+    'secure' => true,
+    'httponly' => true,
+    'samesite' => 'Strict'
+]);
+session_start();
+require_once "../model/TransactionModel.php";
+require_once "../model/WalletModel.php";
+
+if(!isset($_SESSION['user_id'])){
+    die("Unauthorized access");
+}
+
+$user_id = $_SESSION['user_id'];
+$paymentType = $_POST['paymentType'];
+$amount = floatval($_POST['makePayment']);
+if ($amount <= 0) {
+    <?php
+session_set_cookie_params([
+    'secure' => true,
+    'httponly' => true,
+    'samesite' => 'Strict'
+]);
+session_start();
+require_once "../model/TransactionModel.php";
+require_once "../model/WalletModel.php";
+
+if(!isset($_SESSION['user_id'])){
+    die("Unauthorized access");
+}
+
+$user_id = $_SESSION['user_id'];
+$paymentType = $_POST['paymentType'];
+$amount = floatval($_POST['makePayment']);
+if ($amount <= 0) {
+    die("Invalid payment amount");
+}
+$acedemic_year = date('Y');
+
+if($paymentType ==='TuitionFull'||$paymentType ==='Tuition60'||$paymentType==='Tuition40'){
+    $result = payTuitionFromWallet($user_id, $amount, $acedemic_year);
+
+  if($result['success']){
+    echo "Tuition payment successfull ! Reference:".$result['reference'];
+    header("Location: ../../home.php");
+    exit();
+   } else{
+    echo "Tuition payment failed: ".$result['message'];
+  }
+} else {
+    echo"this service is not available yet";
+}
+?>SESSION['error'] = 'Invalid payment amount'; header('Location: ../../home.php'); exit();
+}
+$acedemic_year = date('Y');
+
+if($paymentType ==='TuitionFull'||$paymentType ==='Tuition60'||$paymentType==='Tuition40'){
+    $result = payTuitionFromWallet($user_id, $amount, $acedemic_year);
+
+  if($result['success']){
+    echo "Tuition payment successfull ! Reference:".$result['reference'];
+    header("Location: ../../home.php");
+    exit();
+   } else{
+    echo "Tuition payment failed: ".$result['message'];
+  }
+} else {
+    echo"this service is not available yet";
+}
+?>
+SESSION['error'] = 'This service is not available yet'; header('Location: ../../home.php'); exit();
+}
+?>SESSION['error'] = 'Invalid payment amount'; header('Location: ../../home.php'); exit();
+}
+$acedemic_year = date('Y');
+
+if($paymentType ==='TuitionFull'||$paymentType ==='Tuition60'||$paymentType==='Tuition40'){
+    $result = payTuitionFromWallet($user_id, $amount, $acedemic_year);
+
+  if($result['success']){
+    echo "Tuition payment successfull ! Reference:".$result['reference'];
+    header("Location: ../../home.php");
+    exit();
+   } else{
+    echo "Tuition payment failed: ".$result['message'];
+  }
+} else {
+    <?php
+session_set_cookie_params([
+    'secure' => true,
+    'httponly' => true,
+    'samesite' => 'Strict'
+]);
+session_start();
+require_once "../model/TransactionModel.php";
+require_once "../model/WalletModel.php";
+
+if(!isset($_SESSION['user_id'])){
+    die("Unauthorized access");
+}
+
+$user_id = $_SESSION['user_id'];
+$paymentType = $_POST['paymentType'];
+$amount = floatval($_POST['makePayment']);
+if ($amount <= 0) {
+    <?php
+session_set_cookie_params([
+    'secure' => true,
+    'httponly' => true,
+    'samesite' => 'Strict'
+]);
+session_start();
+require_once "../model/TransactionModel.php";
+require_once "../model/WalletModel.php";
+
+if(!isset($_SESSION['user_id'])){
+    die("Unauthorized access");
+}
+
+$user_id = $_SESSION['user_id'];
+$paymentType = $_POST['paymentType'];
+$amount = floatval($_POST['makePayment']);
+if ($amount <= 0) {
+    die("Invalid payment amount");
+}
+$acedemic_year = date('Y');
+
+if($paymentType ==='TuitionFull'||$paymentType ==='Tuition60'||$paymentType==='Tuition40'){
+    $result = payTuitionFromWallet($user_id, $amount, $acedemic_year);
+
+  if($result['success']){
+    echo "Tuition payment successfull ! Reference:".$result['reference'];
+    header("Location: ../../home.php");
+    exit();
+   } else{
+    echo "Tuition payment failed: ".$result['message'];
+  }
+} else {
+    echo"this service is not available yet";
+}
+?>SESSION['error'] = 'Invalid payment amount'; header('Location: ../../home.php'); exit();
+}
+$acedemic_year = date('Y');
+
+if($paymentType ==='TuitionFull'||$paymentType ==='Tuition60'||$paymentType==='Tuition40'){
+    $result = payTuitionFromWallet($user_id, $amount, $acedemic_year);
+
+  if($result['success']){
+    echo "Tuition payment successfull ! Reference:".$result['reference'];
+    header("Location: ../../home.php");
+    exit();
+   } else{
+    echo "Tuition payment failed: ".$result['message'];
+  }
+} else {
+    echo"this service is not available yet";
+}
+?>
+SESSION['error'] = 'This service is not available yet'; header('Location: ../../home.php'); exit();
+}
+?>
+
+SESSION['error'] = 'Tuition payment failed: ' . $result['message']; header('Location: ../../home.php'); exit();
+  }
+} else {
+    echo"this service is not available yet";
+}
+?>SESSION['error'] = 'Invalid payment amount'; header('Location: ../../home.php'); exit();
+}
+$acedemic_year = date('Y');
+
+if($paymentType ==='TuitionFull'||$paymentType ==='Tuition60'||$paymentType==='Tuition40'){
+    $result = payTuitionFromWallet($user_id, $amount, $acedemic_year);
+
+  if($result['success']){
+    echo "Tuition payment successfull ! Reference:".$result['reference'];
+    header("Location: ../../home.php");
+    exit();
+   } else{
+    <?php
+session_set_cookie_params([
+    'secure' => true,
+    'httponly' => true,
+    'samesite' => 'Strict'
+]);
+session_start();
+require_once "../model/TransactionModel.php";
+require_once "../model/WalletModel.php";
+
+if(!isset($_SESSION['user_id'])){
+    die("Unauthorized access");
+}
+
+$user_id = $_SESSION['user_id'];
+$paymentType = $_POST['paymentType'];
+$amount = floatval($_POST['makePayment']);
+if ($amount <= 0) {
+    <?php
+session_set_cookie_params([
+    'secure' => true,
+    'httponly' => true,
+    'samesite' => 'Strict'
+]);
+session_start();
+require_once "../model/TransactionModel.php";
+require_once "../model/WalletModel.php";
+
+if(!isset($_SESSION['user_id'])){
+    die("Unauthorized access");
+}
+
+$user_id = $_SESSION['user_id'];
+$paymentType = $_POST['paymentType'];
+$amount = floatval($_POST['makePayment']);
+if ($amount <= 0) {
+    die("Invalid payment amount");
+}
+$acedemic_year = date('Y');
+
+if($paymentType ==='TuitionFull'||$paymentType ==='Tuition60'||$paymentType==='Tuition40'){
+    $result = payTuitionFromWallet($user_id, $amount, $acedemic_year);
+
+  if($result['success']){
+    echo "Tuition payment successfull ! Reference:".$result['reference'];
+    header("Location: ../../home.php");
+    exit();
+   } else{
+    echo "Tuition payment failed: ".$result['message'];
+  }
+} else {
+    <?php
+session_set_cookie_params([
+    'secure' => true,
+    'httponly' => true,
+    'samesite' => 'Strict'
+]);
+session_start();
+require_once "../model/TransactionModel.php";
+require_once "../model/WalletModel.php";
+
+if(!isset($_SESSION['user_id'])){
+    die("Unauthorized access");
+}
+
+$user_id = $_SESSION['user_id'];
+$paymentType = $_POST['paymentType'];
+$amount = floatval($_POST['makePayment']);
+if ($amount <= 0) {
+    <?php
+session_set_cookie_params([
+    'secure' => true,
+    'httponly' => true,
+    'samesite' => 'Strict'
+]);
+session_start();
+require_once "../model/TransactionModel.php";
+require_once "../model/WalletModel.php";
+
+if(!isset($_SESSION['user_id'])){
+    die("Unauthorized access");
+}
+
+$user_id = $_SESSION['user_id'];
+$paymentType = $_POST['paymentType'];
+$amount = floatval($_POST['makePayment']);
+if ($amount <= 0) {
+    die("Invalid payment amount");
+}
+$acedemic_year = date('Y');
+
+if($paymentType ==='TuitionFull'||$paymentType ==='Tuition60'||$paymentType==='Tuition40'){
+    $result = payTuitionFromWallet($user_id, $amount, $acedemic_year);
+
+  if($result['success']){
+    echo "Tuition payment successfull ! Reference:".$result['reference'];
+    header("Location: ../../home.php");
+    exit();
+   } else{
+    echo "Tuition payment failed: ".$result['message'];
+  }
+} else {
+    echo"this service is not available yet";
+}
+?>SESSION['error'] = 'Invalid payment amount'; header('Location: ../../home.php'); exit();
+}
+$acedemic_year = date('Y');
+
+if($paymentType ==='TuitionFull'||$paymentType ==='Tuition60'||$paymentType==='Tuition40'){
+    $result = payTuitionFromWallet($user_id, $amount, $acedemic_year);
+
+  if($result['success']){
+    echo "Tuition payment successfull ! Reference:".$result['reference'];
+    header("Location: ../../home.php");
+    exit();
+   } else{
+    echo "Tuition payment failed: ".$result['message'];
+  }
+} else {
+    echo"this service is not available yet";
+}
+?>
+SESSION['error'] = 'This service is not available yet'; header('Location: ../../home.php'); exit();
+}
+?>SESSION['error'] = 'Invalid payment amount'; header('Location: ../../home.php'); exit();
+}
+$acedemic_year = date('Y');
+
+if($paymentType ==='TuitionFull'||$paymentType ==='Tuition60'||$paymentType==='Tuition40'){
+    $result = payTuitionFromWallet($user_id, $amount, $acedemic_year);
+
+  if($result['success']){
+    echo "Tuition payment successfull ! Reference:".$result['reference'];
+    header("Location: ../../home.php");
+    exit();
+   } else{
+    echo "Tuition payment failed: ".$result['message'];
+  }
+} else {
+    <?php
+session_set_cookie_params([
+    'secure' => true,
+    'httponly' => true,
+    'samesite' => 'Strict'
+]);
+session_start();
+require_once "../model/TransactionModel.php";
+require_once "../model/WalletModel.php";
+
+if(!isset($_SESSION['user_id'])){
+    die("Unauthorized access");
+}
+
+$user_id = $_SESSION['user_id'];
+$paymentType = $_POST['paymentType'];
+$amount = floatval($_POST['makePayment']);
+if ($amount <= 0) {
+    <?php
+session_set_cookie_params([
+    'secure' => true,
+    'httponly' => true,
+    'samesite' => 'Strict'
+]);
+session_start();
+require_once "../model/TransactionModel.php";
+require_once "../model/WalletModel.php";
+
+if(!isset($_SESSION['user_id'])){
+    die("Unauthorized access");
+}
+
+$user_id = $_SESSION['user_id'];
+$paymentType = $_POST['paymentType'];
+$amount = floatval($_POST['makePayment']);
+if ($amount <= 0) {
+    die("Invalid payment amount");
+}
+$acedemic_year = date('Y');
+
+if($paymentType ==='TuitionFull'||$paymentType ==='Tuition60'||$paymentType==='Tuition40'){
+    $result = payTuitionFromWallet($user_id, $amount, $acedemic_year);
+
+  if($result['success']){
+    echo "Tuition payment successfull ! Reference:".$result['reference'];
+    header("Location: ../../home.php");
+    exit();
+   } else{
+    echo "Tuition payment failed: ".$result['message'];
+  }
+} else {
+    echo"this service is not available yet";
+}
+?>SESSION['error'] = 'Invalid payment amount'; header('Location: ../../home.php'); exit();
+}
+$acedemic_year = date('Y');
+
+if($paymentType ==='TuitionFull'||$paymentType ==='Tuition60'||$paymentType==='Tuition40'){
+    $result = payTuitionFromWallet($user_id, $amount, $acedemic_year);
+
+  if($result['success']){
+    echo "Tuition payment successfull ! Reference:".$result['reference'];
+    header("Location: ../../home.php");
+    exit();
+   } else{
+    echo "Tuition payment failed: ".$result['message'];
+  }
+} else {
+    echo"this service is not available yet";
+}
+?>
+SESSION['error'] = 'This service is not available yet'; header('Location: ../../home.php'); exit();
+}
+?>
+
+SESSION['error'] = 'Tuition payment failed: ' . $result['message']; header('Location: ../../home.php'); exit();
+  }
+} else {
+    echo"this service is not available yet";
+}
+?>
+SESSION['error'] = 'This service is not available yet'; header('Location: ../../home.php'); exit();
+}
+?>SESSION['error'] = 'Invalid payment amount'; header('Location: ../../home.php'); exit();
+}
+$acedemic_year = date('Y');
+
+if($paymentType ==='TuitionFull'||$paymentType ==='Tuition60'||$paymentType==='Tuition40'){
+    $result = payTuitionFromWallet($user_id, $amount, $acedemic_year);
+
+  if($result['success']){
+    echo "Tuition payment successfull ! Reference:".$result['reference'];
+    header("Location: ../../home.php");
+    exit();
+   } else{
+    <?php
+session_set_cookie_params([
+    'secure' => true,
+    'httponly' => true,
+    'samesite' => 'Strict'
+]);
+session_start();
+require_once "../model/TransactionModel.php";
+require_once "../model/WalletModel.php";
+
+if(!isset($_SESSION['user_id'])){
+    die("Unauthorized access");
+}
+
+$user_id = $_SESSION['user_id'];
+$paymentType = $_POST['paymentType'];
+$amount = floatval($_POST['makePayment']);
+if ($amount <= 0) {
+    <?php
+session_set_cookie_params([
+    'secure' => true,
+    'httponly' => true,
+    'samesite' => 'Strict'
+]);
+session_start();
+require_once "../model/TransactionModel.php";
+require_once "../model/WalletModel.php";
+
+if(!isset($_SESSION['user_id'])){
+    die("Unauthorized access");
+}
+
+$user_id = $_SESSION['user_id'];
+$paymentType = $_POST['paymentType'];
+$amount = floatval($_POST['makePayment']);
+if ($amount <= 0) {
+    die("Invalid payment amount");
+}
+$acedemic_year = date('Y');
+
+if($paymentType ==='TuitionFull'||$paymentType ==='Tuition60'||$paymentType==='Tuition40'){
+    $result = payTuitionFromWallet($user_id, $amount, $acedemic_year);
+
+  if($result['success']){
+    echo "Tuition payment successfull ! Reference:".$result['reference'];
+    header("Location: ../../home.php");
+    exit();
+   } else{
+    echo "Tuition payment failed: ".$result['message'];
+  }
+} else {
+    <?php
+session_set_cookie_params([
+    'secure' => true,
+    'httponly' => true,
+    'samesite' => 'Strict'
+]);
+session_start();
+require_once "../model/TransactionModel.php";
+require_once "../model/WalletModel.php";
+
+if(!isset($_SESSION['user_id'])){
+    die("Unauthorized access");
+}
+
+$user_id = $_SESSION['user_id'];
+$paymentType = $_POST['paymentType'];
+$amount = floatval($_POST['makePayment']);
+if ($amount <= 0) {
+    <?php
+session_set_cookie_params([
+    'secure' => true,
+    'httponly' => true,
+    'samesite' => 'Strict'
+]);
+session_start();
+require_once "../model/TransactionModel.php";
+require_once "../model/WalletModel.php";
+
+if(!isset($_SESSION['user_id'])){
+    die("Unauthorized access");
+}
+
+$user_id = $_SESSION['user_id'];
+$paymentType = $_POST['paymentType'];
+$amount = floatval($_POST['makePayment']);
+if ($amount <= 0) {
+    die("Invalid payment amount");
+}
+$acedemic_year = date('Y');
+
+if($paymentType ==='TuitionFull'||$paymentType ==='Tuition60'||$paymentType==='Tuition40'){
+    $result = payTuitionFromWallet($user_id, $amount, $acedemic_year);
+
+  if($result['success']){
+    echo "Tuition payment successfull ! Reference:".$result['reference'];
+    header("Location: ../../home.php");
+    exit();
+   } else{
+    echo "Tuition payment failed: ".$result['message'];
+  }
+} else {
+    echo"this service is not available yet";
+}
+?>SESSION['error'] = 'Invalid payment amount'; header('Location: ../../home.php'); exit();
+}
+$acedemic_year = date('Y');
+
+if($paymentType ==='TuitionFull'||$paymentType ==='Tuition60'||$paymentType==='Tuition40'){
+    $result = payTuitionFromWallet($user_id, $amount, $acedemic_year);
+
+  if($result['success']){
+    echo "Tuition payment successfull ! Reference:".$result['reference'];
+    header("Location: ../../home.php");
+    exit();
+   } else{
+    echo "Tuition payment failed: ".$result['message'];
+  }
+} else {
+    echo"this service is not available yet";
+}
+?>
+SESSION['error'] = 'This service is not available yet'; header('Location: ../../home.php'); exit();
+}
+?>SESSION['error'] = 'Invalid payment amount'; header('Location: ../../home.php'); exit();
+}
+$acedemic_year = date('Y');
+
+if($paymentType ==='TuitionFull'||$paymentType ==='Tuition60'||$paymentType==='Tuition40'){
+    $result = payTuitionFromWallet($user_id, $amount, $acedemic_year);
+
+  if($result['success']){
+    echo "Tuition payment successfull ! Reference:".$result['reference'];
+    header("Location: ../../home.php");
+    exit();
+   } else{
+    echo "Tuition payment failed: ".$result['message'];
+  }
+} else {
+    <?php
+session_set_cookie_params([
+    'secure' => true,
+    'httponly' => true,
+    'samesite' => 'Strict'
+]);
+session_start();
+require_once "../model/TransactionModel.php";
+require_once "../model/WalletModel.php";
+
+if(!isset($_SESSION['user_id'])){
+    die("Unauthorized access");
+}
+
+$user_id = $_SESSION['user_id'];
+$paymentType = $_POST['paymentType'];
+$amount = floatval($_POST['makePayment']);
+if ($amount <= 0) {
+    <?php
+session_set_cookie_params([
+    'secure' => true,
+    'httponly' => true,
+    'samesite' => 'Strict'
+]);
+session_start();
+require_once "../model/TransactionModel.php";
+require_once "../model/WalletModel.php";
+
+if(!isset($_SESSION['user_id'])){
+    die("Unauthorized access");
+}
+
+$user_id = $_SESSION['user_id'];
+$paymentType = $_POST['paymentType'];
+$amount = floatval($_POST['makePayment']);
+if ($amount <= 0) {
+    die("Invalid payment amount");
+}
+$acedemic_year = date('Y');
+
+if($paymentType ==='TuitionFull'||$paymentType ==='Tuition60'||$paymentType==='Tuition40'){
+    $result = payTuitionFromWallet($user_id, $amount, $acedemic_year);
+
+  if($result['success']){
+    echo "Tuition payment successfull ! Reference:".$result['reference'];
+    header("Location: ../../home.php");
+    exit();
+   } else{
+    echo "Tuition payment failed: ".$result['message'];
+  }
+} else {
+    echo"this service is not available yet";
+}
+?>SESSION['error'] = 'Invalid payment amount'; header('Location: ../../home.php'); exit();
+}
+$acedemic_year = date('Y');
+
+if($paymentType ==='TuitionFull'||$paymentType ==='Tuition60'||$paymentType==='Tuition40'){
+    $result = payTuitionFromWallet($user_id, $amount, $acedemic_year);
+
+  if($result['success']){
+    echo "Tuition payment successfull ! Reference:".$result['reference'];
+    header("Location: ../../home.php");
+    exit();
+   } else{
+    echo "Tuition payment failed: ".$result['message'];
+  }
+} else {
+    echo"this service is not available yet";
+}
+?>
+SESSION['error'] = 'This service is not available yet'; header('Location: ../../home.php'); exit();
+}
+?>
+
+SESSION['error'] = 'Tuition payment failed: ' . $result['message']; header('Location: ../../home.php'); exit();
+  }
+} else {
+    <?php
+session_set_cookie_params([
+    'secure' => true,
+    'httponly' => true,
+    'samesite' => 'Strict'
+]);
+session_start();
+require_once "../model/TransactionModel.php";
+require_once "../model/WalletModel.php";
+
+if(!isset($_SESSION['user_id'])){
+    die("Unauthorized access");
+}
+
+$user_id = $_SESSION['user_id'];
+$paymentType = $_POST['paymentType'];
+$amount = floatval($_POST['makePayment']);
+if ($amount <= 0) {
+    <?php
+session_set_cookie_params([
+    'secure' => true,
+    'httponly' => true,
+    'samesite' => 'Strict'
+]);
+session_start();
+require_once "../model/TransactionModel.php";
+require_once "../model/WalletModel.php";
+
+if(!isset($_SESSION['user_id'])){
+    die("Unauthorized access");
+}
+
+$user_id = $_SESSION['user_id'];
+$paymentType = $_POST['paymentType'];
+$amount = floatval($_POST['makePayment']);
+if ($amount <= 0) {
+    die("Invalid payment amount");
+}
+$acedemic_year = date('Y');
+
+if($paymentType ==='TuitionFull'||$paymentType ==='Tuition60'||$paymentType==='Tuition40'){
+    $result = payTuitionFromWallet($user_id, $amount, $acedemic_year);
+
+  if($result['success']){
+    echo "Tuition payment successfull ! Reference:".$result['reference'];
+    header("Location: ../../home.php");
+    exit();
+   } else{
+    <?php
+session_set_cookie_params([
+    'secure' => true,
+    'httponly' => true,
+    'samesite' => 'Strict'
+]);
+session_start();
+require_once "../model/TransactionModel.php";
+require_once "../model/WalletModel.php";
+
+if(!isset($_SESSION['user_id'])){
+    die("Unauthorized access");
+}
+
+$user_id = $_SESSION['user_id'];
+$paymentType = $_POST['paymentType'];
+$amount = floatval($_POST['makePayment']);
+if ($amount <= 0) {
+    <?php
+session_set_cookie_params([
+    'secure' => true,
+    'httponly' => true,
+    'samesite' => 'Strict'
+]);
+session_start();
+require_once "../model/TransactionModel.php";
+require_once "../model/WalletModel.php";
+
+if(!isset($_SESSION['user_id'])){
+    die("Unauthorized access");
+}
+
+$user_id = $_SESSION['user_id'];
+$paymentType = $_POST['paymentType'];
+$amount = floatval($_POST['makePayment']);
+if ($amount <= 0) {
+    die("Invalid payment amount");
+}
+$acedemic_year = date('Y');
+
+if($paymentType ==='TuitionFull'||$paymentType ==='Tuition60'||$paymentType==='Tuition40'){
+    $result = payTuitionFromWallet($user_id, $amount, $acedemic_year);
+
+  if($result['success']){
+    echo "Tuition payment successfull ! Reference:".$result['reference'];
+    header("Location: ../../home.php");
+    exit();
+   } else{
+    echo "Tuition payment failed: ".$result['message'];
+  }
+} else {
+    <?php
+session_set_cookie_params([
+    'secure' => true,
+    'httponly' => true,
+    'samesite' => 'Strict'
+]);
+session_start();
+require_once "../model/TransactionModel.php";
+require_once "../model/WalletModel.php";
+
+if(!isset($_SESSION['user_id'])){
+    die("Unauthorized access");
+}
+
+$user_id = $_SESSION['user_id'];
+$paymentType = $_POST['paymentType'];
+$amount = floatval($_POST['makePayment']);
+if ($amount <= 0) {
+    <?php
+session_set_cookie_params([
+    'secure' => true,
+    'httponly' => true,
+    'samesite' => 'Strict'
+]);
+session_start();
+require_once "../model/TransactionModel.php";
+require_once "../model/WalletModel.php";
+
+if(!isset($_SESSION['user_id'])){
+    die("Unauthorized access");
+}
+
+$user_id = $_SESSION['user_id'];
+$paymentType = $_POST['paymentType'];
+$amount = floatval($_POST['makePayment']);
+if ($amount <= 0) {
+    die("Invalid payment amount");
+}
+$acedemic_year = date('Y');
+
+if($paymentType ==='TuitionFull'||$paymentType ==='Tuition60'||$paymentType==='Tuition40'){
+    $result = payTuitionFromWallet($user_id, $amount, $acedemic_year);
+
+  if($result['success']){
+    echo "Tuition payment successfull ! Reference:".$result['reference'];
+    header("Location: ../../home.php");
+    exit();
+   } else{
+    echo "Tuition payment failed: ".$result['message'];
+  }
+} else {
+    echo"this service is not available yet";
+}
+?>SESSION['error'] = 'Invalid payment amount'; header('Location: ../../home.php'); exit();
+}
+$acedemic_year = date('Y');
+
+if($paymentType ==='TuitionFull'||$paymentType ==='Tuition60'||$paymentType==='Tuition40'){
+    $result = payTuitionFromWallet($user_id, $amount, $acedemic_year);
+
+  if($result['success']){
+    echo "Tuition payment successfull ! Reference:".$result['reference'];
+    header("Location: ../../home.php");
+    exit();
+   } else{
+    echo "Tuition payment failed: ".$result['message'];
+  }
+} else {
+    echo"this service is not available yet";
+}
+?>
+SESSION['error'] = 'This service is not available yet'; header('Location: ../../home.php'); exit();
+}
+?>SESSION['error'] = 'Invalid payment amount'; header('Location: ../../home.php'); exit();
+}
+$acedemic_year = date('Y');
+
+if($paymentType ==='TuitionFull'||$paymentType ==='Tuition60'||$paymentType==='Tuition40'){
+    $result = payTuitionFromWallet($user_id, $amount, $acedemic_year);
+
+  if($result['success']){
+    echo "Tuition payment successfull ! Reference:".$result['reference'];
+    header("Location: ../../home.php");
+    exit();
+   } else{
+    echo "Tuition payment failed: ".$result['message'];
+  }
+} else {
+    <?php
+session_set_cookie_params([
+    'secure' => true,
+    'httponly' => true,
+    'samesite' => 'Strict'
+]);
+session_start();
+require_once "../model/TransactionModel.php";
+require_once "../model/WalletModel.php";
+
+if(!isset($_SESSION['user_id'])){
+    die("Unauthorized access");
+}
+
+$user_id = $_SESSION['user_id'];
+$paymentType = $_POST['paymentType'];
+$amount = floatval($_POST['makePayment']);
+if ($amount <= 0) {
+    <?php
+session_set_cookie_params([
+    'secure' => true,
+    'httponly' => true,
+    'samesite' => 'Strict'
+]);
+session_start();
+require_once "../model/TransactionModel.php";
+require_once "../model/WalletModel.php";
+
+if(!isset($_SESSION['user_id'])){
+    die("Unauthorized access");
+}
+
+$user_id = $_SESSION['user_id'];
+$paymentType = $_POST['paymentType'];
+$amount = floatval($_POST['makePayment']);
+if ($amount <= 0) {
+    die("Invalid payment amount");
+}
+$acedemic_year = date('Y');
+
+if($paymentType ==='TuitionFull'||$paymentType ==='Tuition60'||$paymentType==='Tuition40'){
+    $result = payTuitionFromWallet($user_id, $amount, $acedemic_year);
+
+  if($result['success']){
+    echo "Tuition payment successfull ! Reference:".$result['reference'];
+    header("Location: ../../home.php");
+    exit();
+   } else{
+    echo "Tuition payment failed: ".$result['message'];
+  }
+} else {
+    echo"this service is not available yet";
+}
+?>SESSION['error'] = 'Invalid payment amount'; header('Location: ../../home.php'); exit();
+}
+$acedemic_year = date('Y');
+
+if($paymentType ==='TuitionFull'||$paymentType ==='Tuition60'||$paymentType==='Tuition40'){
+    $result = payTuitionFromWallet($user_id, $amount, $acedemic_year);
+
+  if($result['success']){
+    echo "Tuition payment successfull ! Reference:".$result['reference'];
+    header("Location: ../../home.php");
+    exit();
+   } else{
+    echo "Tuition payment failed: ".$result['message'];
+  }
+} else {
+    echo"this service is not available yet";
+}
+?>
+SESSION['error'] = 'This service is not available yet'; header('Location: ../../home.php'); exit();
+}
+?>
+
+SESSION['error'] = 'Tuition payment failed: ' . $result['message']; header('Location: ../../home.php'); exit();
+  }
+} else {
+    echo"this service is not available yet";
+}
+?>SESSION['error'] = 'Invalid payment amount'; header('Location: ../../home.php'); exit();
+}
+$acedemic_year = date('Y');
+
+if($paymentType ==='TuitionFull'||$paymentType ==='Tuition60'||$paymentType==='Tuition40'){
+    $result = payTuitionFromWallet($user_id, $amount, $acedemic_year);
+
+  if($result['success']){
+    echo "Tuition payment successfull ! Reference:".$result['reference'];
+    header("Location: ../../home.php");
+    exit();
+   } else{
+    <?php
+session_set_cookie_params([
+    'secure' => true,
+    'httponly' => true,
+    'samesite' => 'Strict'
+]);
+session_start();
+require_once "../model/TransactionModel.php";
+require_once "../model/WalletModel.php";
+
+if(!isset($_SESSION['user_id'])){
+    die("Unauthorized access");
+}
+
+$user_id = $_SESSION['user_id'];
+$paymentType = $_POST['paymentType'];
+$amount = floatval($_POST['makePayment']);
+if ($amount <= 0) {
+    <?php
+session_set_cookie_params([
+    'secure' => true,
+    'httponly' => true,
+    'samesite' => 'Strict'
+]);
+session_start();
+require_once "../model/TransactionModel.php";
+require_once "../model/WalletModel.php";
+
+if(!isset($_SESSION['user_id'])){
+    die("Unauthorized access");
+}
+
+$user_id = $_SESSION['user_id'];
+$paymentType = $_POST['paymentType'];
+$amount = floatval($_POST['makePayment']);
+if ($amount <= 0) {
+    die("Invalid payment amount");
+}
+$acedemic_year = date('Y');
+
+if($paymentType ==='TuitionFull'||$paymentType ==='Tuition60'||$paymentType==='Tuition40'){
+    $result = payTuitionFromWallet($user_id, $amount, $acedemic_year);
+
+  if($result['success']){
+    echo "Tuition payment successfull ! Reference:".$result['reference'];
+    header("Location: ../../home.php");
+    exit();
+   } else{
+    echo "Tuition payment failed: ".$result['message'];
+  }
+} else {
+    <?php
+session_set_cookie_params([
+    'secure' => true,
+    'httponly' => true,
+    'samesite' => 'Strict'
+]);
+session_start();
+require_once "../model/TransactionModel.php";
+require_once "../model/WalletModel.php";
+
+if(!isset($_SESSION['user_id'])){
+    die("Unauthorized access");
+}
+
+$user_id = $_SESSION['user_id'];
+$paymentType = $_POST['paymentType'];
+$amount = floatval($_POST['makePayment']);
+if ($amount <= 0) {
+    <?php
+session_set_cookie_params([
+    'secure' => true,
+    'httponly' => true,
+    'samesite' => 'Strict'
+]);
+session_start();
+require_once "../model/TransactionModel.php";
+require_once "../model/WalletModel.php";
+
+if(!isset($_SESSION['user_id'])){
+    die("Unauthorized access");
+}
+
+$user_id = $_SESSION['user_id'];
+$paymentType = $_POST['paymentType'];
+$amount = floatval($_POST['makePayment']);
+if ($amount <= 0) {
+    die("Invalid payment amount");
+}
+$acedemic_year = date('Y');
+
+if($paymentType ==='TuitionFull'||$paymentType ==='Tuition60'||$paymentType==='Tuition40'){
+    $result = payTuitionFromWallet($user_id, $amount, $acedemic_year);
+
+  if($result['success']){
+    echo "Tuition payment successfull ! Reference:".$result['reference'];
+    header("Location: ../../home.php");
+    exit();
+   } else{
+    echo "Tuition payment failed: ".$result['message'];
+  }
+} else {
+    echo"this service is not available yet";
+}
+?>SESSION['error'] = 'Invalid payment amount'; header('Location: ../../home.php'); exit();
+}
+$acedemic_year = date('Y');
+
+if($paymentType ==='TuitionFull'||$paymentType ==='Tuition60'||$paymentType==='Tuition40'){
+    $result = payTuitionFromWallet($user_id, $amount, $acedemic_year);
+
+  if($result['success']){
+    echo "Tuition payment successfull ! Reference:".$result['reference'];
+    header("Location: ../../home.php");
+    exit();
+   } else{
+    echo "Tuition payment failed: ".$result['message'];
+  }
+} else {
+    echo"this service is not available yet";
+}
+?>
+SESSION['error'] = 'This service is not available yet'; header('Location: ../../home.php'); exit();
+}
+?>SESSION['error'] = 'Invalid payment amount'; header('Location: ../../home.php'); exit();
+}
+$acedemic_year = date('Y');
+
+if($paymentType ==='TuitionFull'||$paymentType ==='Tuition60'||$paymentType==='Tuition40'){
+    $result = payTuitionFromWallet($user_id, $amount, $acedemic_year);
+
+  if($result['success']){
+    echo "Tuition payment successfull ! Reference:".$result['reference'];
+    header("Location: ../../home.php");
+    exit();
+   } else{
+    echo "Tuition payment failed: ".$result['message'];
+  }
+} else {
+    <?php
+session_set_cookie_params([
+    'secure' => true,
+    'httponly' => true,
+    'samesite' => 'Strict'
+]);
+session_start();
+require_once "../model/TransactionModel.php";
+require_once "../model/WalletModel.php";
+
+if(!isset($_SESSION['user_id'])){
+    die("Unauthorized access");
+}
+
+$user_id = $_SESSION['user_id'];
+$paymentType = $_POST['paymentType'];
+$amount = floatval($_POST['makePayment']);
+if ($amount <= 0) {
+    <?php
+session_set_cookie_params([
+    'secure' => true,
+    'httponly' => true,
+    'samesite' => 'Strict'
+]);
+session_start();
+require_once "../model/TransactionModel.php";
+require_once "../model/WalletModel.php";
+
+if(!isset($_SESSION['user_id'])){
+    die("Unauthorized access");
+}
+
+$user_id = $_SESSION['user_id'];
+$paymentType = $_POST['paymentType'];
+$amount = floatval($_POST['makePayment']);
+if ($amount <= 0) {
+    die("Invalid payment amount");
+}
+$acedemic_year = date('Y');
+
+if($paymentType ==='TuitionFull'||$paymentType ==='Tuition60'||$paymentType==='Tuition40'){
+    $result = payTuitionFromWallet($user_id, $amount, $acedemic_year);
+
+  if($result['success']){
+    echo "Tuition payment successfull ! Reference:".$result['reference'];
+    header("Location: ../../home.php");
+    exit();
+   } else{
+    echo "Tuition payment failed: ".$result['message'];
+  }
+} else {
+    echo"this service is not available yet";
+}
+?>SESSION['error'] = 'Invalid payment amount'; header('Location: ../../home.php'); exit();
+}
+$acedemic_year = date('Y');
+
+if($paymentType ==='TuitionFull'||$paymentType ==='Tuition60'||$paymentType==='Tuition40'){
+    $result = payTuitionFromWallet($user_id, $amount, $acedemic_year);
+
+  if($result['success']){
+    echo "Tuition payment successfull ! Reference:".$result['reference'];
+    header("Location: ../../home.php");
+    exit();
+   } else{
+    echo "Tuition payment failed: ".$result['message'];
+  }
+} else {
+    echo"this service is not available yet";
+}
+?>
+SESSION['error'] = 'This service is not available yet'; header('Location: ../../home.php'); exit();
+}
+?>
+
+SESSION['error'] = 'Tuition payment failed: ' . $result['message']; header('Location: ../../home.php'); exit();
+  }
+} else {
+    echo"this service is not available yet";
+}
+?>
+SESSION['error'] = 'This service is not available yet'; header('Location: ../../home.php'); exit();
+}
+?>
+
 
