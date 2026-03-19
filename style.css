@@ -1587,3 +1587,7 @@ input:focus, select:focus { box-shadow: 0 0 0 3px rgba(122, 170, 60, 0.15); tran
 .dashboard-section { animation: fadeIn 0.4s ease-out; }
 @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
+
+/* Empty states UI */
+.empty-state { text-align: center; color: var(--text-muted); padding: 40px; font-weight: 500; }
+
