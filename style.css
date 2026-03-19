@@ -1582,3 +1582,8 @@ input:focus, select:focus { box-shadow: 0 0 0 3px rgba(122, 170, 60, 0.15); tran
 /* Dark Mode Themes */
 :root[data-theme='dark'] { --primary-color: #97C45A; --primary-light: #2A3B1D; --secondary-bg: #1A1A1A; --text-dark: #F4F7F3; --white: #222222; }
 
+
+/* SPA Transitions */
+.dashboard-section { animation: fadeIn 0.4s ease-out; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
