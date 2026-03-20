@@ -47,12 +47,13 @@
                     </div>
                     <div class="form-group">
                         <div class="pw-toggle-wrap">
-                            <input type="password" name="password" id="signupPw" placeholder=" " required>
+                            <input type="password" name="password" id="signupPw" placeholder=" " required oninput="checkStrength(this.value)">
                             <button type="button" class="pw-toggle-btn" aria-label="Show password" onclick="togglePw('signupPw', this)">👁️</button>
                         </div>
+                        <div class="strength-meter"><div class="strength-bar" id="strengthBar"></div></div>
                     </div>
                     <div class="form-group">
-                        <button type="submit" class="auth-btn">Sign up</button>
+                        <button type="submit" class="auth-btn" onclick="showLoading(this)">Sign up</button>
                     </div>
                 </form>
                 <form action="backend/login.php" method="post" class="login-form" id="loginForm" style="display:none;">
@@ -66,8 +67,12 @@
                             <button type="button" class="pw-toggle-btn" aria-label="Show password" onclick="togglePw('loginPw', this)">👁️</button>
                         </div>
                     </div>
+                    <div class="form-options">
+                        <label class="remember-me"><input type="checkbox" name="remember"> Remember me</label>
+                        <a href="#" class="forgot-pw">Forgot password?</a>
+                    </div>
                     <div class="form-group">
-                        <button type="submit" class="auth-btn">Log in</button>
+                        <button type="submit" class="auth-btn" onclick="showLoading(this)">Log in</button>
                     </div>
                 </form>
                 <p class="terms">By continuing, you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.</p>
@@ -85,6 +90,23 @@
         } else {
             inp.type = 'password';
             btn.textContent = '👁️';
+        }
+    }
+
+    function checkStrength(val) {
+        const bar = document.getElementById('strengthBar');
+        let strength = 0;
+        if(val.length > 5) strength += 33;
+        if(val.match(/[A-Z]/) && val.match(/[0-9]/)) strength += 33;
+        if(val.length > 8 && val.match(/[^a-zA-Z0-9]/)) strength += 34;
+        bar.style.width = strength + '%';
+        bar.style.background = strength < 34 ? '#d32f2f' : (strength < 67 ? '#ffa000' : '#4CAF50');
+    }
+
+    function showLoading(btn) {
+        if(btn.form.checkValidity()) {
+            btn.classList.add('loading');
+            btn.innerHTML = '<span class="spinner"></span> Processing...';
         }
     }
     </script>
