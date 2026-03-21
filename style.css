@@ -316,7 +316,7 @@ main h1 {
 form {
     display: flex;
     flex-direction: column;
-    gap: 18px; /* Add vertical space between all children */
+    gap: 20px; /* Add vertical space between all children */
     width: 400px;
     max-width: 90vw;
 }
