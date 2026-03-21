@@ -602,7 +602,7 @@ form button:hover {
     max-width: 500px;
     height: 180px;
     margin: 0 auto 32px auto;
-    border-radius: 24px;
+    border-radius: 22px;
     background: linear-gradient(135deg, #E6F4D9 0%, #B7CBA3 100%);
     box-shadow: 0 8px 32px 0 rgba(122, 170, 60, 0.10), 0 1.5px 8px 0 rgba(0,0,0,0.04);
     display: flex;
