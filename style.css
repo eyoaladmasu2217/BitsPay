@@ -846,7 +846,7 @@ form button:hover {
     color: #222;
 }
 .form-group select, .form-group input[type="number"] {
-    padding: 14px 16px;
+    padding: 15px 16px;
     border: 1.5px solid #E6F4D9;
     border-radius: 12px;
     background: #fff;
