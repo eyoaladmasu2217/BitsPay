@@ -341,7 +341,7 @@ form input {
     font-size: 1.15rem;
     font-weight: 700;
     transition: background 0.2s, color 0.2s;
-    margin-bottom: 18px;
+    margin-bottom: 20px;
     font-family: 'Inter', Arial, sans-serif;
     box-shadow: 0 4px 12px 0 rgba(76,175,80,0.13);
     letter-spacing: 0.02em;
