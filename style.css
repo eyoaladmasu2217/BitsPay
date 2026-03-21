@@ -737,7 +737,7 @@ form button:hover {
 }
 .activity-tabs {
     display: flex;
-    gap: 24px;
+    gap: 26px;
     margin-bottom: 24px;
     border-bottom: 1.5px solid #E6F4D9;
 }
