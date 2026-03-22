@@ -1647,3 +1647,6 @@ input:focus, select:focus { box-shadow: 0 0 0 3px rgba(122, 170, 60, 0.15); tran
 .flex-center { display: flex; align-items: center; justify-content: center; }
 
 .text-gradient { background: linear-gradient(90deg, #7BAA3C, #97C45A); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+
+.hover-scale { transition: transform 0.2s; }
+.hover-scale:hover { transform: scale(1.05); }
