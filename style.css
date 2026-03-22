@@ -1671,3 +1671,8 @@ input:focus, select:focus { box-shadow: 0 0 0 3px rgba(122, 170, 60, 0.15); tran
 
 @keyframes skeleton-loading { 0% { background-color: #f0f0f0; } 50% { background-color: #e0e0e0; } 100% { background-color: #f0f0f0; } }
 .skeleton-box { animation: skeleton-loading 1s linear infinite alternate; border-radius: 4px; }
+
+.custom-scroll::-webkit-scrollbar { width: 8px; }
+.custom-scroll::-webkit-scrollbar-track { background: #f1f1f1; }
+.custom-scroll::-webkit-scrollbar-thumb { background: #888; border-radius: 4px; }
+.custom-scroll::-webkit-scrollbar-thumb:hover { background: #555; }
