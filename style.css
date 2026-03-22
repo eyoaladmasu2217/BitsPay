@@ -1676,3 +1676,5 @@ input:focus, select:focus { box-shadow: 0 0 0 3px rgba(122, 170, 60, 0.15); tran
 .custom-scroll::-webkit-scrollbar-track { background: #f1f1f1; }
 .custom-scroll::-webkit-scrollbar-thumb { background: #888; border-radius: 4px; }
 .custom-scroll::-webkit-scrollbar-thumb:hover { background: #555; }
+
+.text-muted-xs { font-size: 0.75rem; color: #8A978A; }
