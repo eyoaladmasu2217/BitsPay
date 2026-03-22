@@ -1668,3 +1668,6 @@ input:focus, select:focus { box-shadow: 0 0 0 3px rgba(122, 170, 60, 0.15); tran
 .ui-tooltip:hover::after { content: attr(data-tooltip); position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%); background: #333; color: #fff; padding: 4px 8px; border-radius: 4px; font-size: 12px; white-space: nowrap; }
 
 .bg-transition { transition: background-color 0.3s ease; }
+
+@keyframes skeleton-loading { 0% { background-color: #f0f0f0; } 50% { background-color: #e0e0e0; } 100% { background-color: #f0f0f0; } }
+.skeleton-box { animation: skeleton-loading 1s linear infinite alternate; border-radius: 4px; }
