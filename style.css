@@ -1663,3 +1663,6 @@ input:focus, select:focus { box-shadow: 0 0 0 3px rgba(122, 170, 60, 0.15); tran
 .glass-panel { background: rgba(255, 255, 255, 0.25); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.18); border-radius: 12px; }
 
 .ui-badge { display: inline-block; padding: 4px 8px; border-radius: 12px; font-size: 0.75rem; font-weight: bold; background: #7BAA3C; color: white; }
+
+.ui-tooltip { position: relative; cursor: help; }
+.ui-tooltip:hover::after { content: attr(data-tooltip); position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%); background: #333; color: #fff; padding: 4px 8px; border-radius: 4px; font-size: 12px; white-space: nowrap; }
