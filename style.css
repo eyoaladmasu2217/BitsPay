@@ -239,18 +239,25 @@ input:checked + .slider .light-icon {
 }
 .close-btn {
     position: absolute;
-    top: 16px;
+    top: 20px;
     right: 20px;
-    background: none;
+    background: var(--secondary-bg);
     border: none;
-    font-size: 2.1rem;
-    color: #888;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    color: var(--text-muted);
     cursor: pointer;
-    transition: color 0.2s;
-    z-index: 10;
+    transition: all 0.2s;
 }
 .close-btn:hover {
-    color: var(--error-red);
+    background: var(--error-red);
+    color: var(--white);
+    transform: rotate(90deg);
 }
 body {
     background: #fff;
