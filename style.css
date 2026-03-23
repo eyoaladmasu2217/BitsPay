@@ -28,6 +28,34 @@
     --shadow-md: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
 }
 
+/* Tooltips */
+[data-tooltip] {
+    position: relative;
+    cursor: pointer;
+}
+[data-tooltip]:before {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--text-dark);
+    color: var(--white);
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s, transform 0.3s;
+    z-index: 1001;
+}
+[data-tooltip]:hover:before {
+    opacity: 1;
+    transform: translateX(-50%) translateY(-5px);
+}
+
+
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
     width: 10px;
