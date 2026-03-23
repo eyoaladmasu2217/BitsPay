@@ -60,7 +60,10 @@
                             <input type="password" name="password" id="signupPw" placeholder=" " required oninput="checkStrength(this.value)">
                             <button type="button" class="pw-toggle-btn" aria-label="Show password" onclick="togglePw('signupPw', this)">👁️</button>
                         </div>
-                        <div class="strength-meter"><div class="strength-bar" id="strengthBar"></div></div>
+                        <div class="strength-meter-wrap">
+                            <div class="strength-meter"><div class="strength-bar" id="strengthBar"></div></div>
+                            <span class="strength-text" id="strengthText">Weak</span>
+                        </div>
                     </div>
                     <div class="form-group">
                         <button type="submit" class="auth-btn" onclick="showLoading(this)">Sign up</button>
@@ -105,12 +108,17 @@
 
     function checkStrength(val) {
         const bar = document.getElementById('strengthBar');
+        const text = document.getElementById('strengthText');
         let strength = 0;
         if(val.length > 5) strength += 33;
         if(val.match(/[A-Z]/) && val.match(/[0-9]/)) strength += 33;
         if(val.length > 8 && val.match(/[^a-zA-Z0-9]/)) strength += 34;
         bar.style.width = strength + '%';
-        bar.style.background = strength < 34 ? '#d32f2f' : (strength < 67 ? '#ffa000' : '#4CAF50');
+        const colors = strength < 34 ? '#d32f2f' : (strength < 67 ? '#ffa000' : '#4CAF50');
+        const labels = strength < 34 ? 'Weak' : (strength < 67 ? 'Medium' : 'Strong');
+        bar.style.background = colors;
+        text.textContent = labels;
+        text.style.color = colors;
     }
 
     function showLoading(btn) {
