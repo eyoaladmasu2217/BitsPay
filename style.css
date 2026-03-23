@@ -344,6 +344,23 @@ body {
     border: 1px solid rgba(255,255,255,0.1);
 }
 
+@media (max-width: 600px) {
+    .floating-navbar {
+        width: calc(100% - 40px);
+        padding: 0 16px;
+        height: 64px;
+        top: 10px;
+    }
+    .floating-navbar .logo {
+        font-size: 1.5rem;
+    }
+    .floating-navbar nav a {
+        padding: 7px 16px;
+        font-size: 0.85rem;
+    }
+}
+
+
 @keyframes logoPop {
     from { opacity: 0; transform: scale(0.9); }
     to { opacity: 1; transform: scale(1); }
