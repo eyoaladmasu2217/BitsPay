@@ -437,9 +437,11 @@ main {
 }
 
 .auth-card .auth-subtitle {
-    color: #8A978A;
-    font-size: 0.95rem;
-    margin: 0 0 28px 0;
+    color: var(--text-muted);
+    font-size: 0.98rem;
+    margin: 0 0 32px 0;
+    line-height: 1.6;
+    letter-spacing: 0.01em;
 }
 
 /* Auth card divider line between logo and form */
