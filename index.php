@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <script src="theme.js" defer></script>
 </head>
 <body>
     <div class="video-overlay"></div>
@@ -25,6 +26,15 @@
                 <a href="#" class="signup active" id="signupBtn">Sign up</a>
                 <a href="#" class="login" id="loginBtn">Log in</a>
             </nav>
+            <div class="theme-switch-wrapper">
+                <label class="theme-switch" for="checkbox">
+                    <input type="checkbox" id="checkbox" />
+                    <div class="slider round">
+                        <span class="icon dark-icon">🌙</span>
+                        <span class="icon light-icon">☀️</span>
+                    </div>
+                </label>
+            </div>
         </div>
         <main class="auth-main">
             <div class="auth-card">
