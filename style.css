@@ -273,6 +273,7 @@ body {
     padding-top: 100px; /* Space for navbar */
     box-sizing: border-box;
     width: 100%;
+    background: radial-gradient(circle at center, rgba(123, 170, 60, 0.05) 0%, transparent 70%);
 }
 
 .auth-main {
