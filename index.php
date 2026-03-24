@@ -351,7 +351,25 @@ window.addEventListener('DOMContentLoaded', function() {
     backToTop.addEventListener('click', () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     });
+
+    // Forgot Password Logic
+    const closeForgot = document.getElementById('closeForgot');
+    const forgotPwPopup = document.getElementById('forgotPwPopup');
+    if (closeForgot && forgotPwPopup) {
+        closeForgot.addEventListener('click', () => {
+            forgotPwPopup.style.display = 'none';
+        });
+    }
+
+    const forgotLink = document.querySelector('.forgot-pw');
+    if (forgotLink && forgotPwPopup) {
+        forgotLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            forgotPwPopup.style.display = 'flex';
+        });
+    }
 });
+
 
 
     </script>
