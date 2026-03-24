@@ -79,6 +79,8 @@
                             <label class="fl-label" for="signupPw">Password</label>
                             <button type="button" class="pw-toggle-btn" aria-label="Show password" onclick="togglePw('signupPw', this)">👁️</button>
                         </div>
+                        <p class="pw-hint">Must be at least 8 chars with a number (0-9)</p>
+
                         <div class="strength-meter-wrap">
                             <div class="strength-meter"><div class="strength-bar" id="strengthBar"></div></div>
                             <span class="strength-text" id="strengthText">Weak</span>
