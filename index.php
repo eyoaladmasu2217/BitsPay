@@ -60,6 +60,7 @@
                     <div class="form-group">
                         <div class="pw-toggle-wrap">
                             <input type="password" name="password" id="signupPw" placeholder=" " required oninput="checkStrength(this.value)">
+                            <label class="fl-label" for="signupPw">Password</label>
                             <button type="button" class="pw-toggle-btn" aria-label="Show password" onclick="togglePw('signupPw', this)">👁️</button>
                         </div>
                         <div class="strength-meter-wrap">
@@ -67,6 +68,15 @@
                             <span class="strength-text" id="strengthText">Weak</span>
                         </div>
                     </div>
+                    <div class="form-group floating-label-group">
+                        <div class="pw-toggle-wrap">
+                            <input type="password" name="confirm_password" id="signupPwConfirm" placeholder=" " required>
+                            <label class="fl-label" for="signupPwConfirm">Confirm Password</label>
+                            <button type="button" class="pw-toggle-btn" aria-label="Show password" onclick="togglePw('signupPwConfirm', this)">👁️</button>
+                        </div>
+                        <span class="error-text" id="matchText" style="display:none; color: #d32f2f; font-size: 0.75rem; margin-top: 4px;">Passwords do not match</span>
+                    </div>
+
                     <div class="form-group">
                         <button type="submit" class="auth-btn" onclick="showLoading(this)">Sign up</button>
                     </div>
