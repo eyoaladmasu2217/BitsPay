@@ -1925,3 +1925,67 @@ input:focus, select:focus { box-shadow: 0 0 0 3px rgba(122, 170, 60, 0.15); tran
 .custom-scroll::-webkit-scrollbar-thumb:hover { background: #555; }
 
 .text-muted-xs { font-size: 0.75rem; color: #8A978A; }
+
+/* Cookie Banner Styles */
+.cookie-banner {
+    position: fixed;
+    bottom: 24px;
+    left: 24px;
+    right: 24px;
+    background: #fff;
+    padding: 18px 24px;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+    z-index: 9998;
+    animation: slideUpCookie 0.5s ease-out forwards;
+    border: 1px solid #E6F4D9;
+}
+
+[data-theme='dark'] .cookie-banner {
+    background: #1A1A1A;
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.cookie-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.cookie-icon { font-size: 1.5rem; }
+
+.cookie-content p {
+    font-size: 0.92rem;
+    color: #4A4A4A;
+    flex: 1;
+    margin: 0;
+}
+
+[data-theme='dark'] .cookie-content p {
+    color: #A8B4A0;
+}
+
+.cookie-btn {
+    background: #7BAA3C;
+    color: #fff;
+    border: none;
+    padding: 8px 24px;
+    border-radius: 50px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.cookie-btn:hover {
+    background: #5a8a1f;
+    transform: translateY(-1px);
+}
+
+@keyframes slideUpCookie {
+    from { transform: translateY(100px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
