@@ -44,6 +44,20 @@
                 <h1 id="authTitle">Create your account</h1>
                 <p class="auth-subtitle" id="authSubtitle">Join BitsPay and manage your campus payments effortlessly.</p>
                 <div class="auth-divider"></div>
+                <div id="forgotPwPopup" class="popup-overlay" style="display:none;">
+                    <div class="popup-modal">
+                        <button class="close-btn" id="closeForgot" aria-label="Close">&times;</button>
+                        <span class="popup-icon">🔑</span>
+                        <h2>Reset Password</h2>
+                        <p>Enter your email to receive a reset link.</p>
+                        <div class="form-group floating-label-group" style="margin-top: 20px;">
+                            <input type="email" id="resetEmail" placeholder=" ">
+                            <label class="fl-label" for="resetEmail">Email Address</label>
+                        </div>
+                        <button class="auth-btn" style="margin-top: 10px;" onclick="showToast('Success!', 'Reset link sent!', 'info')">Send Reset Link</button>
+                    </div>
+                </div>
+
                 <div id="errorPopup" class="popup-overlay" style="display:none;">
                     <div class="popup-modal">
                         <button class="close-btn" id="closeError" aria-label="Close">&times;</button>
@@ -52,6 +66,8 @@
                         <p id="errorMessage">An error occurred.</p>
                     </div>
                 </div>
+
+
                 <form action="backend/reg.php" method="post" class="signup-form" id="signupForm">
                     <div class="form-group floating-label-group">
                         <input type="email" name="email" id="signupEmail" placeholder=" " required>
