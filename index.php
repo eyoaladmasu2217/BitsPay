@@ -123,7 +123,10 @@
         </div>
     </div>
 
+    <button id="backToTop" class="back-to-top" aria-label="Back to Top">↑</button>
+
     <script src="navbar.js"></script>
+
 
     <script>
     function togglePw(inputId, btn) {
