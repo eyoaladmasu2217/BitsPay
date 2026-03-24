@@ -301,7 +301,26 @@ window.addEventListener('DOMContentLoaded', function() {
             window.history.replaceState({}, document.title, url.pathname);
         });
     }
+
+    // Cookie Banner Logic
+    const cookieBanner = document.getElementById('cookieBanner');
+    const acceptCookies = document.getElementById('acceptCookies');
+    if (cookieBanner && !localStorage.getItem('cookiesAccepted')) {
+        setTimeout(() => {
+            cookieBanner.style.display = 'block';
+        }, 2000);
+    }
+    if (acceptCookies) {
+        acceptCookies.addEventListener('click', () => {
+            localStorage.setItem('cookiesAccepted', 'true');
+            cookieBanner.style.animation = 'slideDownCookie 0.5s ease-in forwards';
+            setTimeout(() => {
+                cookieBanner.style.display = 'none';
+            }, 500);
+        });
+    }
 });
+
     </script>
 
 </body>
