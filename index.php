@@ -118,7 +118,29 @@
         }
     }
 
+    // Real-time password match check
+    document.addEventListener('DOMContentLoaded', () => {
+        const pw = document.getElementById('signupPw');
+        const confirm = document.getElementById('signupPwConfirm');
+        const matchTxt = document.getElementById('matchText');
+
+        if(pw && confirm) {
+            confirm.addEventListener('input', () => {
+                if(confirm.value === '') {
+                    matchTxt.style.display = 'none';
+                } else if(pw.value === confirm.value) {
+                    matchTxt.style.display = 'none';
+                    confirm.style.borderColor = '#4CAF50';
+                } else {
+                    matchTxt.style.display = 'block';
+                    confirm.style.borderColor = '#d32f2f';
+                }
+            });
+        }
+    });
+
     function checkStrength(val) {
+
         const bar = document.getElementById('strengthBar');
         const text = document.getElementById('strengthText');
         let strength = 0;
