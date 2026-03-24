@@ -1893,7 +1893,39 @@ input:focus, select:focus { box-shadow: 0 0 0 3px rgba(122, 170, 60, 0.15); tran
 
 .flex-center { display: flex; align-items: center; justify-content: center; }
 
-.text-gradient { background: linear-gradient(90deg, #7BAA3C, #97C45A); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.text-gradient { background: linear-gradient(90deg, #7BAA3C, #97C45A); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+
+/* Back to Top CSS */
+.back-to-top {
+    position: fixed;
+    bottom: 100px;
+    right: 32px;
+    width: 48px;
+    height: 48px;
+    background: #7BAA3C;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    box-shadow: 0 4px 12px rgba(123, 170, 60, 0.3);
+    transition: all 0.3s;
+    z-index: 1000;
+}
+
+.back-to-top:hover {
+    background: #5a8a1f;
+    transform: translateY(-4px);
+}
+
+.back-to-top.show {
+    display: flex;
+    animation: fadeIn 0.4s ease forwards;
+}
+
 
 .hover-scale { transition: transform 0.2s; }
 .hover-scale:hover { transform: scale(1.05); }
