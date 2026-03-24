@@ -100,7 +100,16 @@
                         <button type="submit" class="auth-btn" onclick="showLoading(this)">Log in</button>
                     </div>
                 </form>
+                <div class="social-auth">
+                    <div class="social-divider"><span>Or continue with</span></div>
+                    <div class="social-icons">
+                        <button class="social-btn" aria-label="Google"><img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google"></button>
+                        <button class="social-btn" aria-label="Apple"><img src="https://www.svgrepo.com/show/511330/apple-173.svg" alt="Apple"></button>
+                        <button class="social-btn" aria-label="GitHub"><img src="https://www.svgrepo.com/show/512317/github-142.svg" alt="GitHub"></button>
+                    </div>
+                </div>
                 <p class="terms">By continuing, you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.</p>
+
             </div>
         </main>
     </div>
