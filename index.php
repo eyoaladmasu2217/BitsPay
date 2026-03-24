@@ -127,9 +127,34 @@
         if(btn.form.checkValidity()) {
             btn.classList.add('loading');
             btn.innerHTML = '<span class="spinner"></span> Processing...';
+            // Mock success for UI demo if not actual submit
+            // showToast('Success!', 'Processing your request...');
         }
     }
+
+    function showToast(title, message, type = 'success') {
+        const toastContainer = document.getElementById('toast-container');
+        const toast = document.createElement('div');
+        toast.className = `toast toast-${type}`;
+        toast.innerHTML = `
+            <div class="toast-icon">${type === 'success' ? '✅' : 'ℹ️'}</div>
+            <div class="toast-content">
+                <strong>${title}</strong>
+                <p>${message}</p>
+            </div>
+            <button class="toast-close" onclick="this.parentElement.remove()">&times;</button>
+        `;
+        toastContainer.appendChild(toast);
+        setTimeout(() => {
+            toast.classList.add('show');
+        }, 10);
+        setTimeout(() => {
+            toast.classList.remove('show');
+            setTimeout(() => toast.remove(), 300);
+        }, 5000);
+    }
     </script>
+
     <script>
 window.addEventListener('DOMContentLoaded', function() {
     const params = new URLSearchParams(window.location.search);
