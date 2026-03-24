@@ -137,7 +137,24 @@
                 }
             });
         }
+
+        // Real-time email validation
+        const signupEmail = document.getElementById('signupEmail');
+        const loginEmail = document.getElementById('loginEmail');
+        const validateEmail = (input) => {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if(input.value === '') {
+                input.style.borderColor = '';
+            } else if(re.test(input.value)) {
+                input.style.borderColor = '#4CAF50';
+            } else {
+                input.style.borderColor = '#d32f2f';
+            }
+        };
+        if(signupEmail) signupEmail.addEventListener('input', () => validateEmail(signupEmail));
+        if(loginEmail) loginEmail.addEventListener('input', () => validateEmail(loginEmail));
     });
+
 
     function checkStrength(val) {
 
