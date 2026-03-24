@@ -2021,3 +2021,12 @@ input:focus, select:focus { box-shadow: 0 0 0 3px rgba(122, 170, 60, 0.15); tran
     to { transform: translateY(0); opacity: 1; }
 }
 
+.pw-hint {
+    font-size: 0.72rem;
+    color: #8A978A;
+    margin-top: 4px;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+
