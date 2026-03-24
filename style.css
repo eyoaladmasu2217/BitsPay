@@ -1613,6 +1613,82 @@ input:focus, select:focus { box-shadow: 0 0 0 3px rgba(122, 170, 60, 0.15); tran
 }
 .site-footer .footer-links a:hover { color: #7BAA3C; }
 
+/* Social Auth Styles */
+.social-auth {
+    margin-top: 24px;
+}
+
+.social-divider {
+    position: relative;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.social-divider::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: #E6F4D9;
+    z-index: 1;
+}
+
+.social-divider span {
+    position: relative;
+    padding: 0 12px;
+    background: #fff;
+    color: #8A978A;
+    font-size: 0.82rem;
+    font-weight: 500;
+    z-index: 2;
+}
+
+[data-theme='dark'] .social-divider span {
+    background: #1a1a1a;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+}
+
+.social-btn {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    border: 1px solid #E6F4D9;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.social-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(123, 170, 60, 0.15);
+    background: #F4F7F3;
+}
+
+.social-btn img {
+    width: 24px;
+    height: 24px;
+}
+
+[data-theme='dark'] .social-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme='dark'] .social-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+
 
 /* UI Improvement 11: Profile Dropdown */
 .profile-dropdown-wrap {
