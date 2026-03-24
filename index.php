@@ -114,7 +114,17 @@
         </main>
     </div>
     <div id="toast-container"></div>
+
+    <div id="cookieBanner" class="cookie-banner" style="display:none;">
+        <div class="cookie-content">
+            <span class="cookie-icon">🍪</span>
+            <p>We use cookies to ensure you get the best experience on BitsPay. <a href="#">Learn more</a></p>
+            <button id="acceptCookies" class="cookie-btn">Accept</button>
+        </div>
+    </div>
+
     <script src="navbar.js"></script>
+
     <script>
     function togglePw(inputId, btn) {
         const inp = document.getElementById(inputId);
