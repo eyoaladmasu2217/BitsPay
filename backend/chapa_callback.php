@@ -1,75 +1,64 @@
 <?php
-file_put_contents('chapa_log.txt', "RAW: " . file_get_contents('php://input') . PHP_EOL, FILE_APPEND);
-file_put_contents('chapa_log.txt', "GET: " . json_encode($_GET) . PHP_EOL, FILE_APPEND);
-file_put_contents('chapa_log.txt', "REQUEST: " . json_encode($_REQUEST) . PHP_EOL, FILE_APPEND);
+require_once __DIR__ . '/model/WalletModel.php';
+require_once __DIR__ . '/model/ChapaService.php';
 
-echo "Callback received<br>";
+// Log incoming request for debugging
+$rawInput = file_get_contents('php://input');
+file_put_contents('chapa_log.txt', date('[Y-m-d H:i:s] ') . "RAW: " . $rawInput . PHP_EOL, FILE_APPEND);
 
-require_once dirname(__DIR__) . '/backend/model/WalletModel.php';
-$config = require_once dirname(__DIR__). '/backend/config/chapa.php';
-$chapaSecret =$config['secret_key'];//don't forget to change with the actual code
-$tx_ref = $_REQUEST['tx_ref'] ??  $_REQUEST['trx_ref'] ??'';
-
-if(!$tx_ref){
+$tx_ref = $_REQUEST['tx_ref'] ?? $_REQUEST['trx_ref'] ?? '';
+if (!$tx_ref) {
     http_response_code(400);
     exit('Missing tx_ref');
 }
-$ch =curl_init();
-curl_setopt($ch, CURLOPT_URL,"https://api.chapa.co/v1/transaction/verify/$tx_ref");
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-curl_setopt($ch,CURLOPT_HTTPHEADER,[
-    "Authorization: Bearer $chapaSecret"
-]);
-$response = curl_exec($ch);
-if ($response === false){
-    file_put_contents('chapa_log.txt', "Curl error:". curl_error($ch).PHP_EOL, FILE_APPEND);
-}
-curl_close($ch);
 
+$chapa = new ChapaService();
+$verifyResponse = $chapa->verifyTransaction($tx_ref);
 
-file_put_contents('chapa_log.txt', "Chapa API response: $response" . PHP_EOL, FILE_APPEND);
+file_put_contents('chapa_log.txt', date('[Y-m-d H:i:s] ') . "Verification response: " . json_encode($verifyResponse) . PHP_EOL, FILE_APPEND);
 
+if (isset($verifyResponse['status']) && $verifyResponse['status'] === 'success') {
+    $data = $verifyResponse['data'];
+    $amount = floatval($data['amount']);
+    $email = $data['email'];
+    $tx_ref = $data['tx_ref'];
 
-$data =json_decode($response, true);
-
-if ($data['status']==='success'&& $data['data']['status']=='success'){
-    $amount = floatval($data['data']['amount']);
-    $email = $data['data']['email'];
-    $tx_ref = $data['data']['tx_ref'];
-
-    file_put_contents('chapa_log.txt',"Raw tx_ref: $tx_ref" . PHP_EOL, FILE_APPEND);
-    $user_id=0;
-
-    if(preg_match('/^bits-(\d+)_/',$tx_ref, $matches)){
-        $raw_user_id = $matches[1];
-        $user_id= intval($raw_user_id);
+    // Extract user_id from tx_ref (format: bits-{user_id}_{random})
+    $user_id = 0;
+    if (preg_match('/^bits-(\d+)_/', $tx_ref, $matches)) {
+        $user_id = intval($matches[1]);
     }
-    file_put_contents('chapa_log.txt',"Extracted user_id: $raw_user_id" . PHP_EOL,FILE_APPEND); };
-
-    file_put_contents('chapa_log.txt', "Raw user ID part: '" . $raw_user_id . "'" . PHP_EOL, FILE_APPEND);
-
-    file_put_contents('chapa_log.txt', "User ID: $user_id, Amount: $amount" . PHP_EOL, FILE_APPEND);
-
 
     if ($user_id) {
-        // Check if transaction already processed
+        // Prevent double processing
         if (!chapaTransactionExists($tx_ref)) {
             // Ensure wallet exists
-            if (!getUserWallet($user_id)) {
+            if (!walletExists($user_id)) {
                 createWallet($user_id, 0.00);
             }
 
-            // Credit the wallet using the model function
+            // Credit the wallet using the refactored transaction-safe function
             if (creditWallet($user_id, $amount, 'Chapa Deposit')) {
-                // Record the transaction to prevent double-crediting
                 recordChapaTransaction($tx_ref, $user_id, $amount);
-                file_put_contents('chapa_log.txt', "Successfully processed Chapa Deposit: $tx_ref for User: $user_id" . PHP_EOL, FILE_APPEND);
+                file_put_contents('chapa_log.txt', date('[Y-m-d H:i:s] ') . "SUCCESS: Processed Chapa Deposit for User $user_id. Amount: $amount. Ref: $tx_ref" . PHP_EOL, FILE_APPEND);
+                echo "Transaction processed successfully";
             } else {
-                file_put_contents('chapa_log.txt', "Failed to credit wallet for User: $user_id" . PHP_EOL, FILE_APPEND);
+                file_put_contents('chapa_log.txt', date('[Y-m-d H:i:s] ') . "ERROR: Failed to credit wallet for User $user_id. Amount: $amount." . PHP_EOL, FILE_APPEND);
+                http_response_code(500);
+                echo "Internal Error";
             }
         } else {
-            file_put_contents('chapa_log.txt', "Transaction $tx_ref already exists. Skipping." . PHP_EOL, FILE_APPEND);
+            file_put_contents('chapa_log.txt', date('[Y-m-d H:i:s] ') . "INFO: Transaction $tx_ref already exists. Skipping." . PHP_EOL, FILE_APPEND);
+            echo "Transaction already processed";
         }
+    } else {
+        file_put_contents('chapa_log.txt', date('[Y-m-d H:i:s] ') . "ERROR: Could not extract user_id from reference: $tx_ref" . PHP_EOL, FILE_APPEND);
+        http_response_code(400);
+        echo "Invalid transaction reference";
     }
-
+} else {
+    file_put_contents('chapa_log.txt', date('[Y-m-d H:i:s] ') . "ERROR: Verification failed for reference: $tx_ref" . PHP_EOL, FILE_APPEND);
+    http_response_code(400);
+    echo "Transaction verification failed";
+}
 ?>
