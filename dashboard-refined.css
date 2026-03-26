@@ -1,13 +1,22 @@
 /* BitsPay - Dashboard Refined Styling */
 :root {
     --primary-color: #4CAF50;
+    --primary-glow: rgba(76, 175, 80, 0.4);
     --secondary-color: #2196F3;
-    --bg-dark: rgba(0, 0, 0, 0.6);
-    --glass-white: rgba(255, 255, 255, 0.1);
-    --glass-white-border: rgba(255, 255, 255, 0.2);
+    --secondary-glow: rgba(33, 150, 243, 0.4);
+    --bg-dark: rgba(0, 0, 0, 0.7);
+    --glass-white: rgba(255, 255, 255, 0.12);
+    --glass-white-border: rgba(255, 255, 255, 0.25);
     --text-white: #ffffff;
-    --text-muted: #cccccc;
+    --text-muted: rgba(255, 255, 255, 0.6);
 }
+
+body {
+    font-family: 'Inter', sans-serif;
+    color: var(--text-white);
+    line-height: 1.6;
+}
+
 
 .dashboard-container {
     max-width: 1000px;
