@@ -96,6 +96,13 @@ if (!$wallet) {
                     <button type="submit" class="btn-primary btn-secondary">Pay From Wallet</button>
                 </form>
             </div>
+        <div class="activity-section" style="margin-top: 40px; animation: fadeInUp 0.8s ease-out 0.6s both;">
+            <h3 style="font-family: 'Outfit', sans-serif; margin-bottom: 20px;">Recent Activity</h3>
+            <div class="activity-card">
+                <div style="padding: 20px; text-align: center; color: var(--text-muted);">
+                    No recent transactions to display.
+                </div>
+            </div>
         </div>
     </div>
 </body>
