@@ -80,7 +80,7 @@ if (!$wallet) {
                 <form action="backend/controller/handle_payment.php" method="POST">
                     <input type="hidden" name="paymentType" value="TuitionFull">
                     <input type="number" name="makePayment" step="0.01" class="form-input" placeholder="Amount ETB" required>
-                    <button type="submit" class="btn-primary" style="background: #2196F3;">Pay From Wallet</button>
+                    <button type="submit" class="btn-primary btn-secondary">Pay From Wallet</button>
                 </form>
             </div>
         </div>

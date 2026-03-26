@@ -126,20 +126,35 @@ body {
 
 
 .btn-primary {
-    background: var(--primary-color);
+    background: linear-gradient(135deg, var(--primary-color) 0%, #388E3C 100%);
     color: white;
     border: none;
-    padding: 12px;
-    border-radius: 8px;
+    padding: 16px;
+    border-radius: 14px;
     cursor: pointer;
     width: 100%;
-    font-weight: 600;
-    transition: background 0.3s;
+    font-weight: 700;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 20px rgba(76, 175, 80, 0.2);
+    font-family: 'Inter', sans-serif;
 }
 
 .btn-primary:hover {
-    background: #45a049;
+    transform: translateY(-2px);
+    box-shadow: 0 15px 25px rgba(76, 175, 80, 0.3);
+    filter: brightness(1.1);
 }
+
+.btn-secondary {
+    background: linear-gradient(135deg, var(--secondary-color) 0%, #1976D2 100%);
+    box-shadow: 0 10px 20px rgba(33, 150, 243, 0.2);
+}
+
+.btn-secondary:hover {
+    box-shadow: 0 15px 25px rgba(33, 150, 243, 0.3);
+}
+
 
 .status-msg {
     padding: 15px;
