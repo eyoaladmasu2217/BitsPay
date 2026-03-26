@@ -47,6 +47,10 @@ if (!$wallet) {
                 <a href="backend/logout.php" class="nav-link logout-btn">Log out</a>
             </nav>
         </header>
+        <div style="margin-bottom: 30px; animation: fadeInUp 0.8s ease-out both;">
+            <h1 style="font-family: 'Outfit', sans-serif; font-size: 2.2rem; margin-bottom: 5px;">Welcome Back!</h1>
+            <p style="color: var(--text-muted); font-size: 1.1rem;">Manage your finances and tuition with ease.</p>
+        </div>
 
         <div class="balance-card">
             <?php if (isset($_SESSION['success'])): ?>
