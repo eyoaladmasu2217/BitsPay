@@ -121,13 +121,21 @@ body {
 .logo {
     display: flex;
     align-items: center;
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     font-weight: 800;
     font-family: 'Outfit', sans-serif;
+    letter-spacing: -1px;
 }
 
-.logo .bits { color: white; }
-.logo .pay { color: var(--primary-color); }
+.logo .bits { 
+    color: white; 
+}
+
+.logo .pay { 
+    color: var(--primary-color);
+    text-shadow: 0 0 15px var(--primary-glow);
+}
+
 
 .nav-links {
     display: flex;
