@@ -69,6 +69,7 @@ if (!$wallet) {
 
         <div class="actions-grid">
             <div class="action-card">
+                <div style="margin-bottom: 20px;"><?xml version="1.0" ?><svg fill="none" height="48" viewBox="0 0 24 24" width="48" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2ZM13 7V11H17V13H13V17H11V13H7V11H11V7H13Z" fill="var(--primary-color)"/></svg></div>
                 <h3>Deposit via Chapa</h3>
                 <p>Transfer funds from your bank/mobile wallet.</p>
                 <form action="backend/controller/ChapaController.php" method="POST">
@@ -78,7 +79,9 @@ if (!$wallet) {
                 </form>
             </div>
 
+
             <div class="action-card">
+                <div style="margin-bottom: 20px;"><?xml version="1.0" ?><svg fill="none" height="48" viewBox="0 0 24 24" width="48" xmlns="http://www.w3.org/2000/svg"><path d="M17 18C15.8954 18 15 18.8954 15 20C15 21.1046 15.8954 22 17 22C18.1046 22 19 21.1046 19 20C19 18.8954 18.1046 18 17 18ZM7 18C5.89543 18 5 18.8954 5 20C5 21.1046 5.89543 22 7 22C8.10457 22 9 21.1046 9 20C9 18.8954 8.10457 18 7 18ZM7 16L4.3 10.6L1 5H21L17.7 10.6L15 16H7Z" fill="var(--secondary-color)"/></svg></div>
                 <h3>Pay Tuition</h3>
                 <p>Use your wallet to pay semester fees.</p>
                 <form action="backend/controller/handle_payment.php" method="POST">
