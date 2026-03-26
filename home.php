@@ -38,13 +38,13 @@ if (!$wallet) {
     </video>
 
     <div class="dashboard-container">
-        <header>
+        <header class="main-header">
             <div class="logo">
-                <span style="color:white; font-size: 1.5rem; font-weight: 800;">Bits<span style="color: #4CAF50;">Pay</span></span>
+                <span class="bits">Bits</span><span class="pay">Pay</span>
             </div>
-            <nav style="display: flex; gap: 20px; align-items: center;">
-                <a href="home.php" style="color: white; font-weight: 600; text-decoration: none;">Dashboard</a>
-                <a href="backend/logout.php" style="color: rgba(255,255,255,0.7); text-decoration: none; padding: 8px 16px; background: rgba(255,0,0,0.2); border-radius: 8px;">Log out</a>
+            <nav class="nav-links">
+                <a href="home.php" class="nav-link active">Dashboard</a>
+                <a href="backend/logout.php" class="nav-link logout-btn">Log out</a>
             </nav>
         </header>
 
