@@ -31,7 +31,7 @@ body {
 
 .dashboard-container {
     max-width: 1000px;
-    margin: 100px auto;
+    margin: 80px auto 120px auto;
     padding: 20px;
     color: var(--text-white);
     z-index: 10;

@@ -28,7 +28,6 @@ if (!$wallet) {
     <title>BitsPay - Dashboard</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="dashboard-refined.css">
 </head>
 <body>
