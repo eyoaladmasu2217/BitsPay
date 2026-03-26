@@ -56,8 +56,11 @@ if (!$wallet) {
                 <div class="status-msg status-error"><?php echo $_SESSION['error']; unset($_SESSION['error']); ?></div>
             <?php endif; ?>
 
-            <p>Your Balance</p>
+            <p class="balance-label">Total Balance</p>
             <h2 class="balance-amount"><?php echo number_format($wallet['balance'], 2); ?> ETB</h2>
+            <div style="font-size: 0.85rem; color: rgba(255,255,255,0.4); margin-top: 10px;">
+                Verified Account • Instant Transfers
+            </div>
         </div>
 
         <div class="actions-grid">

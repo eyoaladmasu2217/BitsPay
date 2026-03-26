@@ -28,25 +28,37 @@ body {
 }
 
 .balance-card {
-    background: var(--glass-white);
-    backdrop-filter: blur(10px);
-    padding: 30px;
-    border-radius: 20px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+    backdrop-filter: blur(20px);
+    padding: 40px;
+    border-radius: 32px;
     border: 1px solid var(--glass-white-border);
-    margin-bottom: 20px;
+    margin-bottom: 40px;
     text-align: center;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+}
+
+.balance-label {
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    color: var(--text-muted);
+    font-weight: 700;
+    margin-bottom: 10px;
 }
 
 .balance-amount {
-    font-size: 3rem;
+    font-size: 4rem;
     font-family: 'Outfit', sans-serif;
     font-weight: 800;
     margin: 10px 0;
-    background: linear-gradient(135deg, #fff, #888);
+    background: linear-gradient(135deg, #ffffff 0%, #a5a5a5 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.3));
 }
+
 
 .actions-grid {
     display: grid;
