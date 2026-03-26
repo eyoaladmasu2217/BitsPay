@@ -104,6 +104,15 @@ if (!$wallet) {
                 </div>
             </div>
         </div>
+
+        <footer style="margin-top: 60px; padding: 30px 0; border-top: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: space-between; align-items: center; color: var(--text-muted); font-size: 0.9rem; animation: fadeInUp 0.8s ease-out 0.8s both;">
+            <div>&copy; 2026 BitsPay Inc. All rights reserved.</div>
+            <div style="display: flex; gap: 20px;">
+                <a href="#" style="color: inherit; text-decoration: none;">Privacy Policy</a>
+                <a href="#" style="color: inherit; text-decoration: none;">Terms of Service</a>
+                <a href="#" style="color: inherit; text-decoration: none;">Help Center</a>
+            </div>
+        </footer>
     </div>
 </body>
 </html>
