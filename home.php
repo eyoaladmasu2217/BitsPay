@@ -28,83 +28,8 @@ if (!$wallet) {
     <title>BitsPay - Dashboard</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <style>
-        .dashboard-container {
-            max-width: 1000px;
-            margin: 100px auto;
-            padding: 20px;
-            color: white;
-            z-index: 10;
-            position: relative;
-        }
-        .balance-card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            padding: 30px;
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            margin-bottom: 20px;
-            text-align: center;
-        }
-        .balance-amount {
-            font-size: 3rem;
-            font-family: 'Outfit', sans-serif;
-            font-weight: 800;
-            margin: 10px 0;
-            background: linear-gradient(135deg, #fff, #888);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .actions-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
-        .action-card {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 20px;
-            border-radius: 15px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease;
-        }
-        .action-card:hover {
-            transform: translateY(-5px);
-            background: rgba(255, 255, 255, 0.1);
-        }
-        .form-input {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border-radius: 8px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            background: rgba(0, 0, 0, 0.2);
-            color: white;
-        }
-        .btn-primary {
-            background: #4CAF50;
-            color: white;
-            border: none;
-            padding: 12px;
-            border-radius: 8px;
-            cursor: pointer;
-            width: 100%;
-            font-weight: 600;
-            transition: background 0.3s;
-        }
-        .btn-primary:hover {
-            background: #45a049;
-        }
-        .status-msg {
-            padding: 15px;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-        .status-success { background: rgba(76, 175, 80, 0.2); color: #81c784; border: 1px solid #4CAF50; }
-        .status-error { background: rgba(211, 47, 47, 0.2); color: #e57373; border: 1px solid #d32f2f; }
-        .bg-video { position: fixed; right: 0; bottom: 0; min-width: 100%; min-height: 100%; z-index: -2; object-fit: cover; }
-        .video-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: -1; }
-    </style>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="dashboard-refined.css">
 </head>
 <body>
     <div class="video-overlay"></div>
@@ -117,7 +42,10 @@ if (!$wallet) {
             <div class="logo">
                 <span style="color:white; font-size: 1.5rem; font-weight: 800;">Bits<span style="color: #4CAF50;">Pay</span></span>
             </div>
-            <a href="backend/logout.php" style="color: white; float: right;">Log out</a>
+            <nav style="display: flex; gap: 20px; align-items: center;">
+                <a href="home.php" style="color: white; font-weight: 600; text-decoration: none;">Dashboard</a>
+                <a href="backend/logout.php" style="color: rgba(255,255,255,0.7); text-decoration: none; padding: 8px 16px; background: rgba(255,0,0,0.2); border-radius: 8px;">Log out</a>
+            </nav>
         </header>
 
         <div class="balance-card">
