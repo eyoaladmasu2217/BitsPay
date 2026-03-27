@@ -1,11 +1,5 @@
 <?php
-session_set_cookie_params([
-    'secure' => true,
-    'httponly' => true,
-    'samesite' => 'Strict'
-]);
-session_start();
-
+require_once __DIR__ . '/../config/csrf.php';
 require_once __DIR__ . '/../model/ChapaService.php';
 
 if (!isset($_SESSION['user_id'])) {
@@ -17,6 +11,12 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     http_response_code(405);
     die("Invalid request method");
 }
+
+if (!isset($_POST['csrf_token']) || !verifyCsrfToken($_POST['csrf_token'])) {
+    http_response_code(403);
+    die("CSRF validation failed.");
+}
+
 
 $user_id = $_SESSION['user_id'];
 $amount = floatval($_POST['deposit_amount'] ?? 0);
