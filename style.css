@@ -183,12 +183,37 @@ input:checked + .slider .light-icon {
     animation: fadeIn 0.4s ease-out;
 }
 
+/* Enhanced Form Animations */
 .form-group {
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    display: block;
+    position: relative;
+    margin-bottom: 20px;
+    transition: transform 0.3s ease;
 }
+
+.form-group:focus-within {
+    transform: translateX(4px);
+}
+
+.floating-label-group input:focus ~ .fl-label,
+.floating-label-group input:not(:placeholder-shown) ~ .fl-label {
+    top: -10px;
+    left: 12px;
+    font-size: 0.75rem;
+    color: var(--primary-color);
+    background: var(--white);
+    padding: 0 6px;
+    font-weight: 700;
+}
+
+.auth-btn:hover {
+    transform: translateY(-2px) scale(1.02);
+    filter: brightness(1.1);
+}
+
+.auth-btn:active {
+    transform: translateY(0) scale(0.98);
+}
+
 
 /* Auth inputs */
 .signup-form input,
