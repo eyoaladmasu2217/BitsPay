@@ -13,12 +13,14 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 require_once 'backend/model/WalletModel.php';
+require_once 'backend/model/TransactionModel.php';
 $user_id = $_SESSION['user_id'];
 $wallet = getUserWallet($user_id);
 if (!$wallet) {
     createWallet($user_id, 0.00);
     $wallet = getUserWallet($user_id);
 }
+$recent_transactions = getRecentTransactions($user_id, 5);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -101,9 +103,25 @@ if (!$wallet) {
         <div class="activity-section">
             <h3 class="section-title">Recent Activity</h3>
             <div class="activity-card">
-                <div class="activity-empty-state">
-                    No recent transactions to display.
-                </div>
+                <?php if ($recent_transactions->num_rows > 0): ?>
+                    <ul class="activity-list">
+                        <?php while ($row = $recent_transactions->fetch_assoc()): ?>
+                            <li class="activity-item">
+                                <div class="activity-icon"><?php echo $row['fee_type'] === 'tuition' ? '🎓' : '📥'; ?></div>
+                                <div class="activity-details">
+                                    <span class="activity-type"><?php echo ucfirst($row['fee_type']); ?></span>
+                                    <span class="activity-date"><?php echo date('M d, H:i', strtotime($row['created_at'])); ?></span>
+                                </div>
+                                <div class="activity-status badge-<?php echo $row['status']; ?>"><?php echo ucfirst($row['status']); ?></div>
+                                <div class="activity-value"><?php echo number_format($row['amount'], 2); ?> ETB</div>
+                            </li>
+                        <?php endwhile; ?>
+                    </ul>
+                <?php else: ?>
+                    <div class="activity-empty-state">
+                        No recent transactions to display.
+                    </div>
+                <?php endif; ?>
             </div>
         </div>
 
