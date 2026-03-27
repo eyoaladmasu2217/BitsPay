@@ -68,7 +68,7 @@
                 </div>
 
 
-                <form action="backend/reg.php" method="post" class="signup-form" id="signupForm">
+                <form action="backend/reg.php" method="post" class="signup-form" id="signupForm" data-loader="Creating your account...">
                     <div class="form-group floating-label-group">
                         <input type="email" name="email" id="signupEmail" placeholder=" " required>
                         <label class="fl-label" for="signupEmail">Email Address</label>
@@ -96,10 +96,10 @@
                     </div>
 
                     <div class="form-group">
-                        <button type="submit" class="auth-btn" onclick="showLoading(this)">Sign up</button>
+                        <button type="submit" class="auth-btn">Sign up</button>
                     </div>
                 </form>
-                <form action="backend/login.php" method="post" class="login-form" id="loginForm">
+                <form action="backend/login.php" method="post" class="login-form" id="loginForm" data-loader="Logging you in...">
                     <div class="form-group floating-label-group">
                         <input type="email" name="email" id="loginEmail" placeholder=" " required>
                         <label class="fl-label" for="loginEmail">Email Address</label>
@@ -115,7 +115,7 @@
                         <a href="#" class="forgot-pw">Forgot password?</a>
                     </div>
                     <div class="form-group">
-                        <button type="submit" class="auth-btn" onclick="showLoading(this)">Log in</button>
+                        <button type="submit" class="auth-btn">Log in</button>
                     </div>
                 </form>
                 <div class="social-auth">
@@ -144,6 +144,7 @@
 
     <script src="navbar.js"></script>
     <script src="toast.js" defer></script>
+    <script src="loader.js" defer></script>
 
 
     <script>
