@@ -1,4 +1,7 @@
-<?php require_once 'backend/config/security_headers.php'; ?>
+<?php 
+require_once 'backend/config/security_headers.php'; 
+require_once 'backend/config/csrf.php'; 
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -69,6 +72,7 @@
 
 
                 <form action="backend/reg.php" method="post" class="signup-form" id="signupForm" data-loader="Creating your account...">
+                    <input type="hidden" name="csrf_token" value="<?php echo getCsrfToken(); ?>">
                     <div class="form-group floating-label-group">
                         <input type="email" name="email" id="signupEmail" placeholder=" " required>
                         <label class="fl-label" for="signupEmail">Email Address</label>
@@ -100,6 +104,7 @@
                     </div>
                 </form>
                 <form action="backend/login.php" method="post" class="login-form" id="loginForm" data-loader="Logging you in...">
+                    <input type="hidden" name="csrf_token" value="<?php echo getCsrfToken(); ?>">
                     <div class="form-group floating-label-group">
                         <input type="email" name="email" id="loginEmail" placeholder=" " required>
                         <label class="fl-label" for="loginEmail">Email Address</label>

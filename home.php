@@ -1,11 +1,7 @@
 <?php
 require_once 'backend/config/security_headers.php';
-session_set_cookie_params([
-    'secure' => true,
-    'httponly' => true,
-    'samesite' => 'Strict'
-]);
-session_start();
+require_once 'backend/config/csrf.php';
+// session handled by csrf.php or security_headers if needed
 
 if (!isset($_SESSION['user_id'])) {
     header("Location: index.php");
@@ -84,6 +80,7 @@ $recent_transactions = getRecentTransactions($user_id, 5);
                 <h3>Deposit via Chapa</h3>
                 <p>Transfer funds from your bank/mobile wallet.</p>
                 <form action="backend/controller/ChapaController.php" method="POST" data-loader="Redirecting to secure payment...">
+                    <input type="hidden" name="csrf_token" value="<?php echo getCsrfToken(); ?>">
                     <input type="number" name="deposit_amount" step="0.01" class="form-input" placeholder="Amount ETB" required>
                     <input type="hidden" name="user_email" value="<?php echo htmlspecialchars($_SESSION['user_email']); ?>">
                     <button type="submit" class="btn-primary">Deposit Now</button>
@@ -96,6 +93,7 @@ $recent_transactions = getRecentTransactions($user_id, 5);
                 <h3>Pay Tuition</h3>
                 <p>Use your wallet to pay semester fees.</p>
                 <form action="backend/controller/handle_payment.php" method="POST" data-loader="Processing tuition payment...">
+                    <input type="hidden" name="csrf_token" value="<?php echo getCsrfToken(); ?>">
                     <input type="hidden" name="paymentType" value="TuitionFull">
                     <input type="number" name="makePayment" step="0.01" class="form-input" placeholder="Amount ETB" required>
                     <button type="submit" class="btn-primary btn-secondary">Pay From Wallet</button>

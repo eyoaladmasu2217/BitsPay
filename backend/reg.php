@@ -1,9 +1,12 @@
 <?php
 require_once __DIR__ .'/database/csql.php';
+require_once __DIR__ .'/config/csrf.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-   
-    if (isset($_POST['email']) && isset($_POST['password'])) {
+    if (!isset($_POST['csrf_token']) || !verifyCsrfToken($_POST['csrf_token'])) {
+        die("CSRF token validation failed.");
+    }
+
         $email = filter_var(trim($_POST['email']), FILTER_SANITIZE_EMAIL);
         if (strlen($email) > 255) {
             header("Location: ../index.php?error=invalid_email");

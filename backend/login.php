@@ -1,13 +1,13 @@
 <?php
-session_set_cookie_params([
-    'secure' => true,
-    'httponly' => true,
-    'samesite' => 'Strict'
-]);
-session_start();
+require_once __DIR__ . '/config/csrf.php';
 require_once __DIR__ . '/database/csql.php';
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['email']) && isset($_POST['password'])) {
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (!isset($_POST['csrf_token']) || !verifyCsrfToken($_POST['csrf_token'])) {
+        die("CSRF validation failed.");
+    }
+    if (isset($_POST['email']) && isset($_POST['password'])) {
+
     $email = filter_var(trim($_POST['email']), FILTER_SANITIZE_EMAIL);
     if (strlen($email) > 255) {
         header("Location: ../index.php?showLogin=1&error=invalid");
