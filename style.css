@@ -1,31 +1,56 @@
 :root {
-    --primary-color: #7BAA3C;
-    --primary-light: #E6F4D9;
-    --primary-hover: #8BBE4C;
-    --secondary-bg: #F4F7F3;
-    --text-dark: #222222;
-    --text-muted: #8A978A;
-    --input-yellow: #FFF9C4;
-    --error-red: #d32f2f;
+    /* Color Palette - HSL for flexiblity */
+    --primary-h: 86;
+    --primary-s: 48%;
+    --primary-l: 45%;
+    --primary-color: hsl(var(--primary-h), var(--primary-s), var(--primary-l));
+    --primary-light: hsl(var(--primary-h), var(--primary-s), 91%);
+    --primary-hover: hsl(var(--primary-h), var(--primary-s), 52%);
+    --primary-glow: hsla(var(--primary-h), var(--primary-s), var(--primary-l), 0.4);
+    
+    --secondary-h: 207;
+    --secondary-s: 90%;
+    --secondary-l: 54%;
+    --secondary-color: hsl(var(--secondary-h), var(--secondary-s), var(--secondary-l));
+    
+    --bg-h: 100;
+    --bg-s: 15%;
+    --bg-l: 96%;
+    --secondary-bg: hsl(var(--bg-h), var(--bg-s), var(--bg-l));
+    
+    --text-dark: #1a1a1a;
+    --text-muted: #64748b;
+    --input-yellow: #fffdf0;
+    --error-red: #ef4444;
+    --success-green: #22c55e;
     --white: #ffffff;
-    --glass-bg: rgba(255, 255, 255, 0.95);
-    --shadow-sm: 0 2px 8px 0 rgba(122, 170, 60, 0.04);
-    --shadow-md: 0 8px 32px 0 rgba(122, 170, 60, 0.15);
+    
+    --glass-bg: rgba(255, 255, 255, 0.85);
+    --glass-border: rgba(255, 255, 255, 0.4);
+    
+    --shadow-sm: 0 2px 8px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 8px 32px 0 rgba(0, 0, 0, 0.08);
+    --shadow-lg: 0 12px 48px 0 rgba(0, 0, 0, 0.12);
+    
+    --radius-sm: 8px;
+    --radius-md: 14px;
+    --radius-lg: 24px;
+    --radius-full: 9999px;
 }
 
 [data-theme="dark"] {
-    --primary-color: #8BBE4C;
-    --primary-light: #2A3C1A;
-    --primary-hover: #A0D468;
-    --secondary-bg: #121212;
-    --text-dark: #F0F0F0;
-    --text-muted: #A0B0A0;
-    --input-yellow: #2A2A20;
-    --error-red: #ff5252;
-    --white: #1E1E1E;
-    --glass-bg: rgba(30, 30, 30, 0.9);
-    --shadow-sm: 0 2px 8px 0 rgba(0, 0, 0, 0.2);
-    --shadow-md: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+    --primary-l: 52%;
+    --primary-light: hsl(var(--primary-h), 30%, 15%);
+    --bg-l: 4%;
+    --secondary-bg: #0f172a;
+    --text-dark: #f8fafc;
+    --text-muted: #94a3b8;
+    --input-yellow: #1e293b;
+    --white: #1e293b;
+    --glass-bg: rgba(15, 23, 42, 0.8);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --shadow-sm: 0 2px 8px 0 rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
 }
 
 /* Tooltips */
