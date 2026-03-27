@@ -34,6 +34,7 @@ $recent_transactions = getRecentTransactions($user_id, 5);
     <script src="theme.js" defer></script>
     <script src="toast.js" defer></script>
     <script src="loader.js" defer></script>
+    <script src="modal.js" defer></script>
 </head>
 <body>
     <div class="video-overlay"></div>
