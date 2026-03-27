@@ -220,16 +220,21 @@ body {
 
 
 .main-header {
+    position: sticky;
+    top: 20px;
     margin-bottom: 40px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: var(--glass-white);
-    backdrop-filter: blur(15px);
-    padding: 15px 30px;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(20px);
+    padding: 12px 30px;
     border-radius: 100px;
-    border: 1px solid var(--glass-white-border);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    z-index: 1000;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
+
 
 .logo {
     display: flex;
