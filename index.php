@@ -44,21 +44,21 @@
                 <h1 id="authTitle">Create your account</h1>
                 <p class="auth-subtitle" id="authSubtitle">Join BitsPay and manage your campus payments effortlessly.</p>
                 <div class="auth-divider"></div>
-                <div id="forgotPwPopup" class="popup-overlay" style="display:none;">
+                <div id="forgotPwPopup" class="popup-overlay">
                     <div class="popup-modal">
                         <button class="close-btn" id="closeForgot" aria-label="Close">&times;</button>
                         <span class="popup-icon">🔑</span>
                         <h2>Reset Password</h2>
                         <p>Enter your email to receive a reset link.</p>
-                        <div class="form-group floating-label-group" style="margin-top: 20px;">
+                        <div class="form-group floating-label-group reset-form-group">
                             <input type="email" id="resetEmail" placeholder=" ">
                             <label class="fl-label" for="resetEmail">Email Address</label>
                         </div>
-                        <button class="auth-btn" style="margin-top: 10px;" onclick="showToast('Success!', 'Reset link sent!', 'info')">Send Reset Link</button>
+                        <button class="auth-btn send-reset-btn" onclick="showToast('Success!', 'Reset link sent!', 'info')">Send Reset Link</button>
                     </div>
                 </div>
 
-                <div id="errorPopup" class="popup-overlay" style="display:none;">
+                <div id="errorPopup" class="popup-overlay">
                     <div class="popup-modal">
                         <button class="close-btn" id="closeError" aria-label="Close">&times;</button>
                         <span class="popup-icon">⚠️</span>
@@ -92,14 +92,14 @@
                             <label class="fl-label" for="signupPwConfirm">Confirm Password</label>
                             <button type="button" class="pw-toggle-btn" aria-label="Show password" onclick="togglePw('signupPwConfirm', this)">👁️</button>
                         </div>
-                        <span class="error-text" id="matchText" style="display:none; color: #d32f2f; font-size: 0.75rem; margin-top: 4px;">Passwords do not match</span>
+                        <span class="error-text" id="matchText" style="display:none;">Passwords do not match</span>
                     </div>
 
                     <div class="form-group">
                         <button type="submit" class="auth-btn" onclick="showLoading(this)">Sign up</button>
                     </div>
                 </form>
-                <form action="backend/login.php" method="post" class="login-form" id="loginForm" style="display:none;">
+                <form action="backend/login.php" method="post" class="login-form" id="loginForm">
                     <div class="form-group floating-label-group">
                         <input type="email" name="email" id="loginEmail" placeholder=" " required>
                         <label class="fl-label" for="loginEmail">Email Address</label>
