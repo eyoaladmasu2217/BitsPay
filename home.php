@@ -30,6 +30,7 @@ if (!$wallet) {
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="dashboard-refined.css">
     <script src="theme.js" defer></script>
+    <script src="toast.js" defer></script>
 </head>
 <body>
     <div class="video-overlay"></div>

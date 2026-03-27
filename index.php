@@ -131,7 +131,6 @@
             </div>
         </main>
     </div>
-    <div id="toast-container"></div>
 
     <div id="cookieBanner" class="cookie-banner" style="display:none;">
         <div class="cookie-content">
@@ -144,6 +143,7 @@
     <button id="backToTop" class="back-to-top" aria-label="Back to Top">↑</button>
 
     <script src="navbar.js"></script>
+    <script src="toast.js" defer></script>
 
 
     <script>
@@ -221,27 +221,6 @@
         }
     }
 
-    function showToast(title, message, type = 'success') {
-        const toastContainer = document.getElementById('toast-container');
-        const toast = document.createElement('div');
-        toast.className = `toast toast-${type}`;
-        toast.innerHTML = `
-            <div class="toast-icon">${type === 'success' ? '✅' : 'ℹ️'}</div>
-            <div class="toast-content">
-                <strong>${title}</strong>
-                <p>${message}</p>
-            </div>
-            <button class="toast-close" onclick="this.parentElement.remove()">&times;</button>
-        `;
-        toastContainer.appendChild(toast);
-        setTimeout(() => {
-            toast.classList.add('show');
-        }, 10);
-        setTimeout(() => {
-            toast.classList.remove('show');
-            setTimeout(() => toast.remove(), 300);
-        }, 5000);
-    }
     </script>
 
     <script>
