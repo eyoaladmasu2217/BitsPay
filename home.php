@@ -119,7 +119,9 @@ $recent_transactions = getRecentTransactions($user_id, 5);
                     </ul>
                 <?php else: ?>
                     <div class="activity-empty-state">
-                        No recent transactions to display.
+                        <div class="empty-icon">📊</div>
+                        <p>No recent transactions to display.</p>
+                        <p style="font-size: 0.8rem; margin-top: 10px;">Deposit funds to get started!</p>
                     </div>
                 <?php endif; ?>
             </div>
