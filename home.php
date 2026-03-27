@@ -46,9 +46,9 @@ if (!$wallet) {
                 <a href="backend/logout.php" class="nav-link logout-btn">Log out</a>
             </nav>
         </header>
-        <div style="margin-bottom: 30px; animation: fadeInUp 0.8s ease-out both;">
-            <h1 style="font-family: 'Outfit', sans-serif; font-size: 2.2rem; margin-bottom: 5px;">Welcome Back!</h1>
-            <p style="color: var(--text-muted); font-size: 1.1rem;">Manage your finances and tuition with ease.</p>
+        <div class="dashboard-header-group">
+            <h1 class="dashboard-title">Welcome Back!</h1>
+            <p class="dashboard-subtitle">Manage your finances and tuition with ease.</p>
         </div>
 
         <div class="balance-card">
@@ -67,7 +67,7 @@ if (!$wallet) {
 
             <p class="balance-label">Total Balance</p>
             <h2 class="balance-amount"><?php echo number_format($wallet['balance'], 2); ?> ETB</h2>
-            <div style="font-size: 0.85rem; color: rgba(255,255,255,0.4); margin-top: 10px;">
+            <div class="balance-verified">
                 Verified Account • Instant Transfers
             </div>
         </div>
@@ -95,21 +95,21 @@ if (!$wallet) {
                     <button type="submit" class="btn-primary btn-secondary">Pay From Wallet</button>
                 </form>
             </div>
-        <div class="activity-section" style="margin-top: 40px; animation: fadeInUp 0.8s ease-out 0.6s both;">
-            <h3 style="font-family: 'Outfit', sans-serif; margin-bottom: 20px;">Recent Activity</h3>
+        <div class="activity-section">
+            <h3 class="section-title">Recent Activity</h3>
             <div class="activity-card">
-                <div style="padding: 20px; text-align: center; color: var(--text-muted);">
+                <div class="activity-empty-state">
                     No recent transactions to display.
                 </div>
             </div>
         </div>
 
-        <footer style="margin-top: 60px; padding: 30px 0; border-top: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: space-between; align-items: center; color: var(--text-muted); font-size: 0.9rem; animation: fadeInUp 0.8s ease-out 0.8s both;">
+        <footer class="main-footer">
             <div>&copy; 2026 BitsPay Inc. All rights reserved.</div>
-            <div style="display: flex; gap: 20px;">
-                <a href="#" style="color: inherit; text-decoration: none;">Privacy Policy</a>
-                <a href="#" style="color: inherit; text-decoration: none;">Terms of Service</a>
-                <a href="#" style="color: inherit; text-decoration: none;">Help Center</a>
+            <div class="footer-links">
+                <a href="#" class="footer-link">Privacy Policy</a>
+                <a href="#" class="footer-link">Terms of Service</a>
+                <a href="#" class="footer-link">Help Center</a>
             </div>
         </footer>
     </div>
