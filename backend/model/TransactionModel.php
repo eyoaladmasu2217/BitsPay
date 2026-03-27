@@ -28,6 +28,18 @@ function createTransaction($user_id, $amount,$method, $reference, $fee_type, $ac
         $stmt->execute();
         return $stmt->get_result();
     }
+    function getRecentTransactions($user_id, $limit = 5) {
+        global $conn;
+        $stmt = $conn->prepare("SELECT * FROM transactions WHERE user_id = ? ORDER BY created_at DESC LIMIT ?");
+        $stmt->bind_param("ii", $user_id, $limit);
+        $stmt->execute();
+        return $stmt->get_result();
+    }
 
-// a little bit of code is missing make sure u finish that
-?>
+    function updateTransactionStatus($reference, $status) {
+        global $conn;
+        $stmt = $conn->prepare("UPDATE transactions SET status = ? WHERE reference = ?");
+        $stmt->bind_param("ss", $status, $reference);
+        return $stmt->execute();
+    }
+?>
